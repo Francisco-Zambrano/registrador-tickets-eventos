@@ -49,8 +49,9 @@ class ProductManager{
         return "Product successfully added";
     }
     
-    getProducts(){
-        return this.#products;
+    getProducts(limit = 0){
+        limit = Number(limit);
+            return limit > 0 ? this.#products.slice(0, limit) : this.#products;
     }
 
     getProductById(id){

@@ -1,26 +1,16 @@
-const express=require("express");
-const ProductManager=require("./productManager.js")
+import express from "express";
+import products from './routers/products.js';
+import carts from './routers/carts.js';
 
-const PORT=8080;
-const app=express();
+const app = express();
+const PORT = 8080;
 
-app.get('/products', (req, res)=>{
-
-    const {limit} = req.query;
-    const product = new ProductManager();
-    const data = product.getProducts(limit);
-    return res.json({data:data})
-
-});
-
-app.get('/products/:pid', (req, res)=> {
-
-    const {pid} = req.params;
-    const product = new ProductManager();
-    const data = product.getProductById(Number(pid));
-    return res.json({data});
-
+app.get('/', (req, res) => {
+  res.send('GET request to the homepage')
 })
+
+app.use('/api/products', products);
+app.use('/api/carts', carts);
 
 app.listen(PORT, () => {
     console.log(`Corriendo servidor en el puerto ${PORT}`)

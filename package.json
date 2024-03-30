@@ -1,7 +1,8 @@
 {
   "name": "registrador-tickets-eventos",
   "version": "1.0.0",
-  "description": "DESAFÍO ENTREGABLE NÚMERO 1 - PROCESO DE TESTING",
+  "type": "module",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon ./src/app.js"

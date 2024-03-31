@@ -21,4 +21,27 @@ router.get('/:pid', (req, res) => {
 
 });
 
+router.post('/', (req, res) => {
+    const {title, description, price, thumbnail, code, stock, status, category} = req.body;
+    const product = new ProductManager();
+    const result = product.addProduct(title, description, price, thumbnail, code, stock, status, category)
+    return res.json({result});
+})
+
+router.put('/:pid', (req, res) => {
+    const {pid} = req.params;
+    const product = new ProductManager();
+    const result = product.updateProduct(Number(pid), req.body)
+    return res.json({result});
+})
+
+router.delete('/:pid', (req, res) => {
+    const {pid} = req.params;
+    const product = new ProductManager();
+    const result = product.deleteProduct(Number(pid), req.body)
+    return res.json({result});
+})
+
+
+
 export default router;

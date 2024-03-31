@@ -18,33 +18,6 @@
         "stock": 30
     },
     {
-        "id": 3,
-        "title": "ASUS TUF Gaming F15",
-        "description": "144Hz FHD Display, Intel Core i5-11400H Processor, GeForce RTX 2050, 8GB DDR4 RAM, 512GB PCIe SSD Gen 3, Wi-Fi 6",
-        "price": 900,
-        "thumbnail": "Sin imagen",
-        "code": "atgf15",
-        "stock": 30
-    },
-    {
-        "id": 4,
-        "title": "MSI Thin GF63",
-        "description": "144Hz Gaming Laptop: 12th Gen Intel Core i7, NVIDIA GeForce RTX 4050, 16GB DDR4, 512GB NVMe SSD, Type-C, Cooler Boost 5",
-        "price": 1200,
-        "thumbnail": "Sin imagen",
-        "code": "mgf63",
-        "stock": 30
-    },
-    {
-        "id": 5,
-        "title": "Acer Nitro 5 AN515-58",
-        "description": "Intel Core i5-12500H, NVIDIA GeForce RTX 3050 Ti Laptop GPU, FHD 144Hz IPS Display, 16GB DDR4, 512GB Gen 4 SSD, Killer Wi-Fi 6",
-        "price": 1350,
-        "thumbnail": "Sin imagen",
-        "code": "an5515",
-        "stock": 30
-    },
-    {
         "id": 6,
         "title": "Dell G15 5520",
         "description": "15.6 Inch Gaming Laptop - FHD 120Hz Display, Intel Core i7-12700H, 16GB DDR5 RAM, 512GB SSD, NVIDIA RTX 3060 6GB GDDR6, Wi-Fi 6",
@@ -85,8 +58,35 @@
         "title": "MSI Stealth 15M",
         "description": "144Hz FHD 1080p Display, Intel Core i7-11375H, NVIDIA GeForce RTX 3060, 16GB, 512GB SSD",
         "price": 1500,
-        "thumbnail": "Sin imagen",
+        "thumbnail": [
+            "http://imgexample.com"
+        ],
         "code": "msi15m",
-        "stock": 30
+        "stock": 30,
+        "category": "notebooks"
+    },
+    {
+        "id": 11,
+        "title": "MSI Stealth 17M",
+        "description": "144Hz FHD 1080p Display, Intel Core i9-13375H, NVIDIA GeForce RTX 4050, 35GB, 512GB",
+        "price": 3500,
+        "thumbnail": "Sin imagen",
+        "code": "msi17m",
+        "stock": 30,
+        "status": true,
+        "category": "notebooks"
+    },
+    {
+        "id": 12,
+        "title": "Acer Predator Triton 500",
+        "description": "Intel i7-12700H, GeForce RTX 3060, 16 WQXGA 240Hz G-SYNC Display, 16GB DDR5",
+        "price": 2000,
+        "thumbnail": [
+            "http://imgexample.com"
+        ],
+        "code": "apt500",
+        "stock": 20,
+        "status": true,
+        "category": "notebooks"
     }
 ]

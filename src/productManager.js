@@ -1,8 +1,4 @@
 import fs from 'fs';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = __filename.substring(0, __filename.lastIndexOf('/'));
 
 class ProductManager {
 
@@ -11,7 +7,7 @@ class ProductManager {
     static idProduct = 0;
 
     constructor() {
-        this.#path = `${__dirname}/data/products.json`;
+        this.#path = './src/data/products.json';
         this.#products = this.#readListProducts();
     }
 
@@ -33,8 +29,8 @@ class ProductManager {
         }
     }
 
-    addProduct(title, description, price, thumbnail, code, stock) {
-        if (!title || !description || !price || !thumbnail || !code || !stock) {
+    addProduct(title, description, price, thumbnail=[], code, stock, status=true, category) {
+        if (!title || !description || !price || !code || !stock || !category) {
             return "All parameters are required";
         }
 
@@ -46,7 +42,7 @@ class ProductManager {
         const lastId = this.#products.length > 0 ? this.#products[this.#products.length - 1].id : 0;
         const id = lastId + 1;
 
-        const newProduct = { id, title, description, price, thumbnail, code, stock };
+        const newProduct = { id, title, description, price, thumbnail, code, stock, status, category };
         this.#products.push(newProduct);
         this.#saveNewData();
         return "Product successfully added";

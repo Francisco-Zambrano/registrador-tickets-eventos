@@ -5,8 +5,11 @@ import carts from './routers/carts.js';
 const app = express();
 const PORT = 8080;
 
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
 app.get('/', (req, res) => {
-  res.send('GET request to the homepage')
+  return res.send('desafio 4')
 })
 
 app.use('/api/products', products);

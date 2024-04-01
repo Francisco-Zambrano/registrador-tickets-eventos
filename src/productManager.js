@@ -54,8 +54,17 @@ class ProductManager {
     }
 
     getProductById(id) {
-        const product = this.#products.find(data => data.id == id);
-        return product ? product : "Not Found";
+        let status = false;
+        let message = "Not Found"
+
+        const product = this.#products.find(data => data.id === id);
+        
+        if (product) {
+            status = true;
+            message = product;
+        }
+
+        return {status, message}
     }
 
     updateProduct(id, objectUpdate) {
@@ -77,14 +86,15 @@ class ProductManager {
         let message = "The product does not exist"
 
         const index = this.#products.findIndex(p => p.id === id);
+
         if (index !== -1) {
             this.#products = this.#products.filter(p => p.id !== id);
             this.#saveNewData();
             message = "Deleted Product"
         }
+        
         return message;
     }
-
 }
 
 export default ProductManager;

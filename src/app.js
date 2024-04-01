@@ -8,8 +8,8 @@ const PORT = 8080;
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-app.get('/', (req, res) => {
-  return res.send('desafio 4')
+app.get('/', (res) => {
+  return res.send('primera entrega')
 })
 
 app.use('/api/products', products);

@@ -10,7 +10,7 @@ router.get('/:cid', (req, res) => {
     return res.json({data});
 })
 
-router.post('/', (res) => {
+router.post('/', (req, res) => {
     const cart = new CartManager();
     const data = cart.createCart();
     return res.json({data});

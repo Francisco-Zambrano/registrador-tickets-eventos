@@ -5,10 +5,13 @@ import products from './routers/products.js';
 import carts from './routers/carts.js';
 import __dirname from "./utils.js";
 import views from './routers/views.js';
+import ProductManager from "./productManager.js";
 
 
 const app = express();
 const PORT = 8080;
+
+const product = new ProductManager();
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -28,6 +31,29 @@ const expressServer = app.listen(PORT, () => {
 
 const socketServer = new Server(expressServer);
 
+
 socketServer.on('connection', socket => {
-  console.log('client connected')
-})
+  
+  const products = product.getProducts();
+  socket.emit('products', products);
+
+  // socket.on('addProductFromForm', product => {
+  //   console.log({product})
+  //   const result = product.addProduct(product);
+  //   console.log({result})
+  // });
+
+  socket.on('addProductFromForm', newProduct => {
+    
+    console.log('Nuevo producto recibido:', newProduct);
+     
+    const result = product.addProduct(newProduct);
+     
+    if (result) {
+      socket.emit('productAdded', { success: true, message: 'Producto agregado correctamente.' });
+    } else {
+      socket.emit('productAdded', { success: false, message: 'Error al agregar el producto.' });
+    }
+  });
+  
+});

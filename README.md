@@ -1,4 +1,15 @@
-Primera Entrega del Proyecto
+-----> Para iniciar el servidor, ejecutar:
+npm run dev
+
+--- Desafío Handlebars y Websockets--
+
+1. Acceder a las siguientes direcciones:
+   http://localhost:8080
+   http://localhost:8080/realtimeproducts
+
+2. En "/realtimeproducts" agregar un producto en el formulario.
+
+--- Primera Entrega del Proyecto---
 
 - Ruta: products
 

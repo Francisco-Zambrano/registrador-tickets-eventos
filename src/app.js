@@ -31,29 +31,21 @@ const expressServer = app.listen(PORT, () => {
 
 const socketServer = new Server(expressServer);
 
-
 socketServer.on('connection', socket => {
-  
+
+  console.log("cliente conectado")
   const products = product.getProducts();
   socket.emit('products', products);
 
-  // socket.on('addProductFromForm', product => {
-  //   console.log({product})
-  //   const result = product.addProduct(product);
-  //   console.log({result})
-  // });
-
   socket.on('addProductFromForm', newProduct => {
-    
-    console.log('Nuevo producto recibido:', newProduct);
-     
-    const result = product.addProduct(newProduct);
-     
-    if (result) {
-      socket.emit('productAdded', { success: true, message: 'Producto agregado correctamente.' });
-    } else {
-      socket.emit('productAdded', { success: false, message: 'Error al agregar el producto.' });
-    }
+        
+    const { title, description, price, thumbnail, code, stock, status, category } = newProduct;
+
+    const product = new ProductManager();
+    const result = product.addProduct(title, description, price, thumbnail, code, stock, status, category);
+
+    result = socket.emit('productAdded' && 'updateProducts')
+
   });
-  
+
 });

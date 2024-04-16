@@ -9,11 +9,11 @@ router.get('/', (req, res) => {
     const products = product.getProducts();
 
     return res.render('home', {products});
-})
+});
 
 router.get('/realtimeproducts', (req, res) => {
     return res.render('realTimeProducts');
-})
+});
 
 
 

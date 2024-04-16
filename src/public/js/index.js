@@ -34,12 +34,12 @@ form.addEventListener('submit', function (event) {
     const price = document.getElementById('price').value;
    
     const product = {
-        title:title,
-        description:description,
-        code:code,
-        category:category,
-        stock:stock,
-        price:price,
+        title: title,
+        description: description,
+        code: code,
+        category: category,
+        stock: stock,
+        price: price,
     };
 
     socket.emit('addProductFromForm', product);

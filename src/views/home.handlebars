@@ -1,27 +1,4 @@
-<div class="container">  
-    <div class="row">
-        {{#each products}}
-        <div class="col-lg-3 col-md-6 col-12  pt-4">
-            <div class="card h-100" style="width: 18rem;">
-                <img src={{this.thumbnail}} class="card-img-top" alt={{this.title}}>
-                <div class="card-body">
-                    <h4 class="card-title">{{this.title}}</h4>
-                    <p class="card-text">{{this.description}}</p>
-                    <h5 class="card-title">Price: {{this.price}}</h5>
-                </div>
-                <div class="d-flex justify-content-between px-2">
-                    <p>Stock: {{stock}}</p>
-                    <p>Code Product: {{code}}</p>
-                </div>
-            </div>
-        </div>
-         {{/each}}
-    </div>
-</div>
-
-
-
-{{!-- <div class="container mt-5">
+<div class="container mt-5">
   <h2 class="mb-2">Products List</h2>
   <table class="table table-striped border">
     <thead >
@@ -47,4 +24,29 @@
      {{/each}}
     </tbody>
   </table>
+</div>
+
+
+
+
+
+{{!-- <div class="container">  
+    <div class="row">
+        {{#each products}}
+        <div class="col-lg-3 col-md-6 col-12  pt-4">
+            <div class="card h-100" style="width: 18rem;">
+                <img src={{this.thumbnail}} class="card-img-top" alt={{this.title}}>
+                <div class="card-body">
+                    <h4 class="card-title">{{this.title}}</h4>
+                    <p class="card-text">{{this.description}}</p>
+                    <h5 class="card-title">Price: {{this.price}}</h5>
+                </div>
+                <div class="d-flex justify-content-between px-2">
+                    <p>Stock: {{stock}}</p>
+                    <p>Code Product: {{code}}</p>
+                </div>
+            </div>
+        </div>
+         {{/each}}
+    </div>
 </div> --}}

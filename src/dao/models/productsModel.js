@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { Schema } from "mongoose";
 
 const productsCollection = "products"
 const productsSchema = new mongoose.Schema(
@@ -30,7 +31,6 @@ const productsSchema = new mongoose.Schema(
         },
         status:{
             type: Boolean,
-            required: true
         },
         category:{
             type: String,

@@ -5,10 +5,8 @@ import { productsModel } from "./models/productsModel.js";
 export const getProducts = async (req = request, res = response) => {
 
     try {
-        // const {limit} = request.query;
         const products = await productsModel.find();
         return res.json({products});
-
     } catch (error) {
         console.log('getProducts', error);
         return res.status(500);
@@ -31,24 +29,26 @@ export const getProductById = async (req = request, res = response) => {
 };
 
 export const addProduct = async (req = request, res = response) => {
-
     try {
+        const { title, description, price, thumbnails, code, stock, category, status } = req.body;
+        
+        if (!title || !description || !price || !code || !stock || !category) {
+            return res.status(400).json({ error: 'Missing required fields' });
+        }
 
-        const {title, description, price, thumbnails, code, stock, category, status} = req.body; 
-        if (!title || !description || !price || !code || !stock || !category)  
-            return res.status(404);
-    
-        const product = await productsModel.create({title, description, price, thumbnails, code, stock, category, status})
-        return res.json({product});
+        const existingProduct = await productsModel.findOne({ code });
 
+        if (existingProduct) {
+            return res.status(400).json({ error: 'Product already exists' });
+        }
+
+        const product = await productsModel.create({ title, description, price, thumbnails, code, stock, category, status });
+        return res.status(201).json({ product });
     } catch (error) {
-
         console.log('addProduct', error);
-        return res.status(500);
-
+        return res.status(500).json({ error: 'Internal server error' });
     }
-
-};
+}
 
 export const updateProduct = async (req = request, res = response) => {
 

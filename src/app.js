@@ -47,7 +47,7 @@ const io = new Server(expressServer);
 
 io.on('connection', async (socket) => {
 
-  console.log("cliente conectado")
+  console.log("client connected")
   const products = await productsModel.find();
   socket.emit('products', products);
 
@@ -59,9 +59,9 @@ io.on('connection', async (socket) => {
           products.push(newProduct);
           io.emit('products', products); 
       }
-  } catch (error) {
+    } catch (error) {
       console.error('Error adding product:', error);
-  }
+    }
 
   });
 

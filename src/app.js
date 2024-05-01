@@ -7,6 +7,7 @@ import carts from './routers/carts.js';
 import __dirname from "./utils.js";
 import views from './routers/views.js';
 import { productsModel } from "./dao/models/productsModel.js";
+import { messagesModel } from "./dao/models/messagesModel.js";
 
 
 const app = express();
@@ -46,8 +47,8 @@ await dbConnection();
 const io = new Server(expressServer);
 
 io.on('connection', async (socket) => {
-
-  console.log("client connected")
+  
+// Socket de productos
   const products = await productsModel.find();
   socket.emit('products', products);
 
@@ -65,4 +66,38 @@ io.on('connection', async (socket) => {
 
   });
 
+// Socket para el chat
+console.log(`A client with id: ${socket.id} has connected `);
+
+  socket.on("id", async (name, email) => {
+    try {
+      await messagesModel.create({ user: name, email, message: "has joined the chat" });
+      const previousMessages = await messagesModel.find().sort({ createdAt: 1 }).exec();
+      socket.emit("previousMessages", previousMessages);
+      socket.broadcast.emit("newUser", name);
+    } catch (error) {
+      console.error("Error saving message to database:", error);
+    }
+  });
+
+  socket.on("message", async (name, email, message) => {
+    try {
+      await messagesModel.create({ user: name, email, message });
+      io.emit("newMessage", name, message);
+    } catch (error) {
+      console.error("Error saving message to database:", error);
+    }
+  });
+
+  socket.on("disconnect", async () => {
+    try {
+      const usuario = await messagesModel.findOne({ user: socket.id }).exec();
+      if (usuario) {
+        io.emit("userExits", usuario.name);
+      }
+    } catch (error) {
+      console.error("Error retrieving user from database:", error);
+    }
+  });
+ 
 });

@@ -34,29 +34,12 @@ Swal.fire({
 
     socket.emit("id", name, email);
 
-    socket.on("newUser", name => {
-
-        Swal.fire({
-            text: `${name} has logged in!!!`,
-            toast: true,
-            position: "top-right"
-        });
-
-    });
-
     socket.on("previousMessages", messages => {
 
         messages.forEach(m => {
-            divMessages.innerHTML += `<span class="message"><strong>${m.name}</strong> says: <i>${m.message}</i></span><br>`;
+            divMessages.innerHTML += `<span class="message"><strong>${m.user}</strong> says: <i>${m.message}</i></span><br>`;
             divMessages.scrollTop = divMessages.scrollHeight;
         });
-
-    });
-
-    socket.on("userExits", name => {
-
-        divMessages.innerHTML += `<span class="message"><strong>${name}</strong> has left the chat </span><br>`;
-        divMessages.scrollTop = divMessages.scrollHeight;
 
     });
 

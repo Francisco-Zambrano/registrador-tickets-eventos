@@ -56,7 +56,5 @@ http://localhost:8080/api/carts/
 POST (a product into a cart)
 http://localhost:8080/api/carts/66304ba6805b018aa33c9c46/product/6630454be54dc62311b0e184
 
-- RUTA: Chat
-
-GET
-http://localhost:8080/chat
+4. Ruta para ingresar al Chat
+   http://localhost:8080/chat

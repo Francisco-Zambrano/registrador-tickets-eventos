@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { productsModel } from '../dao/models/productsModel.js';
+import {messagesModel} from '../dao/models/messagesModel.js'
 
 const router = Router();
 
@@ -19,8 +20,9 @@ router.get('/realtimeproducts', (req, res) => {
     return res.render('realTimeProducts');
 });
 
-router.get('/chat', (req, res) => {
-    return res.render('chat');
+router.get('/chat', async (req, res) => {
+    const messages = await messagesModel.find().lean();
+    return res.render('chat', {messages});
 });
 
 export default router;

@@ -13,7 +13,6 @@ import { messagesModel } from "./dao/models/messagesModel.js";
 const app = express();
 const PORT = 8080;
 
-
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
@@ -44,6 +43,8 @@ const dbConnection = async () => {
 
 await dbConnection();
 
+
+
 const io = new Server(expressServer);
 
 io.on('connection', async (socket) => {
@@ -67,14 +68,13 @@ io.on('connection', async (socket) => {
   });
 
 // Socket para el chat
-console.log(`A client with id: ${socket.id} has connected `);
+  console.log(`A client with id: ${socket.id} has connected `);
 
   socket.on("id", async (name, email) => {
     try {
-      await messagesModel.create({ user: name, email, message: "has joined the chat" });
+      await messagesModel.create({ user: name, email, message});
       const previousMessages = await messagesModel.find().sort({ createdAt: 1 }).exec();
       socket.emit("previousMessages", previousMessages);
-      socket.broadcast.emit("newUser", name);
     } catch (error) {
       console.error("Error saving message to database:", error);
     }
@@ -89,15 +89,4 @@ console.log(`A client with id: ${socket.id} has connected `);
     }
   });
 
-  socket.on("disconnect", async () => {
-    try {
-      const usuario = await messagesModel.findOne({ user: socket.id }).exec();
-      if (usuario) {
-        io.emit("userExits", usuario.name);
-      }
-    } catch (error) {
-      console.error("Error retrieving user from database:", error);
-    }
-  });
- 
 });

@@ -15,6 +15,7 @@ socket.on('products', products => {
             <td>${product.category}</td>
             <td>${product.stock}</td>
             <td>${product.price}</td>
+            <td>${product.thumbnails}</td>
         </tr>`
     });
 });
@@ -32,14 +33,16 @@ form.addEventListener('submit', function (event) {
     const category = document.getElementById('category').value;
     const stock = document.getElementById('stock').value;
     const price = document.getElementById('price').value;
+    const thumbnails = document.getElementById('thumbnails').value;
    
     const product = {
-        title: title,
-        description: description,
-        code: code,
-        category: category,
-        stock: stock,
-        price: price,
+        title,
+        description,
+        code,
+        category,
+        stock,
+        price,
+        thumbnails
     };
 
     socket.emit('addProductFromForm', product);

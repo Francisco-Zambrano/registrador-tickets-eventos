@@ -3,11 +3,30 @@ import { addProduct, deleteProduct, getProductById, getProducts, updateProduct }
 
 const router = Router();
 
-router.get('/', getProducts);
+// router.get('/', getProducts);
 router.get('/:pid', getProductById);
 router.post('/', addProduct);
 router.put('/:pid', updateProduct);
 router.delete('/:pid', deleteProduct);
+
+
+router.get('/', async (req, res) => {
+    try {
+        const page = req.query.page ? parseInt(req.query.page) : 1;
+        const limit = req.query.limit ? parseInt(req.query.limit) : 10;
+        const sort = req.query.sort || 'asc';
+
+        const options = { page, limit, lean: true };
+
+        const result = await getProducts(req, res, options, sort);
+        const { docs: products, totalPages, totalDocs, hasPrevPage, hasNextPage, prevPage, nextPage } = result;
+
+        return res.json({ products, page, limit, totalPages, totalDocs, hasPrevPage, hasNextPage, prevPage, nextPage });
+    } catch (error) {
+        console.error('Error fetching products:', error);
+        return res.status(500).send('Internal server error');
+    }
+});
 
 export default router;
 

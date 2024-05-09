@@ -1,0 +1,24 @@
+<div>
+  {{#if (eq cart.length 0)}}
+    <div class="item-on-cart">
+      <h1>Cart is empty</h1>
+      <a href="/"><button class="clear-btn">Back</button></a>
+    </div>
+  {{else}}
+    {{#each cart.products}}
+      <div class="item-on-cart" key={{this._id}}>
+        <div>
+          <img
+            class="img-on-cart"
+            src="{{this.thumbnail}}"
+            alt="{{this.title}}"
+          />
+        </div>
+        <h2>{{this.title}}</h2>
+        <p>Quantity: {{this.quantity}}</p>
+        <p>Price: ${{this.price}}</p>
+        {{!-- <p>Total: ${{this.price * this.quantity}}</p> --}}
+      </div>
+    {{/each}}
+  {{/if}}
+</div>

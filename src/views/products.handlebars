@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    {{#each products}}
+      <div class="col-lg-3 col-md-6 col-12 pt-4" key="{{product.id}}">
+        <div class="card h-100" style="width: 18rem;">
+          <div class="image-container">
+            <img
+              src={{this.thumbnails}}
+              class="card-img-top"
+              alt={{this.title}}
+            />
+          </div>
+
+          <div class="card-body">
+            <h4 class="card-title">{{this.title}}</h4>
+            <p class="card-text">{{this.description}}</p>
+            <h5 class="card-title">Price: {{this.price}}</h5>
+          </div>
+          <div class="d-flex justify-content-between px-2">
+            <p>Stock: {{this.stock}}</p>
+            <p>Code Product: {{this.code}}</p>
+          </div>
+          <div class="d-grid gap-2">
+            <button onclick="buy('{{_id}}')" class="btn btn-secondary">Add to
+              Cart</button>
+          </div>
+
+        </div>
+
+      </div>
+    {{/each}}
+  </div>
+  <div class="mt-3">
+    <a href="/products?page=1" class="btn btn-secondary">Page 1</a>
+    {{#if hasPrevPage}}
+      <a
+        href="/products?page={{prevPage}}"
+        class="btn btn-secondary"
+      >Previous</a>
+    {{/if}}
+    {{#if hasNextPage}}
+      <a href="/products?page={{nextPage}}" class="btn btn-secondary">Next</a>
+    {{/if}}
+  </div>
+</div>

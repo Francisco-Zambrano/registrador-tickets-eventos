@@ -1,42 +1,28 @@
 <div class="container mt-5">
-  <h2 class="mb-2">Products List</h2>
-  <table class="table table-striped border">
-    <thead>
-      <tr>
-        <th class="bg-dark text-light text-center align-middle">Title</th>
-        <th class="bg-dark text-light text-center align-middle">Product Code</th>
-        <th class="bg-dark text-light text-center align-middle">Description</th>
-        <th class="bg-dark text-light text-center align-middle">Category</th>
-        <th class="bg-dark text-light text-center align-middle">Stock</th>
-        <th class="bg-dark text-light text-center align-middle">Price</th>
-      </tr>
-    </thead>
 
-    <tbody id="products-id"></tbody>
-
-  </table>
-
-    
     <div class="container border my-5">
         <h2 class="mb-4">Add a product</h2>
         <form id="product-form">
             <div class="form-group">
-                <label for="titulo">Title:</label>
+                <label for="title">Title:</label>
                 <input type="text" class="form-control" id="title" placeholder="Enter the product title">
             </div>
             <div class="form-group">
-                <label for="codigo">Code</label>
+                <label for="code">Code</label>
                 <input type="text" class="form-control" id="code" placeholder="Enter the product code">
             </div>
             <div class="form-group">
-                <label for="descripcion">Description:</label>
+                <label for="description">Description:</label>
                 <textarea class="form-control" id="description" rows="3" placeholder="Write a description"></textarea>
             </div>
             <div class="form-group">
-                <label for="categoria">Category:</label>
+                <label for="category">Category:</label>
                 <select class="form-control" id="category">
                     <option value="">Select a Category</option>
-                    <option value="notebooks">Notebooks</option>   
+                    <option value="notebooks">Notebooks</option>
+                    <option value="mouses">Mouses</option>
+                    <option value="headsets">Headsets</option>
+                    <option value="keyboards">keyboards</option>  
                 </select>
             </div>
             <div class="form-group">
@@ -44,14 +30,35 @@
                 <input type="number" class="form-control" id="stock" placeholder="Enter the product stock">
             </div>
             <div class="form-group">
-                <label for="precio">Price:</label>
+                <label for="thumbnails">Image:</label>
+                <input type="string" class="form-control" id="thumbnails" placeholder="Enter the url of the image">
+            </div>
+            <div class="form-group">
+                <label for="price">Price:</label>
                 <input type="number" class="form-control" id="price" placeholder="Enter the product price">
             <div class="d-grid gap-2">
                 <button type="submit" class="btn btn-success my-3">Add Product</button>
             </div>
         </form>
     </div>
-    
+
+
+    <h2 class="mb-2">Products List</h2>
+    <table class="table table-striped border">
+        <thead>
+        <tr>
+            <th class="bg-dark text-light text-center align-middle">Title</th>
+            <th class="bg-dark text-light text-center align-middle">Product Code</th>
+            <th class="bg-dark text-light text-center align-middle">Description</th>
+            <th class="bg-dark text-light text-center align-middle">Category</th>
+            <th class="bg-dark text-light text-center align-middle">Stock</th>
+            <th class="bg-dark text-light text-center align-middle">Price</th>
+            <th class="bg-dark text-light text-center align-middle">Image</th>
+        </tr>
+        </thead>
+        <tbody id="products-id"></tbody>
+    </table>
+
 </div>
 
 <script src="/socket.io/socket.io.js"></script>

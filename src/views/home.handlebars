@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <h2 class="mb-2">Products List</h2>
   <table class="table table-striped border">
-    <thead >
+    <thead>
       <tr>
         <th class="bg-dark text-light text-center align-middle">Title</th>
         <th class="bg-dark text-light text-center align-middle">Product Code</th>
@@ -9,44 +9,21 @@
         <th class="bg-dark text-light text-center align-middle">Category</th>
         <th class="bg-dark text-light text-center align-middle">Stock</th>
         <th class="bg-dark text-light text-center align-middle">Price</th>
+        <th class="bg-dark text-light text-center align-middle">thumbnails</th>
       </tr>
     </thead>
     <tbody>
       {{#each products}}
-      <tr>
-        <td>{{this.title}}</td>
-        <td>{{this.code}}</td>
-        <td>{{this.description}}</td>
-        <td>{{this.category}}</td>
-        <td>{{this.stock}}</td>
-        <td>{{this.price}}</td>
-      </tr>
-     {{/each}}
+        <tr>
+          <td>{{this.title}}</td>
+          <td>{{this.code}}</td>
+          <td>{{this.description}}</td>
+          <td>{{this.category}}</td>
+          <td>{{this.stock}}</td>
+          <td>{{this.price}}</td>
+          <td>{{this.thumbnails}}</td>
+        </tr>
+      {{/each}}
     </tbody>
   </table>
 </div>
-
-
-
-
-
-{{!-- <div class="container">  
-    <div class="row">
-        {{#each products}}
-        <div class="col-lg-3 col-md-6 col-12  pt-4">
-            <div class="card h-100" style="width: 18rem;">
-                <img src={{this.thumbnail}} class="card-img-top" alt={{this.title}}>
-                <div class="card-body">
-                    <h4 class="card-title">{{this.title}}</h4>
-                    <p class="card-text">{{this.description}}</p>
-                    <h5 class="card-title">Price: {{this.price}}</h5>
-                </div>
-                <div class="d-flex justify-content-between px-2">
-                    <p>Stock: {{stock}}</p>
-                    <p>Code Product: {{code}}</p>
-                </div>
-            </div>
-        </div>
-         {{/each}}
-    </div>
-</div> --}}

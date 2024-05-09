@@ -2,9 +2,9 @@ import express from "express";
 import mongoose from 'mongoose'
 import { Server, Socket } from "socket.io";
 import { engine } from "express-handlebars";
+import __dirname from "./utils.js";
 import products from './routers/products.js';
 import carts from './routers/carts.js';
-import __dirname from "./utils.js";
 import views from './routers/views.js';
 import { productsModel } from "./dao/models/productsModel.js";
 import { messagesModel } from "./dao/models/messagesModel.js";
@@ -36,6 +36,13 @@ const dbConnection = async () => {
           dbName: "ecommerce"
       });
       console.log('database online')
+
+      // let result = await productsModel.find().explain("executionStats")
+      // console.log(JSON.stringify(result.executionStats, null, 15))
+
+      // let products = await productsModel.paginate({category: "mouses"}, {limit: 2, page: 1})
+      // console.log(products)
+
   } catch (error) {
       console.log(`Error getting database ${error}`);
   }
@@ -68,8 +75,7 @@ io.on('connection', async (socket) => {
   });
 
 // Socket para el chat
-  console.log(`A client with id: ${socket.id} has connected `);
-
+  
   socket.on("id", async (name, email) => {
     try {
       await messagesModel.create({ user: name, email, message});
@@ -88,5 +94,5 @@ io.on('connection', async (socket) => {
       console.error("Error saving message to database:", error);
     }
   });
-
+  console.log(`A client with id: ${socket.id} has connected `);
 });

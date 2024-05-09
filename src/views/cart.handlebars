@@ -1,24 +1,40 @@
-<div>
-  {{#if (eq cart.length 0)}}
-    <div class="item-on-cart">
-      <h1>Cart is empty</h1>
-      <a href="/"><button class="clear-btn">Back</button></a>
+<div class="container mt-5">
+  <h2 class="mb-2">Cart List</h2>
+
+  <div class="mb-3">
+    <label for="basic-url" class="form-label">Cart id</label>
+    <div class="input-group">
+      <span class="input-group-text" id="basic-addon3">ID</span>
+      <input
+        type="text"
+        class="form-control"
+        id="cart"
+        aria-describedby="basic-addon3 basic-addon4"
+        value="{{cart._id}}"
+      />
     </div>
-  {{else}}
-    {{#each cart.products}}
-      <div class="item-on-cart" key={{this._id}}>
-        <div>
-          <img
-            class="img-on-cart"
-            src="{{this.thumbnail}}"
-            alt="{{this.title}}"
-          />
-        </div>
-        <h2>{{this.title}}</h2>
-        <p>Quantity: {{this.quantity}}</p>
-        <p>Price: ${{this.price}}</p>
-        {{!-- <p>Total: ${{this.price * this.quantity}}</p> --}}
-      </div>
-    {{/each}}
-  {{/if}}
+  </div>
+
+  <table class="table table-striped border">
+    <thead>
+      <tr>
+        <th class="bg-dark text-light text-center align-middle">Title</th>
+        <th class="bg-dark text-light text-center align-middle">Product Code</th>
+        <th class="bg-dark text-light text-center align-middle">Description</th>
+        <th class="bg-dark text-light text-center align-middle">Category</th>
+        <th class="bg-dark text-light text-center align-middle">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each cart.products}}
+        <tr>
+          <td>{{this.title}}</td>
+          <td>{{this.code}}</td>
+          <td>{{this.description}}</td>
+          <td>{{this.category}}</td>
+          <td>{{this.price}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
 </div>

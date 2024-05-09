@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     {{#each products}}
-      <div class="col-lg-3 col-md-6 col-12 pt-4" key="{{product.id}}">
+      <div class="col-lg-3 col-md-6 col-12 pt-4" key={{product._id}}>
         <div class="card h-100" style="width: 18rem;">
           <div class="image-container">
             <img
@@ -21,8 +21,11 @@
             <p>Code Product: {{this.code}}</p>
           </div>
           <div class="d-grid gap-2">
-            <button onclick="buy('{{_id}}')" class="btn btn-secondary">Add to
-              Cart</button>
+            <button
+              onclick="buy('{{_id}}')"
+              class="btn btn-secondary"
+              id="selectedProduct"
+            >Add to Cart</button>
           </div>
 
         </div>
@@ -43,3 +46,5 @@
     {{/if}}
   </div>
 </div>
+
+<script src="/js/buyProduct.js"></script>

@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { productsModel } from '../dao/models/productsModel.js';
 import { messagesModel } from '../dao/models/messagesModel.js'
 import { getProducts } from '../dao/productManagerMONGO.js';
+import { cartsModel } from '../dao/models/cartsModel.js';
 
 
 const router = Router();
@@ -48,8 +49,20 @@ router.get('/chat', async (req, res) => {
     return res.render('chat', {messages});
 });
 
-router.get('/cart', (req, res) => {
-    res.render('cart');
+
+router.get('/carts/:cid', async (req, res) => {
+    try {
+        const { cid } = req.params;
+        const cart = await cartsModel.findById(cid).lean();
+        const productIds = cart.products.map(product => product.id);
+        const products = await productsModel.find({ _id: { $in: productIds } }).lean();
+        cart.products = products;
+        res.render('cart', { cart });
+    } catch (error) {
+        console.error('Error fetching cart:', error);
+        res.status(500).send('Internal server error');
+    }
 });
+
 
 export default router;

@@ -1,60 +1,93 @@
------> Para iniciar el servidor, ejecutar:
+# Segunda Preentrega del Proyecto
+
+Para iniciar el servidor, ejecutar:
 npm run dev
 
---- PRIMERA PRÁCTICA DE INTEGRACIÓN, MONGO DB, MONGOOSE--
+## Vistas
 
-1. Acceder a las siguientes direcciones:
-   http://localhost:8080
-   http://localhost:8080/realtimeproducts
+Products List
 
-2. En "/realtimeproducts" agregar un producto en el formulario.
+```http
+ http://localhost:8080/
+```
 
-3. Verificar los siguientes ENDPOINTS
+Real Time Products
 
-- RUTA: products
+```http
+ http://localhost:8080/realtimeproducts
+```
 
-GET
-http://localhost:8080/api/products
+Chat
 
-POST
-http://localhost:8080/api/products
+```http
+ http://localhost:8080/chat
+```
 
-body:
-{
-"title": "Acer Predator Triton 500",
-"description": "Intel i7-12700H, GeForce RTX 3060, 16 WQXGA 240Hz G-SYNC Display, 16GB DDR5",
-"price": 2000,
-"code": "apt500",
-"stock": 20,
-"thumbnail": ["http://imgexample.com"],
-"category": "notebooks"
-}
+Products
 
-PUT
-http://localhost:8080/api/products/663043494efa5665ec81c3dc
+```http
+ http://localhost:8080/products
+```
 
-body
-{
-"thumbnail": [
-"http://imgexample.com"
-],
-"category": "notebooks",
-"stock": "40"
-}
+Cart List
 
-DEL
-http://localhost:8080/api/products/663043494efa5665ec81c3dc
+```http
+ http://localhost:8080/carts/66304d5f805b018aa33c9c57
+```
 
-- RUTA: carts
+## Products (JSON)
 
-GET
-http://localhost:8080/api/carts/662e53aa94f04b2be1e81706
+GET: Deberá poder recibir por query params un limit, una page y un sort
 
-POST (a car)
-http://localhost:8080/api/carts/
+#### Get all items
 
-POST (a product into a cart)
-http://localhost:8080/api/carts/66304ba6805b018aa33c9c46/product/6630454be54dc62311b0e184
+```http
+ http://localhost:8080/api/products?limit=4&page=1&sort=asc
+```
 
-4. Ruta para ingresar al Chat
-   http://localhost:8080/chat
+| Key   | limit    | page     | sort         |
+| :---- | :------- | :------- | :----------- |
+| Value | `number` | `number` | `asc / desc` |
+
+- limit permitirá devolver sólo el número de elementos solicitados al momento de la petición, en caso de no recibir limit, éste será de 10.
+- page permitirá devolver la página que queremos buscar.
+- sort: asc/desc, para realizar ordenamiento ascendente o descendente por precio, en caso de no recibir sort, no realizar ningún ordenamiento.
+- El método GET deberá devolver un objeto con el siguiente formato:
+  {totalPages: Total de páginas
+  prevPage: Página anterior
+  nextPage: Página siguiente
+  page: Página actual
+  hasPrevPage: Indicador para saber si la página previa existe
+  hasNextPage: Indicador para saber si la página siguiente existe.
+  prevLink: Link directo a la página previa (null si hasPrevPage=false)
+  nextLink: Link directo a la página siguiente (null si hasNextPage=false)
+  }
+
+## Carts
+
+DELETE: api/carts/:cid/products/:pid deberá eliminar del carrito el producto seleccionado.
+
+```http
+ http://localhost:8080/api/carts/66304d5f805b018aa33c9c57/products/663c3a2b6202b875db072bce
+```
+
+PUT api/carts/:cid/products/:pid deberá poder actualizar SÓLO la cantidad de ejemplares del producto por cualquier cantidad pasada desde req.body
+
+```http
+http://localhost:8080/api/carts/663cd9f7c88c61d682b9c656/products/6637ccb7a3215dd365c6e80f
+```
+
+Body:
+{"quantity":3}
+
+PUT: api/carts/:cid deberá actualizar el carrito con un arreglo de productos
+
+```http
+ http://localhost:8080/api/carts/66304d5f805b018aa33c9c57/products/663c3a2b6202b875db072bce
+```
+
+DELETE: api/carts/:cid deberá eliminar todos los productos del carrito
+
+```http
+ http://localhost:8080/api/carts/663cd9f7c88c61d682b9c656/product/6637ceee39fa9e7a01cf380a
+```

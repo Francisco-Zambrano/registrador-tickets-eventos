@@ -115,12 +115,6 @@ export const deleteProduct = async (req = request, res = response) => {
 
 
 
-
-
-
-
-
-
 // export default class ProductMAnager{
 
 //     async getProducts() {

@@ -1,28 +1,18 @@
-const buy = async (pid) => {
-    try {
-        let result = await fetch(`/carts`, {
-            method: 'POST'
-        });
 
-        if (result.ok) {
-            let cart = await result.json();
-            let cid = cart._id;
-            
-            let addProductResult = await fetch(`/carts/${cid}/products/${pid}`, {
-                method: 'POST'
-            });
+function buyProduct (pid) {
+    console.log(`product id: ${pid}`)
 
-            if (addProductResult.ok) {
-                console.log('Product added to cart');
-            } else {
-                console.error('Error adding product to cart:', addProductResult.statusText);
-            }
-        } else {
-            console.error('Error creating cart:', result.statusText);
-        }
-    } catch (error) {
-        console.error('Error:', error);
-    }
+    const idCart = '66304d5f805b018aa33c9c57'
+    fetch(`/api/carts/${idCart}/products/${pid}`, {
+        method: 'POST',
+        headers:{ 'Content-Type': 'application/json'},
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data)
+    })
+    .catch(error => {
+        console.log('Error', error)
+    }) 
+
 };
-
-

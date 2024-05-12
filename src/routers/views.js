@@ -3,6 +3,7 @@ import { productsModel } from '../dao/models/productsModel.js';
 import { messagesModel } from '../dao/models/messagesModel.js'
 import { getProducts } from '../dao/productManagerMONGO.js';
 import { cartsModel } from '../dao/models/cartsModel.js';
+import { getCartById } from '../dao/cartManagerMONGO.js';
 
 
 const router = Router();
@@ -56,8 +57,25 @@ router.get('/carts/:cid', async (req, res) => {
         const cart = await cartsModel.findById(cid).lean();
         const productIds = cart.products.map(product => product.id);
         const products = await productsModel.find({ _id: { $in: productIds } }).lean();
-        cart.products = products;
+
+        cart.products = cart.products.map(cartProduct => {
+            const foundProduct = products.find(product => product._id.toString() === cartProduct.id.toString());
+            if (foundProduct) {
+                return {
+                    ...cartProduct,
+                    quantity: cartProduct.quantity,
+                    title: foundProduct.title,
+                    code: foundProduct.code,
+                    description: foundProduct.description,
+                    category: foundProduct.category,
+                    price: foundProduct.price
+                };
+            }
+            return cartProduct;
+        });
+        
         res.render('cart', { cart });
+        
     } catch (error) {
         console.error('Error fetching cart:', error);
         res.status(500).send('Internal server error');

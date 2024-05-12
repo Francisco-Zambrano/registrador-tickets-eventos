@@ -14,7 +14,7 @@ export const getCartById = async (cid) => {
 
 export const createCart = async () => {
     try {
-        const cart = await cartsModel.create({});
+        const cart = await cartsModel.create({products:[]});
         return cart;
     } catch (error) {
         console.log('createCart', error);

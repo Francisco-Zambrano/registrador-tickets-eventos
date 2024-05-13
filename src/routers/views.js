@@ -1,9 +1,8 @@
 import { Router } from 'express';
 import { productsModel } from '../dao/models/productsModel.js';
 import { messagesModel } from '../dao/models/messagesModel.js'
-import { getProducts } from '../dao/productManagerMONGO.js';
+import productManager from '../dao/productManagerMONGO.js';
 import { cartsModel } from '../dao/models/cartsModel.js';
-import { getCartById } from '../dao/cartManagerMONGO.js';
 
 
 const router = Router();
@@ -28,7 +27,7 @@ router.get('/products', async (req, res) => {
         const sort = req.query.sort || 'asc'; 
         const options = { page: parseInt(page), limit: parseInt(limit), lean: true };
 
-        const result = await getProducts(req, res, options, sort); 
+        const result = await productManager.getProducts(options, sort);
         const { docs: products, totalPages, totalDocs, hasPrevPage, hasNextPage, prevPage, nextPage } = result;
 
         return res.render('products', { products, page, limit, totalPages, totalDocs, hasPrevPage, hasNextPage, prevPage, nextPage });

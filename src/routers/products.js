@@ -1,14 +1,7 @@
 import { Router } from 'express';
-import { addProduct, deleteProduct, getProductById, getProducts, updateProduct } from '../dao/productManagerMONGO.js';
+import productManager from '../dao/productManagerMONGO.js';
 
 const router = Router();
-
-// router.get('/', getProducts);
-router.get('/:pid', getProductById);
-router.post('/', addProduct);
-router.put('/:pid', updateProduct);
-router.delete('/:pid', deleteProduct);
-
 
 router.get('/', async (req, res) => {
     try {
@@ -18,7 +11,7 @@ router.get('/', async (req, res) => {
 
         const options = { page, limit, lean: true };
 
-        const result = await getProducts(req, res, options, sort);
+        const result = await productManager.getProducts(options, sort);
         const { docs: products, totalPages, totalDocs, hasPrevPage, hasNextPage, prevPage, nextPage } = result;
 
         return res.json({ products, page, limit, totalPages, totalDocs, hasPrevPage, hasNextPage, prevPage, nextPage });
@@ -28,52 +21,58 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/:pid', async (req, res) => {
+    try {
+        const { pid } = req.params;
+        const product = await productManager.getProductById(pid);
+        if (!product) {
+            return res.status(404).json({ error: 'Product not found' });
+        }
+        return res.json(product);
+    } catch (error) {
+        console.error('Error fetching product by id:', error);
+        return res.status(500).send('Internal server error');
+    }
+});
+
+router.post('/', async (req, res) => {
+    try {
+        const productData = req.body;
+        const product = await productManager.addProduct(productData);
+        return res.status(201).json({ product });
+    } catch (error) {
+        console.error('Error adding product:', error);
+        return res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+router.put('/:pid', async (req, res) => {
+    try {
+        const { pid } = req.params;
+        const newData = req.body;
+        const updatedProduct = await productManager.updateProduct(pid, newData);
+        if (!updatedProduct) {
+            return res.status(404).json({ error: 'Product not found' });
+        }
+        return res.json(updatedProduct);
+    } catch (error) {
+        console.error('Error updating product:', error);
+        return res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
+router.delete('/:pid', async (req, res) => {
+    try {
+        const { pid } = req.params;
+        const deletedProduct = await productManager.deleteProduct(pid);
+        if (!deletedProduct) {
+            return res.status(404).json({ error: 'Product not found' });
+        }
+        return res.json({ message: 'Product deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting product:', error);
+        return res.status(500).json({ error: 'Internal server error' });
+    }
+});
+
 export default router;
-
-
-
-// import { Router } from 'express';
-// import ProductManager from '../dao/productManagerMONGO.js';
-
-// const router = Router();
-
-// router.get('/', (req, res) => {
-
-//     const {limit} = req.query;
-//     const product = new ProductManager();
-//     const data = product.getProducts(limit);
-//     return res.json({data:data})
-
-// });
-
-// router.get('/:pid', (req, res) => {
-
-//     const {pid} = req.params;
-//     const product = new ProductManager();
-//     const data = product.getProductById(Number(pid));
-//     return res.json({data});
-
-// });
-
-// router.post('/', (req, res) => {
-//     const {title, description, price, thumbnail, code, stock, status, category} = req.body;
-//     const product = new ProductManager();
-//     const result = product.addProduct(title, description, price, thumbnail, code, stock, status, category)
-//     return res.json({result});
-// })
-
-// router.put('/:pid', (req, res) => {
-//     const {pid} = req.params;
-//     const product = new ProductManager();
-//     const result = product.updateProduct(Number(pid), req.body)
-//     return res.json({result});
-// })
-
-// router.delete('/:pid', (req, res) => {
-//     const {pid} = req.params;
-//     const product = new ProductManager();
-//     const result = product.deleteProduct(Number(pid), req.body)
-//     return res.json({result});
-// })
-
-// export default router;

@@ -8,6 +8,7 @@ import carts from './routers/carts.js';
 import views from './routers/views.js';
 import { productsModel } from "./dao/models/productsModel.js";
 import { messagesModel } from "./dao/models/messagesModel.js";
+import session from "express-session";
 
 
 const app = express();
@@ -16,6 +17,10 @@ const PORT = 8080;
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
+app.use(session({
+  secret: "adminCod3r123",
+  resave: true, saveUninitialized: true
+}));
 
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');

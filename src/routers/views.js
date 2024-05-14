@@ -3,6 +3,7 @@ import { productsModel } from '../dao/models/productsModel.js';
 import { messagesModel } from '../dao/models/messagesModel.js'
 import productManager from '../dao/productManagerMONGO.js';
 import { cartsModel } from '../dao/models/cartsModel.js';
+import { auth } from '../middleware/auth.js';
 
 
 const router = Router();
@@ -80,6 +81,28 @@ router.get('/carts/:cid', async (req, res) => {
         res.status(500).send('Internal server error');
     }
 });
+
+
+
+
+router.get('/register',(req,res)=>{
+
+    res.status(200).render('register')
+})
+
+router.get('/login',(req,res)=>{
+
+    let {error}=req.query
+
+    res.status(200).render('login', {error})
+})
+
+router.get('/profile', auth, (req,res)=>{
+
+    res.status(200).render('profile',{
+        user:req.session.user
+    })
+})
 
 
 export default router;

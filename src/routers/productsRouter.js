@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import productManager from '../dao/productManagerMONGO.js';
 
-const router = Router();
+export const router = Router();
 
 router.get('/', async (req, res) => {
     try {
@@ -74,5 +74,3 @@ router.delete('/:pid', async (req, res) => {
         return res.status(500).json({ error: 'Internal server error' });
     }
 });
-
-export default router;

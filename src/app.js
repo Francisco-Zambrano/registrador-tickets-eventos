@@ -3,12 +3,14 @@ import mongoose from 'mongoose'
 import { Server, Socket } from "socket.io";
 import { engine } from "express-handlebars";
 import __dirname from "./utils.js";
-import products from './routers/products.js';
-import carts from './routers/carts.js';
-import views from './routers/views.js';
+import {router as productsRouter} from './routers/productsRouter.js';
+import {router as cartsRouter} from './routers/cartsRouter.js';
+import {router as viewsRouter} from './routers/viewsRouter.js';
+import {router as sessionsRouter } from './routers/sessionsRouter.js';
 import { productsModel } from "./dao/models/productsModel.js";
 import { messagesModel } from "./dao/models/messagesModel.js";
-import session from "express-session";
+import sessions from "express-session";
+// import MongoStore from "connect-mongo";
 
 
 const app = express();
@@ -17,18 +19,26 @@ const PORT = 8080;
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
-app.use(session({
+app.use(sessions({
   secret: "adminCod3r123",
-  resave: true, saveUninitialized: true
+  resave: true, 
+  saveUninitialized: true,
+  cookie: { secure: false }
+  // store: MongoStore.create({
+  //   ttl: 3600,
+  //   mongoUrl:""
+  // })
 }));
 
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 app.set('views', __dirname + '/views');
 
-app.use('/', views)
-app.use('/api/products', products);
-app.use('/api/carts', carts);
+
+app.use('/', viewsRouter)
+app.use('/api/products', productsRouter);
+app.use('/api/carts', cartsRouter);
+app.use('/api/sessions', sessionsRouter);
 
 const expressServer = app.listen(PORT, () => {
     console.log(`Running server on port: ${PORT}`)

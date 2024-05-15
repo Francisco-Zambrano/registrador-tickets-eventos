@@ -6,7 +6,7 @@ import { cartsModel } from '../dao/models/cartsModel.js';
 import { auth } from '../middleware/auth.js';
 
 
-const router = Router();
+export const router = Router();
 
 router.get('/', async (req, res) => {
 
@@ -83,26 +83,17 @@ router.get('/carts/:cid', async (req, res) => {
 });
 
 
-
-
 router.get('/register',(req,res)=>{
-
     res.status(200).render('register')
 })
 
 router.get('/login',(req,res)=>{
-
     let {error}=req.query
-
     res.status(200).render('login', {error})
 })
 
 router.get('/profile', auth, (req,res)=>{
-
     res.status(200).render('profile',{
         user:req.session.user
     })
 })
-
-
-export default router;

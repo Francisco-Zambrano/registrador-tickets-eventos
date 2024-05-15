@@ -11,6 +11,10 @@ export const userModel = mongoose.model('user',new mongoose.Schema(
         rol:{
             type: String, 
             default:"user"
+        },
+        cart:{
+            type: mongoose.Types.ObjectId, 
+            ref: "carts"
         }
     }
 ));

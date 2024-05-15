@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import cartManager from '../dao/cartManagerMongo.js';
 
-const router = Router();
+export const router = Router();
 
 router.get('/:cid', async (req, res) => {
     try {
@@ -84,5 +84,3 @@ router.put('/:cid/products/:pid', async (req, res) => {
         res.status(500).json({ msg: 'Internal server error' });
     }
 });
-
-export default router;

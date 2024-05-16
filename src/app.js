@@ -10,7 +10,7 @@ import {router as sessionsRouter } from './routers/sessionsRouter.js';
 import { productsModel } from "./dao/models/productsModel.js";
 import { messagesModel } from "./dao/models/messagesModel.js";
 import sessions from "express-session";
-// import MongoStore from "connect-mongo";
+import MongoStore from "connect-mongo";
 
 
 const app = express();
@@ -20,14 +20,15 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
 app.use(sessions({
+
+  store: MongoStore.create({
+    mongoUrl:"mongodb+srv://franzambrano16:95675030@cluster0.kifia6i.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0&dbName=sessions",
+    ttl:15,
+  }),
   secret: "adminCod3r123",
-  resave: true, 
-  saveUninitialized: true,
-  cookie: { secure: false }
-  // store: MongoStore.create({
-  //   ttl: 3600,
-  //   mongoUrl:""
-  // })
+  resave: false, 
+  saveUninitialized: false,
+
 }));
 
 app.engine('handlebars', engine());

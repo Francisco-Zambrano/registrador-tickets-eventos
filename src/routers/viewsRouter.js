@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
 });
 
 
-router.get('/products', async (req, res) => {
+router.get('/products', auth, async (req, res) => {
     try {
         const page = req.query.page ? parseInt(req.query.page) : 1;
         const limit = 10;

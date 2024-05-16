@@ -1,4 +1,4 @@
-// logout.js
+
 document.addEventListener('DOMContentLoaded', function() {
     const logoutButton = document.getElementById('logoutButton');
 

@@ -11,6 +11,8 @@ import { productsModel } from "./dao/models/productsModel.js";
 import { messagesModel } from "./dao/models/messagesModel.js";
 import sessions from "express-session";
 import MongoStore from "connect-mongo";
+import { initPassport } from "./config/passport.config.js";
+import passport from "passport";
 
 
 const app = express();
@@ -19,6 +21,7 @@ const PORT = 8080;
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
+
 app.use(sessions({
 
   store: MongoStore.create({
@@ -30,6 +33,10 @@ app.use(sessions({
   saveUninitialized: true,
 
 }));
+
+initPassport();
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');

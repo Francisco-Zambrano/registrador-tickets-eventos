@@ -1,6 +1,7 @@
 import { Router } from "express"
 import { UserManagerMongo} from "../dao/userManagerMONGO.js"
 import { generateHash, validatePassword } from "../utils.js"
+import passport from "passport";
 
 
 export const router = Router();
@@ -68,7 +69,7 @@ router.post('/login', async(req, res) => {
 
 });
 
-router.get("/logout", (req, res)=>{
+router.get('/logout', (req, res)=>{
 
     req.session.destroy(e=>{
         if(e){
@@ -81,4 +82,25 @@ router.get("/logout", (req, res)=>{
     res.setHeader('Content-Type','application/json');
     return res.status(200).json({payload:"successful logout"});
     
+});
+
+router.get('/error', (req, res) => {
+    console.log(error);
+    res.setHeader('Content-Type','application/json');
+    return res.status(500).json({ error: 'Internal server error' });
+});
+
+router.get('/github', passport.authenticate("github", {}), (req, res) => {});
+
+// router.get('/callbackGithub', passport.authenticate("github", {failureRedirect:"/api/sessions/error"}), (req, res) => {
+
+//     req.session.user = req.user
+
+//     res.setHeader('Content-Type','application/json');
+//     return res.status(200).json({payload:req.user}); 
+// });
+
+router.get('/callbackGithub', passport.authenticate("github", {failureRedirect:"/login"}), async(req, res) => {
+    req.session.user = req.user
+    res.redirect('/products')
 });

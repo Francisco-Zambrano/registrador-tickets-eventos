@@ -23,11 +23,11 @@ app.use(sessions({
 
   store: MongoStore.create({
     mongoUrl:"mongodb+srv://franzambrano16:95675030@cluster0.kifia6i.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0&dbName=sessions",
-    ttl:15,
+    ttl:3600,
   }),
   secret: "adminCod3r123",
-  resave: false, 
-  saveUninitialized: false,
+  resave: true, 
+  saveUninitialized: true,
 
 }));
 

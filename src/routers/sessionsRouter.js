@@ -1,6 +1,6 @@
 import { Router } from "express"
 import { UserManagerMongo} from "../dao/userManagerMONGO.js"
-import { generateHash } from "../utils.js"
+import { generateHash, validatePassword } from "../utils.js"
 
 
 export const router = Router();
@@ -45,8 +45,14 @@ router.post('/login', async(req, res) => {
         return res.status(400).json({error: `email and password are required`})
     }
 
-    let user = await userManager.getBy({email, password: generateHash(password)})
+    // let user = await userManager.getBy({email, password: generateHash(password)})
+    let user = await userManager.getBy({email})
        if(!user){
+        res.setHeader('Content-Type', 'application/json');
+        return res.status(400).json({error: `invalid data`})
+    }
+
+    if(!validatePassword(password, user.password)){
         res.setHeader('Content-Type', 'application/json');
         return res.status(400).json({error: `invalid data`})
     }

@@ -1,7 +1,9 @@
 import { Router } from 'express';
-import cartManager from '../dao/cartManagerMongo.js';
+import {CartManagerMongo} from '../dao/cartManagerMONGO.js';
 
 export const router = Router();
+
+const cartManager = new CartManagerMongo();
 
 router.get('/:cid', async (req, res) => {
     try {

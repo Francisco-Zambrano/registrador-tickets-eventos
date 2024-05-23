@@ -1,6 +1,6 @@
 import { cartsModel } from "./models/cartsModel.js"; 
 
-class CartManager {
+export class CartManagerMongo {
     async getCartById(cid) {
         try {
             const cart = await cartsModel.findById(cid);
@@ -103,4 +103,4 @@ class CartManager {
     }
 }
 
-export default new CartManager();
+// export default CartManagerMongo;

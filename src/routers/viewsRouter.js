@@ -22,6 +22,7 @@ router.get('/', async (req, res) => {
 
 
 router.get('/products', auth, async (req, res) => {
+    
     try {
         const page = req.query.page ? parseInt(req.query.page) : 1;
         const limit = 10;
@@ -31,7 +32,7 @@ router.get('/products', auth, async (req, res) => {
         const result = await productManager.getProducts(options, sort);
         const { docs: products, totalPages, totalDocs, hasPrevPage, hasNextPage, prevPage, nextPage } = result;
 
-        return res.render('products', { products, page, limit, totalPages, totalDocs, hasPrevPage, hasNextPage, prevPage, nextPage });
+        return res.render('products', { products, page, limit, totalPages, totalDocs, hasPrevPage, hasNextPage, prevPage, nextPage, login: req.session.user });
         
     } catch (error) {
         console.error('Error fetching products:', error);

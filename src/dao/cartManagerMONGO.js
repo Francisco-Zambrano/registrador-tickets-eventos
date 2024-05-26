@@ -1,9 +1,10 @@
 import { cartsModel } from "./models/cartsModel.js"; 
 
 export class CartManagerMongo {
+
     async getCartById(cid) {
         try {
-            const cart = await cartsModel.findById(cid);
+            const cart = await cartsModel.findById(cid).populate('products.id');
             return cart;
         } catch (error) {
             console.log('getCartById', error);
@@ -101,6 +102,5 @@ export class CartManagerMongo {
             throw new Error('Internal server error');
         }
     }
-}
-
-// export default CartManagerMongo;
+    
+};

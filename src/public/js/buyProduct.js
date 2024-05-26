@@ -1,26 +1,32 @@
+document.addEventListener('DOMContentLoaded', () => {
 
-function buyProduct (pid) {
-    console.log(`product id: ${pid}`)
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+  
+    addToCartButtons.forEach(button => {
 
-    // const idCart = '66304d5f805b018aa33c9c57'
+        button.addEventListener('click', async (event) => {
+            const productId = event.target.getAttribute('data-product-id');
+    
+            try {
+                const response = await fetch(`/api/carts/add-product`, {
+                    method: 'POST',
+                    headers: {
+                    'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ productId })
+                });
+        
+                const result = await response.json();
+                if (result.msg === 'Product added to cart') {
+                    alert('Producto agregado al carrito');
+                } else {
+                    alert('Error al agregar el producto al carrito');
+                }
+            } catch (error) {
+                console.error('Error adding product to cart:', error);
+            }
+        });
 
-    let cart = {
-        _id : req.session.user.cart._id
-    }
-
-
-
-
-    fetch(`/api/carts/${cart}/products/${pid}`, {
-        method: 'POST',
-        headers:{ 'Content-Type': 'application/json'},
-    })
-    .then(res => res.json())
-    .then(data => {
-        console.log(data)
-    })
-    .catch(error => {
-        console.log('Error', error)
-    }) 
-
-};
+    });
+});
+  

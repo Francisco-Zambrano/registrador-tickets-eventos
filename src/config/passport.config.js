@@ -1,10 +1,9 @@
 import passport from "passport";
-import github from "passport-github2"
-import local from "passport-local"
+import github from "passport-github2";
+import local from "passport-local";
 import { UserManagerMongo } from "../dao/userManagerMONGO.js";
-import {CartManagerMongo} from '../dao/cartManagerMONGO.js';
+import { CartManagerMongo } from '../dao/cartManagerMONGO.js';
 import { generateHash, validatePassword } from "../utils.js";
-
 
 const userManager = new UserManagerMongo();
 const cartManager = new CartManagerMongo();
@@ -18,36 +17,30 @@ export const initPassport = () => {
                 passReqToCallback: true,
                 usernameField: "email"
             },
-            async(req, username, password, done) => {
-
+            async (req, username, password, done) => {
                 try {
-                    let {name} = req.body
-                    if(!name) {
-                        return done(null, false)
+                    const { name } = req.body;
+                    if (!name) {
+                        return done(null, false, { message: 'Name is required' });
                     }
 
-                    let exist = await userManager.getBy({email:username})
-                    if(exist) {
-                        return done(null, false)
+                    const exist = await userManager.getBy({ email: username });
+                    if (exist) {
+                        return done(null, false, { message: 'Email already exists' });
                     }
 
-                    let newCart = await cartManager.createCart()
+                    const newCart = await cartManager.createCart();
+                    const hashedPassword = generateHash(password);
 
-                    password = generateHash(password)
+                    const user = await userManager.create({ name, email: username, password: hashedPassword, cart: newCart._id });
 
-                    let user = await userManager.create({name, email:username, password, cart: newCart._id})
-                    
-                    return done(null, user)
-
+                    return done(null, user);
                 } catch (error) {
-                    return done(error)
+                    return done(error);
                 }
-
             }
         )
-
     );
-
 
     passport.use(
         "login",
@@ -55,76 +48,65 @@ export const initPassport = () => {
             {
                 usernameField: "email"
             },
-            async(username, password, done) => {
-
+            async (username, password, done) => {
                 try {
-                    let user = await userManager.getBy({email:username})
-                    if(!user){
-                        return done(null, false)
+                    const user = await userManager.getBy({ email: username });
+                    if (!user) {
+                        return done(null, false, { message: 'Incorrect email or password' });
                     }
 
-                    if(!validatePassword(password, user.password)){
-                        return done(null, false)
+                    if (!validatePassword(password, user.password)) {
+                        return done(null, false, { message: 'Incorrect email or password' });
                     }
 
-                    // user = {...user}
-                    // delete user.password
-                    // return done(null, user)
-
+                    return done(null, user);
                 } catch (error) {
-                    return done(error)
+                    return done(error);
                 }
-
             }
         )
-
     );
-
 
     passport.use(
         "github",
         new github.Strategy(
             {
-                // ingresar clientID
-                clientID:"",
-                // ingresar clientSecret
-                clientSecret:"",
-                callbackURL:"http://localhost:8080/api/sessions/callbackGithub"
+                clientID: "Iv23lirjulxHBc8sXGkM",
+                clientSecret: "3f57dcf4b9f4330544cd47092e4ffa97c8bab17f",
+                callbackURL: "http://localhost:8080/api/sessions/callbackGithub"
             },
-            async(tokenAcceso, tokenRefresh, profile, done) => {
-
+            async (tokenAcceso, tokenRefresh, profile, done) => {
                 try {
-                    let email = profile._json.email
-                    let name = profile._json.name
-                    if(!name || !email){
-                        return done(null, false)
+                    const email = profile._json.email;
+                    const name = profile._json.name;
+                    if (!name || !email) {
+                        return done(null, false, { message: 'GitHub profile missing email or name' });
                     }
-                    let user = await userManager.getBy({email})
-                    if(!user){
-                        
+                    let user = await userManager.getBy({ email });
+                    if (!user) {
+                        const newCart = await cartManager.createCart();
                         user = await userManager.create({
-                            name, email, profile
-                        })
+                            name, email, profile,cart: newCart._id
+                        });
                     }
 
-                    return done(null, user)
+                    
 
+                    return done(null, user);
                 } catch (error) {
-                    return done(error)
+                    return done(error);
                 }
-
             }
         )
     );
 
-
     passport.serializeUser((user, done) => {
-        return done(null, user._id)
+        done(null, user._id);
     });
 
-    passport.deserializeUser(async(id, done) => {
-        let user = await userManager.getBy({_id:id})
+    passport.deserializeUser(async(id, done)=>{
+        let user=await userManager.getBy({_id:id})
         return done(null, user)
-    });
-
+    })
+    
 };

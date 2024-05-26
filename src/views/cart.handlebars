@@ -1,4 +1,4 @@
-{{>navbar}}
+{{> navbar}}
 <div class="container mt-5">
   <h2 class="mb-2">Cart List</h2>
 
@@ -12,6 +12,7 @@
         id="cart"
         aria-describedby="basic-addon3 basic-addon4"
         value="{{cart._id}}"
+        readonly
       />
     </div>
   </div>
@@ -30,11 +31,11 @@
     <tbody>
       {{#each cart.products}}
         <tr>
-          <td>{{this.title}}</td>
-          <td>{{this.code}}</td>
-          <td>{{this.description}}</td>
-          <td>{{this.category}}</td>
-          <td>{{this.price}}</td>
+          <td>{{this.id.title}}</td>
+          <td>{{this.id.code}}</td>
+          <td>{{this.id.description}}</td>
+          <td>{{this.id.category}}</td>
+          <td>{{this.id.price}}</td>
           <td>{{this.quantity}}</td>
         </tr>
       {{/each}}

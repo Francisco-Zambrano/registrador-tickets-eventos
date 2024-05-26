@@ -38,6 +38,7 @@ router.get('/products', auth, async (req, res) => {
         console.error('Error fetching products:', error);
         return res.status(500).send('Internal server error');
     }
+    
 });
 
 
@@ -52,35 +53,20 @@ router.get('/chat', async (req, res) => {
 });
 
 
-router.get('/carts/:cid', async (req, res) => {
-    try {
-        const { cid } = req.params;
-        const cart = await cartsModel.findById(cid).lean();
-        const productIds = cart.products.map(product => product.id);
-        const products = await productsModel.find({ _id: { $in: productIds } }).lean();
+router.get('/carts/:cid', auth, async (req, res) => {
 
-        cart.products = cart.products.map(cartProduct => {
-            const foundProduct = products.find(product => product._id.toString() === cartProduct.id.toString());
-            if (foundProduct) {
-                return {
-                    ...cartProduct,
-                    quantity: cartProduct.quantity,
-                    title: foundProduct.title,
-                    code: foundProduct.code,
-                    description: foundProduct.description,
-                    category: foundProduct.category,
-                    price: foundProduct.price
-                };
-            }
-            return cartProduct;
-        });
-        
-        res.render('cart', { cart });
-        
+    try {
+        const userCart = await cartsModel.findById(req.user.cart).populate('products.id').lean();
+        if (!userCart) {
+            return res.status(404).send('Cart not found');
+        }
+
+        res.render('cart', { cart: userCart });
     } catch (error) {
         console.error('Error fetching cart:', error);
         res.status(500).send('Internal server error');
     }
+
 });
 
 

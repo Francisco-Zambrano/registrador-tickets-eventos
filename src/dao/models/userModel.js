@@ -2,15 +2,17 @@ import mongoose from 'mongoose'
 
 export const userModel = mongoose.model('user',new mongoose.Schema(
     {
-        name: String,
+        first_name: String,
+        last_name: String,
         email:{
             type: String, 
             unique:true
-        }, 
+        },
+        age: Number, 
         password: String,
         rol:{
             type: String, 
-            default:"user"
+            default:"user",
         },
         cart:{
             type: mongoose.Types.ObjectId, 

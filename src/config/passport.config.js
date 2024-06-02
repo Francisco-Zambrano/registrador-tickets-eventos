@@ -18,10 +18,21 @@ export const initPassport = () => {
                 usernameField: "email"
             },
             async (req, username, password, done) => {
+
                 try {
-                    const { name } = req.body;
-                    if (!name) {
-                        return done(null, false, { message: 'Name is required' });
+                    const { first_name } = req.body;
+                    if (!first_name) {
+                        return done(null, false, { message: 'First name is required' });
+                    }
+
+                    const { last_name } = req.body;
+                    if (!last_name) {
+                        return done(null, false, { message: 'Last name is required' });
+                    }
+
+                    const { age } = req.body;
+                    if (!age) {
+                        return done(null, false, { message: 'Age is required' });
                     }
 
                     const exist = await userManager.getBy({ email: username });
@@ -32,7 +43,7 @@ export const initPassport = () => {
                     const newCart = await cartManager.createCart();
                     const hashedPassword = generateHash(password);
 
-                    const user = await userManager.create({ name, email: username, password: hashedPassword, cart: newCart._id });
+                    const user = await userManager.create({ first_name, last_name, age, email: username, password: hashedPassword, cart: newCart._id });
 
                     return done(null, user);
                 } catch (error) {
@@ -49,6 +60,7 @@ export const initPassport = () => {
                 usernameField: "email"
             },
             async (username, password, done) => {
+
                 try {
                     const user = await userManager.getBy({ email: username });
                     if (!user) {
@@ -76,6 +88,7 @@ export const initPassport = () => {
                 callbackURL: "http://localhost:8080/api/sessions/callbackGithub"
             },
             async (tokenAcceso, tokenRefresh, profile, done) => {
+
                 try {
                     const email = profile._json.email;
                     const name = profile._json.name;
@@ -89,8 +102,6 @@ export const initPassport = () => {
                             name, email, profile,cart: newCart._id
                         });
                     }
-
-                    
 
                     return done(null, user);
                 } catch (error) {

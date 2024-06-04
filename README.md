@@ -91,3 +91,44 @@ DELETE: api/carts/:cid deberá eliminar todos los productos del carrito
 ```http
  http://localhost:8080/api/carts/663cd9f7c88c61d682b9c656/product/6637ceee39fa9e7a01cf380a
 ```
+
+## User
+
+POST: Registra un usuario.
+
+```http
+ http://localhost:8080/api/sessions/register
+```
+
+Body:
+{
+"first_name":" ",
+"last_name":" ",
+"age":" ",
+"email":" ",
+"password":" "
+}
+
+POST: Login de un usuario. En preview debe dirigir a http://localhost:8080/products
+
+```http
+ http://localhost:8080/api/sessions/login
+```
+
+Body:
+{
+"email":" ",
+"password":" "
+}
+
+GET: Perfil del usuario logueado
+
+```http
+ http://localhost:8080/profile
+```
+
+GET: logout
+
+```http
+ http://localhost:8080/api/sessions/logout
+```

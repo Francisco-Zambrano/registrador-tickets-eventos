@@ -20,19 +20,9 @@ export const initPassport = () => {
             async (req, username, password, done) => {
 
                 try {
-                    const { first_name } = req.body;
-                    if (!first_name) {
-                        return done(null, false, { message: 'First name is required' });
-                    }
-
-                    const { last_name } = req.body;
-                    if (!last_name) {
-                        return done(null, false, { message: 'Last name is required' });
-                    }
-
-                    const { age } = req.body;
-                    if (!age) {
-                        return done(null, false, { message: 'Age is required' });
+                    const { first_name, last_name, age } = req.body;
+                    if (!first_name || !last_name || !age) {
+                        return done(null, false, { message: 'All fields are required' });
                     }
 
                     const exist = await userManager.getBy({ email: username });

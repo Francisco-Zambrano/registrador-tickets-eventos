@@ -1,4 +1,4 @@
-# Segunda Preentrega del Proyecto
+# SEGUNDA PRACTICA INTEGRADORA
 
 Para iniciar el servidor, ejecutar:
 npm run dev
@@ -131,4 +131,11 @@ GET: logout
 
 ```http
  http://localhost:8080/api/sessions/logout
+```
+
+GET: Current
+Extrae la cookie que contiene el token para obtener al usuario asociado
+
+```http
+ http://localhost:8080/api/sessions/current
 ```

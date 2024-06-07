@@ -2,13 +2,14 @@ import express from "express";
 import mongoose from 'mongoose';
 import { Server } from "socket.io";
 import { engine } from "express-handlebars";
+import cookieParser from 'cookie-parser';
 import __dirname from "./utils.js";
 import { router as productsRouter } from './routers/productsRouter.js';
 import { router as cartsRouter } from './routers/cartsRouter.js';
 import { router as viewsRouter } from './routers/viewsRouter.js';
 import { router as sessionsRouter } from './routers/sessionsRouter.js';
-import sessions from "express-session";
-import MongoStore from "connect-mongo";
+// import sessions from "express-session";
+// import MongoStore from "connect-mongo";
 import passport from "passport";
 import { initPassport } from "./config/passport.config.js";
 
@@ -18,22 +19,25 @@ const PORT = 8080;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
+// --COOKIE PARA JWT--
+app.use(cookieParser());
 
-app.use(sessions({
+// --SESSIONS--
+// app.use(sessions({
 
-    store: MongoStore.create({
-        mongoUrl: "mongodb+srv://franzambrano16:95675030@cluster0.kifia6i.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0&dbName=sessions",
-        ttl: 360,
-    }),
-    secret: "adminCod3r123",
-    resave: true,
-    saveUninitialized: true,
+//     store: MongoStore.create({
+//         mongoUrl: "mongodb+srv://franzambrano16:95675030@cluster0.kifia6i.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0&dbName=sessions",
+//         ttl: 360,
+//     }),
+//     secret: "adminCod3r123",
+//     resave: true,
+//     saveUninitialized: true,
     
-}));
+// }));
 
 initPassport();
 app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.session());
 
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');

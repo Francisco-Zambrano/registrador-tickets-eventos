@@ -5,6 +5,7 @@ import { Strategy as JwtStrategy, ExtractJwt } from "passport-jwt";
 import { UserManagerMongo } from "../dao/userManagerMONGO.js";
 import { CartManagerMongo } from '../dao/cartManagerMONGO.js';
 import { generateHash, validatePassword } from "../utils.js";
+import { config } from "./config.js";
 
 const userManager = new UserManagerMongo();
 const cartManager = new CartManagerMongo();
@@ -126,9 +127,9 @@ export const initPassport = () => {
     //     "github",
     //     new github.Strategy(
     //         {
-    //             clientID: "Iv23lirjulxHBc8sXGkM",
-    //             clientSecret: "3f57dcf4b9f4330544cd47092e4ffa97c8bab17f",
-    //             callbackURL: "http://localhost:8080/api/sessions/callbackGithub"
+    //             clientID: config.CLIENT_ID,
+    //             clientSecret: config.CLIENT_SECRET,
+    //             callbackURL: config.CALLBACK_URL
     //         },
     //         async (tokenAcceso, tokenRefresh, profile, done) => {
 

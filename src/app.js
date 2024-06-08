@@ -12,9 +12,11 @@ import { router as sessionsRouter } from './routers/sessionsRouter.js';
 // import MongoStore from "connect-mongo";
 import passport from "passport";
 import { initPassport } from "./config/passport.config.js";
+import { config } from "./config/config.js";
+
 
 const app = express();
-const PORT = 8080;
+const PORT = config.PORT;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -26,10 +28,10 @@ app.use(cookieParser());
 // app.use(sessions({
 
 //     store: MongoStore.create({
-//         mongoUrl: "mongodb+srv://franzambrano16:95675030@cluster0.kifia6i.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0&dbName=sessions",
+//         mongoUrl: (config.MONGO_URL, {dbName:sessions}),
 //         ttl: 360,
 //     }),
-//     secret: "adminCod3r123",
+//     secret: config.CLIENT_SECRET,
 //     resave: true,
 //     saveUninitialized: true,
     
@@ -55,10 +57,8 @@ const expressServer = app.listen(PORT, () => {
 const dbConnection = async () => {
 
     try {
-        await mongoose.connect('mongodb+srv://franzambrano16:95675030@cluster0.kifia6i.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
-            dbName: "ecommerce"
-        });
-        console.log('database online');
+        await mongoose.connect(config.MONGO_URL, {dbName: config.DB_NAME});
+        console.log(`connected to ${config.DB_NAME} database`);
     } catch (error) {
         console.log(`Error getting database ${error}`);
     }

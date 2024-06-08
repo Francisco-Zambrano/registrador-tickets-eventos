@@ -27,7 +27,18 @@ router.get('/products', auth, async (req, res) => {
         const result = await productManager.getProducts(options, sort);
         const { docs: products, totalPages, totalDocs, hasPrevPage, hasNextPage, prevPage, nextPage } = result;
 
-        return res.render('products', { products, page, limit, totalPages, totalDocs, hasPrevPage, hasNextPage, prevPage, nextPage, user: req.user });
+        return res.render('products', { 
+            products, 
+            page, 
+            limit, 
+            totalPages, 
+            totalDocs, 
+            hasPrevPage, 
+            hasNextPage, 
+            prevPage, 
+            nextPage, 
+            user: req.user 
+        });
     } catch (error) {
         console.error('Error fetching products:', error);
         return res.status(500).send('Internal server error');

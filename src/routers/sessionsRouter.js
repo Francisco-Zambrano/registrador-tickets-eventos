@@ -1,10 +1,11 @@
 import { Router } from "express";
 import passport from "passport";
 import jwt from "jsonwebtoken";
+import { config } from "../config/config.js";
 
 
 const router = Router();
-const SECRET_KEY = 'adminCod3r123';
+const SECRET_KEY = config.SECRET;
 
 router.post('/register', passport.authenticate("register", {
     failureRedirect: "/api/sessions/error"

@@ -1,19 +1,21 @@
 import passport from "passport";
-// import github from "passport-github2";
 import local from "passport-local";
 import { Strategy as JwtStrategy, ExtractJwt } from "passport-jwt";
-import { UserManagerMongo } from "../dao/userManagerMONGO.js";
-import { CartManagerMongo } from '../dao/cartManagerMONGO.js';
+import { DaoFactory } from "../dao/DaoFactory.js";
+import { UserRepository } from "../repositories/UserRepository.js";
+import { CartRepository } from '../repositories/CartRepository.js';
 import { generateHash, validatePassword } from "../utils.js";
 import { config } from "./config.js";
 
-const userManager = new UserManagerMongo();
-const cartManager = new CartManagerMongo();
+const daoType = process.env.DAO_TYPE || 'mongo';
+const { userDao, cartDao } = DaoFactory.getDao(daoType);
 
-const SECRET_KEY = 'adminCod3r123';
+const userRepository = new UserRepository(userDao);
+const cartRepository = new CartRepository(cartDao);
+
+const SECRET_KEY = config.SECRET;
 
 export const initPassport = () => {
-
     passport.use(
         "register",
         new local.Strategy(
@@ -22,31 +24,35 @@ export const initPassport = () => {
                 usernameField: "email"
             },
             async (req, username, password, done) => {
-
                 try {
+                    console.log("Registering user:", username);
                     const { first_name, last_name, age } = req.body;
                     if (!first_name || !last_name || !age) {
+                        console.log("Missing fields");
                         return done(null, false, { message: 'All fields are required' });
                     }
 
-                    const exist = await userManager.getBy({ email: username });
+                    const exist = await userRepository.getBy({ email: username });
                     if (exist) {
+                        console.log("Email already exists:", username);
                         return done(null, false, { message: 'Email already exists' });
                     }
 
-                    const newCart = await cartManager.createCart();
+                    const newCart = await cartRepository.create({ products: [] });
                     const hashedPassword = generateHash(password);
-                    const user = await userManager.create({ 
+                    const user = await userRepository.create({ 
                         first_name, 
                         last_name, 
                         age, 
                         email: username, 
                         password: hashedPassword, 
-                        cart: newCart._id 
+                        cart: newCart.id 
                     });
 
+                    console.log("User registered successfully:", user);
                     return done(null, user);
                 } catch (error) {
+                    console.error("Error during registration:", error);
                     return done(error);
                 }
             }
@@ -57,11 +63,12 @@ export const initPassport = () => {
         "login",
         new local.Strategy(
             {
-                usernameField: "email"
+                usernameField: "email",
+                session: false
             },
             async (username, password, done) => {
                 try {
-                    const user = await userManager.getBy({ email: username });
+                    const user = await userRepository.getBy({ email: username });
                     if (!user) {
                         return done(null, false, { message: 'Incorrect email or password' });
                     }
@@ -78,8 +85,6 @@ export const initPassport = () => {
         )
     );
 
-// --JWT STRATEGY--  
-
     passport.use(
         new JwtStrategy(
             {
@@ -88,7 +93,7 @@ export const initPassport = () => {
             },
             async (jwt_payload, done) => {
                 try {
-                    const user = await userManager.getBy({ _id: jwt_payload.id });
+                    const user = await userRepository.getBy({ _id: jwt_payload.id });
                     if (!user) {
                         return done(null, false);
                     }
@@ -109,7 +114,7 @@ export const initPassport = () => {
             },
             async (jwt_payload, done) => {
                 try {
-                    const user = await userManager.getBy({ _id: jwt_payload.id });
+                    const user = await userRepository.getBy({ _id: jwt_payload.id });
                     if (!user) {
                         return done(null, false);
                     }
@@ -122,7 +127,9 @@ export const initPassport = () => {
     );
 
 
-// --GITHUB STRATEGY--    
+
+
+    // --GITHUB STRATEGY--    
     // passport.use(
     //     "github",
     //     new github.Strategy(
@@ -163,5 +170,7 @@ export const initPassport = () => {
     //     let user=await userManager.getBy({_id:id})
     //     return done(null, user)
     // })
-    
+
 };
+
+

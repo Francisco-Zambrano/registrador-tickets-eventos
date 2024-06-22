@@ -1,4 +1,4 @@
-# SEGUNDA PRACTICA INTEGRADORA
+# REESTRUCTURA DEL SERVIDOR
 
 Para iniciar el servidor, ejecutar:
 npm run dev

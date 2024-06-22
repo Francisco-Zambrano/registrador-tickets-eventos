@@ -8,11 +8,10 @@ import { router as productsRouter } from './routers/productsRouter.js';
 import { router as cartsRouter } from './routers/cartsRouter.js';
 import { router as viewsRouter } from './routers/viewsRouter.js';
 import { router as sessionsRouter } from './routers/sessionsRouter.js';
-// import sessions from "express-session";
-// import MongoStore from "connect-mongo";
 import passport from "passport";
 import { initPassport } from "./config/passport.config.js";
 import { config } from "./config/config.js";
+import { productsModel } from "./dao/models/productsModel.js";
 
 
 const app = express();
@@ -21,25 +20,10 @@ const PORT = config.PORT;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
-// --COOKIE PARA JWT--
 app.use(cookieParser());
-
-// --SESSIONS--
-// app.use(sessions({
-
-//     store: MongoStore.create({
-//         mongoUrl: (config.MONGO_URL, {dbName:sessions}),
-//         ttl: 360,
-//     }),
-//     secret: config.CLIENT_SECRET,
-//     resave: true,
-//     saveUninitialized: true,
-    
-// }));
 
 initPassport();
 app.use(passport.initialize());
-// app.use(passport.session());
 
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
@@ -57,7 +41,7 @@ const expressServer = app.listen(PORT, () => {
 const dbConnection = async () => {
 
     try {
-        await mongoose.connect(config.MONGO_URL, {dbName: config.DB_NAME});
+        await mongoose.connect(config.MONGO_URL, { dbName: config.DB_NAME });
         console.log(`connected to ${config.DB_NAME} database`);
     } catch (error) {
         console.log(`Error getting database ${error}`);
@@ -74,6 +58,7 @@ io.on('connection', async (socket) => {
     socket.emit('products', products);
 
     socket.on('addProductFromForm', async (product) => {
+
         try {
             const newProduct = await productsModel.create({ ...product });
             if (newProduct) {
@@ -83,9 +68,11 @@ io.on('connection', async (socket) => {
         } catch (error) {
             console.error('Error adding product:', error);
         }
+
     });
 
     socket.on("id", async (name, email) => {
+
         try {
             await messagesModel.create({ user: name, email, message });
             const previousMessages = await messagesModel.find().sort({ createdAt: 1 }).exec();
@@ -93,16 +80,20 @@ io.on('connection', async (socket) => {
         } catch (error) {
             console.error("Error saving message to database:", error);
         }
+
     });
 
     socket.on("message", async (name, email, message) => {
+
         try {
             await messagesModel.create({ user: name, email, message });
             io.emit("newMessage", name, message);
         } catch (error) {
             console.error("Error saving message to database:", error);
         }
+        
     });
+
     console.log(`A client with id: ${socket.id} has connected `);
 
 });

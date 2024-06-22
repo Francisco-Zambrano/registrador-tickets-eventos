@@ -17,7 +17,8 @@ const SECRET_KEY = config.SECRET;
 
 router.post('/register', passport.authenticate("register", {
 
-   failureRedirect: "/api/sessions/error"
+   failureRedirect: "/api/sessions/error",
+   session: false
 }), (req, res) => {
    res.status(201).json({ payload: `successful registration`, user: req.user });
 

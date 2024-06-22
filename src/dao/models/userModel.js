@@ -10,7 +10,7 @@ export const userModel = mongoose.model('user',new mongoose.Schema(
         },
         age: Number, 
         password: String,
-        rol:{
+        role:{
             type: String, 
             default:"user",
         },

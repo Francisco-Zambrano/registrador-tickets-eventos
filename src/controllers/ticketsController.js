@@ -17,7 +17,7 @@ export class TicketsController {
             res.status(201).json(new TicketDTO(ticket));
         } catch (error) {
             console.error('Error creating ticket:', error);
-            res.status(500).json({ msg: 'Internal server error' });
+            res.status(500).json({ msg: 'Server error' });
         }
 
     };
@@ -33,7 +33,7 @@ export class TicketsController {
             res.json(new TicketDTO(ticket));
         } catch (error) {
             console.error('Error getting ticket:', error);
-            res.status(500).json({ msg: 'Internal server error' });
+            res.status(500).json({ msg: 'Server error' });
         }
 
     };
@@ -45,7 +45,7 @@ export class TicketsController {
             res.json(tickets.map(ticket => new TicketDTO(ticket)));
         } catch (error) {
             console.error('Error getting tickets:', error);
-            res.status(500).json({ msg: 'Internal server error' });
+            res.status(500).json({ msg: 'Server error' });
         }
         
     };

@@ -13,3 +13,4 @@ router.delete('/:cid/products/:pid', cartsController.deleteCartProduct);
 router.get('/:cid', auth, cartsController.getCartPopulate);
 router.put('/:cid/products/:pid', cartsController.updateProductQuantity);
 router.post('/add-product', auth, isUser, cartsController.addProduct);
+router.post('/:cid/purchase', auth, isUser, cartsController.purchaseCart);

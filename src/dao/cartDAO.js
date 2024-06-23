@@ -1,6 +1,5 @@
 import { cartsModel } from './models/cartsModel.js';
 
-
 export class CartDAO {
 
     async create(cart) {

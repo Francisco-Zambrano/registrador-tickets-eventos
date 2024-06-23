@@ -1,28 +1,25 @@
+import { productsModel } from '../dao/models/productsModel.js';
+
 export class ProductRepository {
 
-    constructor(dao) {
-        this.dao = dao;
+    async create(productData) {
+        return await productsModel.create(productData);
     };
 
-    async create(product) {
-        return await this.dao.create(product);
+    async getById(id) {
+        return await productsModel.findById(id);
     };
 
-    async getBy(query, options = {}) {
-        const result = await this.dao.getBy(query, options);
-        if (options.page && options.limit) {
-            return result; // Return paginated result
-        } else {
-            return Array.isArray(result) ? result : [result]; // Ensure an array is returned
-        }
+    async getAll() {
+        return await productsModel.find();
     };
 
-    async update(id, product) {
-        return await this.dao.update(id, product);
+    async update(id, productData) {
+        return await productsModel.findByIdAndUpdate(id, productData, { new: true });
     };
 
     async delete(id) {
-        return await this.dao.delete(id);
+        return await productsModel.findByIdAndDelete(id);
     };
 
 };

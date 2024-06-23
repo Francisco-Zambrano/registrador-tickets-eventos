@@ -16,13 +16,13 @@ export class viewsController {
         try {
             const products = await productRepository.getBy({});
             if (!Array.isArray(products)) {
-                throw new Error('Invalid data format from repository');
+                throw new Error('Invalid data');
             }
             const productDTOs = products.map(product => new ProductDTO(product));
             return res.render('home', { products: productDTOs });
         } catch (error) {
             console.error('Error fetching products:', error);
-            return res.status(500).send('Internal server error');
+            return res.status(500).send('Server error');
         }
     };
 
@@ -35,7 +35,7 @@ export class viewsController {
 
             const result = await productRepository.getBy({}, options);
             if (!result || !Array.isArray(result.docs)) {
-                throw new Error('Invalid data format from repository');
+                throw new Error('Invalid data');
             }
             const products = result.docs;
 
@@ -54,7 +54,7 @@ export class viewsController {
             });
         } catch (error) {
             console.error('Error fetching products:', error);
-            return res.status(500).send('Internal server error');
+            return res.status(500).send('Server error');
         }
     };
 
@@ -64,7 +64,7 @@ export class viewsController {
             return res.render('chat', { messages });
         } catch (error) {
             console.error('Error fetching messages:', error);
-            return res.status(500).send('Internal server error');
+            return res.status(500).send('Server error');
         }
     };
 
@@ -77,7 +77,7 @@ export class viewsController {
             res.render('cart', { cart: new CartDTO(userCart) });
         } catch (error) {
             console.error('Error fetching cart:', error);
-            res.status(500).send('Internal server error');
+            res.status(500).send('Server error');
         }
     };
 

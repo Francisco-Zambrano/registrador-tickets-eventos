@@ -8,6 +8,7 @@ import { router as productsRouter } from './routers/productsRouter.js';
 import { router as cartsRouter } from './routers/cartsRouter.js';
 import { router as viewsRouter } from './routers/viewsRouter.js';
 import { router as sessionsRouter } from './routers/sessionsRouter.js';
+import { router as ticketsRouter } from './routers/ticketsRouter.js';
 import passport from "passport";
 import { initPassport } from "./config/passport.config.js";
 import { config } from "./config/config.js";
@@ -33,6 +34,7 @@ app.use('/', viewsRouter);
 app.use('/api/products', productsRouter);
 app.use('/api/carts', cartsRouter);
 app.use('/api/sessions', sessionsRouter);
+app.use('/api/tickets', ticketsRouter);
 
 const expressServer = app.listen(PORT, () => {
     console.log(`Running server on port: ${PORT}`);

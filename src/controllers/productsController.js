@@ -22,7 +22,7 @@ export class productsController {
             const products = result.docs || result;
 
             if (!Array.isArray(products)) {
-                throw new Error('Invalid data format from repository');
+                throw new Error('Invalid data');
             }
 
             const productDTOs = products.map(product => new ProductDTO(product));
@@ -39,7 +39,7 @@ export class productsController {
             });
         } catch (error) {
             console.error('Error fetching products:', error);
-            return res.status(500).send('Internal server error');
+            return res.status(500).send('Server error');
         }
         
     };
@@ -56,7 +56,7 @@ export class productsController {
             return res.json(new ProductDTO(product));
         } catch (error) {
             console.error('Error fetching product by id:', error);
-            return res.status(500).send('Internal server error');
+            return res.status(500).send('Server error');
         }
 
     };
@@ -72,7 +72,7 @@ export class productsController {
                 return res.status(400).json({ error: 'Product already exists' });
             }
             console.error('Error adding product:', error);
-            return res.status(500).json({ error: 'Internal server error' });
+            return res.status(500).json({ error: 'Server error' });
         }
     };
 
@@ -89,7 +89,7 @@ export class productsController {
             return res.json(new ProductDTO(updatedProduct));
         } catch (error) {
             console.error('Error updating product:', error);
-            return res.status(500).json({ error: 'Internal server error' });
+            return res.status(500).json({ error: 'Server error' });
         }
 
     };
@@ -106,7 +106,7 @@ export class productsController {
             return res.json({ message: 'Product deleted successfully' });
         } catch (error) {
             console.error('Error deleting product:', error);
-            return res.status(500).json({ error: 'Internal server error' });
+            return res.status(500).json({ error: 'Server error' });
         }
 
     };

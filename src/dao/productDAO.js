@@ -11,7 +11,7 @@ export class ProductDAO {
         if (options.page && options.limit) {
             return await productsModel.paginate(query, options);
         } else {
-            return await productsModel.find(query);
+            return await productsModel.find(query).lean();
         }
         
     };

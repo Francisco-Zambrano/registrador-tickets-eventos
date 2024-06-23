@@ -1,11 +1,13 @@
 import mongoose from "mongoose";
+import { v4 as uuidv4 } from 'uuid';
 
 const ticketsCollection = "ticket"
 const ticketsSchema = new mongoose.Schema(
     {
         code: {
-        type: String,
-        unique: true,
+            type: String,
+            unique: true,
+            default: () => uuidv4()
         
         },
         purchase_datetime: {
@@ -21,9 +23,6 @@ const ticketsSchema = new mongoose.Schema(
             required: true
         },
     },
-    {
-        timestamps: true
-    }
 );
 
 export const ticketsModel = mongoose.model(

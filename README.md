@@ -1,115 +1,21 @@
-# REESTRUCTURA DEL SERVIDOR
+# TERCERA ENTREGA DEL PROYECTO FINAL
+
+# Mejorando la arquitectura del servidor
 
 Para iniciar el servidor, ejecutar:
 npm run dev
 
-## Vistas
+El proyecto esta estructurado por capas:
 
-Products List
+- DAO: Abstracción de operaciones de acceso a datos (CRUD).
+- DTO: Objeto simple para transferir datos entre capas.
+- Repository: Abstracción más amplia que puede incluir lógica de negocio y trabajar con múltiples entidades.
 
-```http
- http://localhost:8080/
-```
+# Para revisar el proyecto, seguir las siguientes recomendaciones
 
-Real Time Products
+## 1. Login del Usuario
 
-```http
- http://localhost:8080/realtimeproducts
-```
-
-Chat
-
-```http
- http://localhost:8080/chat
-```
-
-Products
-
-```http
- http://localhost:8080/products
-```
-
-Cart List
-
-```http
- http://localhost:8080/carts/66304d5f805b018aa33c9c57
-```
-
-## Products (JSON)
-
-GET: Deberá poder recibir por query params un limit, una page y un sort
-
-#### Get all items
-
-```http
- http://localhost:8080/api/products?limit=4&page=1&sort=asc
-```
-
-| Key   | limit    | page     | sort         |
-| :---- | :------- | :------- | :----------- |
-| Value | `number` | `number` | `asc / desc` |
-
-- limit permitirá devolver sólo el número de elementos solicitados al momento de la petición, en caso de no recibir limit, éste será de 10.
-- page permitirá devolver la página que queremos buscar.
-- sort: asc/desc, para realizar ordenamiento ascendente o descendente por precio, en caso de no recibir sort, no realizar ningún ordenamiento.
-- El método GET deberá devolver un objeto con el siguiente formato:
-  {totalPages: Total de páginas
-  prevPage: Página anterior
-  nextPage: Página siguiente
-  page: Página actual
-  hasPrevPage: Indicador para saber si la página previa existe
-  hasNextPage: Indicador para saber si la página siguiente existe.
-  prevLink: Link directo a la página previa (null si hasPrevPage=false)
-  nextLink: Link directo a la página siguiente (null si hasNextPage=false)
-  }
-
-## Carts
-
-DELETE: api/carts/:cid/products/:pid deberá eliminar del carrito el producto seleccionado.
-
-```http
- http://localhost:8080/api/carts/66304d5f805b018aa33c9c57/products/663c3a2b6202b875db072bce
-```
-
-PUT api/carts/:cid/products/:pid deberá poder actualizar SÓLO la cantidad de ejemplares del producto por cualquier cantidad pasada desde req.body
-
-```http
-http://localhost:8080/api/carts/663cd9f7c88c61d682b9c656/products/6637ccb7a3215dd365c6e80f
-```
-
-Body:
-{"quantity":3}
-
-PUT: api/carts/:cid deberá actualizar el carrito con un arreglo de productos
-
-```http
- http://localhost:8080/api/carts/66304d5f805b018aa33c9c57/products/663c3a2b6202b875db072bce
-```
-
-DELETE: api/carts/:cid deberá eliminar todos los productos del carrito
-
-```http
- http://localhost:8080/api/carts/663cd9f7c88c61d682b9c656/product/6637ceee39fa9e7a01cf380a
-```
-
-## User
-
-POST: Registra un usuario.
-
-```http
- http://localhost:8080/api/sessions/register
-```
-
-Body:
-{
-"first_name":" ",
-"last_name":" ",
-"age":" ",
-"email":" ",
-"password":" "
-}
-
-POST: Login de un usuario. En preview debe dirigir a http://localhost:8080/products
+POST: Login de un usuario.
 
 ```http
  http://localhost:8080/api/sessions/login
@@ -117,25 +23,94 @@ POST: Login de un usuario. En preview debe dirigir a http://localhost:8080/produ
 
 Body:
 {
-"email":" ",
-"password":" "
+"email":"juana@test.com",
+"password":"123"
 }
 
-GET: Perfil del usuario logueado
+## 2. Carrito del usuario
+
+GET: Verificar la existencia del carrito asociado al usuario.
 
 ```http
- http://localhost:8080/profile
+ http://localhost:8080/api/carts/665e77e65acc9c9959341793
 ```
 
-GET: logout
+## 3. Compra
+
+Post: Realizar la compra del carrito.
+
+```http
+ http://localhost:8080/api/carts/665e77e65acc9c9959341793/purchase
+```
+
+## 4. Verificar ticket (user)
+
+Get: Ingresar como usuario para verificar el ticket. Debe mostrar el siguiente mensaje:
+{
+"error": "Forbidden: Access is allowed only for administrators"
+}
+
+```http
+ http://localhost:8080/api/tickets
+```
+
+## 5. Logout (user)
+
+Get: Realizar logout del usuario. Debe mostrar el siguiente mensaje:
+{
+"payload": "successful logout"
+}
 
 ```http
  http://localhost:8080/api/sessions/logout
 ```
 
-GET: Current
-Extrae la cookie que contiene el token para obtener al usuario asociado
+## 6. Login (admin)
+
+Post: Realizar login con rol Admin.
 
 ```http
- http://localhost:8080/api/sessions/current
+ http://localhost:8080/api/sessions/login
 ```
+
+Body:
+{
+"email":"adminCoder@coder.com",
+"password":"adminCod3r123"
+}
+
+## 7. Verificar ticket (admin)
+
+Get: Ingresar como admin para verificar el ticket. Debe contener lo siguiente:
+
+```http
+ http://localhost:8080/api/tickets
+```
+
+Debe mostrar lo siguiente:
+
+{
+"id": "",
+"code": "",
+"purchase_datetime": "",
+"amount": ,
+"purchaser": ""
+}
+
+## 8. Verificar ticket mediante id(admin)
+
+Get: Ingresar como admin para verificar el ticket. Debe contener lo siguiente:
+
+```http
+ http://localhost:8080/api/tickets/:id
+```
+
+Debe mostrar lo siguiente:
+
+{
+"id": "",
+"code": "",
+"purchase_datetime": "",
+"amount": ,
+"purchaser": ""
+}

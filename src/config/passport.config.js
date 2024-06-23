@@ -26,7 +26,7 @@ export const initPassport = () => {
             async (req, username, password, done) => {
                 try {
                     console.log("Registering user:", username);
-                    const { first_name, last_name, age } = req.body;
+                    const { first_name, last_name, age, role = 'user' } = req.body;
                     if (!first_name || !last_name || !age) {
                         console.log("Missing fields");
                         return done(null, false, { message: 'All fields are required' });
@@ -46,7 +46,8 @@ export const initPassport = () => {
                         age, 
                         email: username, 
                         password: hashedPassword, 
-                        cart: newCart.id 
+                        cart: newCart.id, 
+                        role
                     });
 
                     console.log("User registered successfully:", user);

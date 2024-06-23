@@ -1,6 +1,7 @@
 export class CartDTO {
 
     constructor(cart) {
+
         this.id = cart._id;
         this.products = cart.products.map(product => ({
             id: product.id,
@@ -11,7 +12,8 @@ export class CartDTO {
             category: product.category,
             description: product.description
         }));
-    }
+        
+    };
 
 };
 

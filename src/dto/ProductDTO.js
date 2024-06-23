@@ -11,7 +11,7 @@ export class ProductDTO {
         this.category = product.category;
         this.thumbnails = product.thumbnails;
         
-    }
+    };
 
 };
 

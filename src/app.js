@@ -9,10 +9,12 @@ import { router as cartsRouter } from './routers/cartsRouter.js';
 import { router as viewsRouter } from './routers/viewsRouter.js';
 import { router as sessionsRouter } from './routers/sessionsRouter.js';
 import { router as ticketsRouter } from './routers/ticketsRouter.js';
+import { router as mockingRouter } from "./routers/mockingRouter.js";
 import passport from "passport";
 import { initPassport } from "./config/passport.config.js";
 import { config } from "./config/config.js";
 import { productsModel } from "./dao/models/productsModel.js";
+
 
 
 const app = express();
@@ -35,6 +37,7 @@ app.use('/api/products', productsRouter);
 app.use('/api/carts', cartsRouter);
 app.use('/api/sessions', sessionsRouter);
 app.use('/api/tickets', ticketsRouter);
+app.use('/api/mockingproducts', mockingRouter);
 
 const expressServer = app.listen(PORT, () => {
     console.log(`Running server on port: ${PORT}`);

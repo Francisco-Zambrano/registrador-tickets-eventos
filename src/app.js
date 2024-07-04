@@ -14,6 +14,7 @@ import passport from "passport";
 import { initPassport } from "./config/passport.config.js";
 import { config } from "./config/config.js";
 import { productsModel } from "./dao/models/productsModel.js";
+import { errorHandler } from "./middleware/errorHandler.js";
 
 
 
@@ -38,6 +39,8 @@ app.use('/api/carts', cartsRouter);
 app.use('/api/sessions', sessionsRouter);
 app.use('/api/tickets', ticketsRouter);
 app.use('/api/mockingproducts', mockingRouter);
+
+app.use(errorHandler);
 
 const expressServer = app.listen(PORT, () => {
     console.log(`Running server on port: ${PORT}`);

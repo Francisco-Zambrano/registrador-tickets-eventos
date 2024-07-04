@@ -14,7 +14,7 @@ const cartRepository = new CartRepository(cartDao);
 export class viewsController {
     static getProducts = async (req, res) => {
         try {
-            const products = await productRepository.getBy({});
+            const products = await productRepository.getById({});
             if (!Array.isArray(products)) {
                 throw new Error('Invalid data');
             }

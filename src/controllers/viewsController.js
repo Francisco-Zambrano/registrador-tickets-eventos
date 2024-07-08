@@ -4,6 +4,7 @@ import { CartRepository } from '../repositories/CartRepository.js';
 import { ProductDTO } from '../dto/ProductDTO.js';
 import { CartDTO } from '../dto/CartDTO.js';
 import { messagesModel } from '../dao/models/messagesModel.js';
+import { logger } from '../utils/logger.js';
 
 const daoType = process.env.DAO_TYPE || 'mongo';
 const { productDao, cartDao } = DaoFactory.getDao(daoType);
@@ -12,16 +13,17 @@ const productRepository = new ProductRepository(productDao);
 const cartRepository = new CartRepository(cartDao);
 
 export class viewsController {
+
     static getProducts = async (req, res) => {
         try {
-            const products = await productRepository.getById({});
-            if (!Array.isArray(products)) {
+            const result = await productRepository.getBy({}, { lean: true });
+            if (!result || !Array.isArray(result.docs)) {
                 throw new Error('Invalid data');
             }
-            const productDTOs = products.map(product => new ProductDTO(product));
-            return res.render('home', { products: productDTOs });
+            const products = result.docs.map(product => new ProductDTO(product));
+            return res.render('home', { products });
         } catch (error) {
-            console.error('Error fetching products:', error);
+            logger.error('Error fetching products:', error);
             return res.status(500).send('Server error');
         }
     };
@@ -37,11 +39,9 @@ export class viewsController {
             if (!result || !Array.isArray(result.docs)) {
                 throw new Error('Invalid data');
             }
-            const products = result.docs;
-
-            const productDTOs = products.map(product => new ProductDTO(product));
+            const products = result.docs.map(product => new ProductDTO(product));
             return res.render('products', {
-                products: productDTOs,
+                products,
                 page,
                 limit,
                 totalPages: result.totalPages,
@@ -53,7 +53,7 @@ export class viewsController {
                 user: req.user
             });
         } catch (error) {
-            console.error('Error fetching products:', error);
+            logger.error('Error fetching products:', error);
             return res.status(500).send('Server error');
         }
     };
@@ -63,24 +63,23 @@ export class viewsController {
             const messages = await messagesModel.find().lean();
             return res.render('chat', { messages });
         } catch (error) {
-            console.error('Error fetching messages:', error);
+            logger.error('Error fetching messages:', error);
             return res.status(500).send('Server error');
         }
     };
 
     static getCartById = async (req, res) => {
         try {
-            const userCart = await cartRepository.getBy({ _id: req.user.cart }, { populate: 'products.id' });
+            const userCart = await cartRepository.getById(req.user.cart, { populate: 'products.id' });
             if (!userCart) {
                 return res.status(404).send('Cart not found');
             }
-            res.render('cart', { cart: new CartDTO(userCart) });
+            const cartDTO = new CartDTO(userCart);
+            res.render('cart', { cart: cartDTO });
         } catch (error) {
-            console.error('Error fetching cart:', error);
-            res.status(500).send('Server error');
+            logger.error(`Error fetching cart: ${error.message}`);
+            res.status(500).send(`Server error: ${error.message}`);
         }
     };
 
 };
-
-

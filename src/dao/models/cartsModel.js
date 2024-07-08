@@ -1,28 +1,29 @@
 import mongoose from "mongoose";
 import { Schema } from "mongoose";
 
-const cartsCollection = "carts"
+const cartsCollection = "carts";
 const cartsSchema = new mongoose.Schema(
     {
-        products:[
+        products: [
             {
-                id:{
+                id: {
                     type: Schema.Types.ObjectId,
-                    ref: 'products'
-                },
-                quantity:{
-                    type: Number,
+                    ref: 'products',
                     required: true
+                },
+                quantity: {
+                    type: Number,
+                    required: true,
                 }
-            },
-            {
-                timestamps: true
             }
         ]
+    },
+    {
+        timestamps: true
     }
 );
 
 export const cartsModel = mongoose.model(
-    cartsCollection,
+    cartsCollection, 
     cartsSchema
-)
+);

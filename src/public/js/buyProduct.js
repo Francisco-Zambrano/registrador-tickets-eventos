@@ -1,3 +1,5 @@
+import { logger } from "../../utils/logger.js";
+
 document.addEventListener('DOMContentLoaded', () => {
 
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
@@ -23,10 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     alert('Error al agregar el producto al carrito');
                 }
             } catch (error) {
-                console.error('Error adding product to cart:', error);
+                logger.error('Error adding product to cart:', error);
             }
         });
 
     });
 });
-  

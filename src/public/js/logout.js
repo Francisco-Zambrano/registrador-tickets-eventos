@@ -1,3 +1,4 @@
+import { logger } from "../../utils/logger.js";
 
 document.addEventListener('DOMContentLoaded', function() {
     const logoutButton = document.getElementById('logoutButton');
@@ -15,13 +16,11 @@ document.addEventListener('DOMContentLoaded', function() {
             if (response.ok) {
                 window.location.href = '/login';
             } else {
-                console.error('Error when trying to log out');
+                logger.error('Error when trying to log out');
             }
         })
         .catch(error => {
-            console.error('Error in fetch request:', error);
+            logger.error('Error in fetch request:', error);
         });
     });
 });
-
-

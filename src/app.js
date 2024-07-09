@@ -42,7 +42,7 @@ app.use('/api/sessions', sessionsRouter);
 app.use('/api/tickets', ticketsRouter);
 app.use('/api/mockingproducts', mockingRouter);
 
-app.use('/loggerTest', (req, res) => {
+app.get('/loggerTest', (req, res) => {
     req.logger.fatal('This is a fatal log');
     req.logger.error('This is an error log');
     req.logger.warning('This is a warning log');

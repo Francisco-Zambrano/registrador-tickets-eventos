@@ -8,13 +8,14 @@ export const loggerLevels = {
         http: 4,
         debug: 5,
     },
+
     colors: {
         fatal: 'red',
-        error: 'orange',
+        error: 'red',
         warning: 'yellow',
         info: 'green',
-        http: 'blue',
-        debug: 'white',
+        http: 'magenta',
+        debug: 'blue',
     }
-    
+
 };

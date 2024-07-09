@@ -31,7 +31,7 @@ export class viewsController {
     static getAllProducts = async (req, res) => {
         try {
             const page = req.query.page ? parseInt(req.query.page) : 1;
-            const limit = 10;
+            const limit = 8;
             const sort = req.query.sort || 'asc';
             const options = { page, limit, lean: true };
 
@@ -74,8 +74,9 @@ export class viewsController {
             if (!userCart) {
                 return res.status(404).send('Cart not found');
             }
-            const cartDTO = new CartDTO(userCart);
-            res.render('cart', { cart: cartDTO });
+            // const cartDTO = new CartDTO(userCart);
+            // res.render('cart', { cart: cartDTO });
+            res.render('cart', { cart: userCart });
         } catch (error) {
             logger.error(`Error fetching cart: ${error.message}`);
             res.status(500).send(`Server error: ${error.message}`);

@@ -6,6 +6,7 @@ import { TicketRepository } from '../repositories/TicketRepository.js';
 import { TicketDTO } from '../dto/TicketDTO.js';
 import { CustomError } from '../utils/CustomError.js';
 import { TYPES_OF_ERROR } from '../utils/errorTypes.js';
+import { logger } from '../utils/logger.js';
 
 const daoType = process.env.DAO_TYPE || 'mongo';
 const { cartDao, productDao } = DaoFactory.getDao(daoType);
@@ -46,6 +47,7 @@ export class cartsController {
     static addProductOnCart = async (req, res, next) => {
         try {
             const { cid, pid } = req.params;
+            logger.debug(`Adding product to cart - Cart ID: ${cid}, Product ID: ${pid}`);
             const cart = await cartRepository.addProduct(cid, pid);
             res.json({ msg: 'Product added to cart', cart: new CartDTO(cart) });
         } catch (error) {

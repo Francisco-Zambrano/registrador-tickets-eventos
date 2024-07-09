@@ -3,16 +3,11 @@
   <h2 class="mb-2">Products</h2>
   <div class="row">
     {{#each products}}
-      <div class="col-lg-3 col-md-6 col-12 pt-4" key={{product._id}}>
+      <div class="col-lg-3 col-md-6 col-12 pt-4" key={{this._id}}>
         <div class="card h-100" style="width: 18rem;">
           <div class="image-container">
-            <img
-              src={{this.thumbnails}}
-              class="card-img-top"
-              alt={{this.title}}
-            />
+            <img src={{this.thumbnails}} class="card-img-top" alt={{this.title}} />
           </div>
-
           <div class="card-body">
             <h4 class="card-title">{{this.title}}</h4>
             <p class="card-text">{{this.description}}</p>
@@ -25,8 +20,9 @@
           <div class="d-grid gap-2">
             <button
               class="add-to-cart btn btn-warning"
-              data-product-id="{{this._id}}"
-            >Add to cart
+              data-product-id="{{this.id}}"
+            >
+              Add to cart
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -45,7 +41,6 @@
       </div>
     {{/each}}
   </div>
-
   <div class="mt-3">
     <a href="/products?page=1" class="btn btn-secondary">Page 1</a>
     {{#if hasPrevPage}}
@@ -59,13 +54,14 @@
           viewBox="0 0 16 16"
         >
           <path
-            d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1"
+            d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l-3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1"
           />
         </svg>
         Previous</a>
     {{/if}}
     {{#if hasNextPage}}
-      <a href="/products?page={{nextPage}}" class="btn btn-warning">Next
+      <a href="/products?page={{nextPage}}" class="btn btn-warning">
+        Next
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
@@ -75,7 +71,7 @@
           viewBox="0 0 16 16"
         >
           <path
-            d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1"
+            d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l-3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1"
           />
         </svg>
       </a>
@@ -83,4 +79,7 @@
   </div>
 </div>
 
+<script>
+    window.userCartId = "{{user.cart}}";
+</script>
 <script src="/js/buyProduct.js"></script>

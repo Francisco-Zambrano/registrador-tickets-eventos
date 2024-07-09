@@ -13,16 +13,19 @@ export class CartDAO {
         return await cartsModel.findOne(query).lean();
     };
 
+    async getById(id) {
+        return await cartsModel.findById(id).populate('products.id').lean();
+    };
+
     async update(id, cart) {
-        return await cartsModel.findByIdAndUpdate(id, cart, { new: true });
+        return await cartsModel.findByIdAndUpdate(id, cart, { new: true }).populate('products.id').lean();
     };
 
     async delete(id) {
-        return await cartsModel.findByIdAndDelete(id);
+        return await cartsModel.findByIdAndDelete(id).lean();
     };
 
     async addProduct(cid, pid) {
-        
         const cart = await cartsModel.findById(cid);
 
         if (!cart) throw new Error('Cart does not exist');
@@ -37,11 +40,9 @@ export class CartDAO {
 
         await cart.save();
         return cart;
-
     };
 
     async deleteProduct(cid, pid) {
-
         const cart = await cartsModel.findById(cid);
 
         if (!cart) throw new Error('Cart does not exist');
@@ -50,11 +51,9 @@ export class CartDAO {
         await cart.save();
 
         return cart;
-
     };
 
     async updateProductQuantity(cid, pid, quantity) {
-
         const cart = await cartsModel.findById(cid);
 
         if (!cart) throw new Error('Cart does not exist');
@@ -67,7 +66,6 @@ export class CartDAO {
         } else {
             throw new Error('Product not found in cart');
         }
-
     };
 
 };

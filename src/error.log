@@ -79,3 +79,160 @@
 {"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-13T18:26:25.046Z"}
 {"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-13T18:26:30.505Z"}
 {"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-13T18:26:31.086Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-18T23:10:12.667Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-18T23:10:13.526Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-19T00:05:07.089Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-19T00:05:08.182Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-20T17:07:29.463Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-20T17:07:30.279Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-20T17:10:45.352Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-20T17:10:46.124Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-20T17:19:11.445Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-20T17:19:12.088Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-20T17:53:05.862Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-20T17:53:06.595Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-20T17:54:33.389Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-20T17:54:34.044Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-20T17:55:41.444Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-20T17:55:42.281Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-20T18:32:17.194Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-20T18:32:17.874Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-20T18:39:17.056Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-20T18:39:17.721Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-20T18:43:39.837Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-20T18:43:40.497Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-20T18:48:45.197Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-20T18:48:46.023Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-20T18:49:48.832Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-20T18:49:49.473Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-20T18:51:22.594Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-20T18:51:23.265Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-20T18:54:12.333Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-20T18:54:13.285Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-20T19:09:12.277Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-20T19:09:13.088Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-20T19:29:07.238Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-20T19:29:07.930Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-20T19:31:18.338Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-20T19:31:19.149Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-20T19:32:47.976Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-20T19:32:48.680Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T16:03:16.119Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T16:03:16.839Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T16:06:03.518Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T16:06:04.242Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T16:28:37.888Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T16:28:38.710Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T16:30:38.113Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T16:30:38.919Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T16:58:24.456Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T16:58:25.174Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T17:00:10.179Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T17:00:11.008Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T17:00:20.410Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T17:00:21.015Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T17:10:10.399Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T17:10:11.215Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T17:11:42.297Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T17:11:42.964Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T17:14:14.597Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T17:14:15.733Z"}
+{"level":"error","message":"Error resetting password: jwt must be provided","timestamp":"2024-07-21T17:15:42.573Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T17:17:58.982Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T17:17:59.642Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T17:18:07.427Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T17:18:08.004Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T17:22:42.195Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T17:22:45.020Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T17:22:45.598Z"}
+{"level":"error","message":"Error resetting password: jwt must be provided","timestamp":"2024-07-21T17:23:17.198Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T17:29:41.005Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T17:29:41.709Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T17:30:08.715Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T17:30:09.301Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T17:30:13.936Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T17:30:14.547Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T17:30:50.500Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T17:30:51.402Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T17:31:27.860Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T17:31:28.467Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T17:32:43.294Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T17:32:44.329Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T17:33:49.879Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T17:33:50.760Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T17:38:14.429Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T17:38:15.230Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T17:42:19.416Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T17:42:20.135Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T17:47:00.158Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T17:47:00.884Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T17:47:41.996Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T17:47:42.583Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T17:50:24.439Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T17:50:25.176Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T17:50:39.103Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T17:50:39.699Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T17:59:52.727Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T17:59:53.473Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T18:00:20.836Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T18:00:21.430Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T18:00:55.392Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T18:00:56.175Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T18:04:34.476Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T18:04:35.319Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T18:05:31.825Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T18:05:32.410Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T18:09:45.752Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T18:09:46.616Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T19:11:47.242Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T19:11:47.925Z"}
+{"level":"error","message":"Error resetting password: User not found","timestamp":"2024-07-21T19:13:08.763Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T20:36:03.939Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T20:36:04.805Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T20:38:23.248Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T20:38:24.156Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T20:39:56.844Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T20:39:57.588Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T20:40:42.498Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T20:40:47.010Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T20:40:47.620Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T20:55:21.664Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T20:55:22.482Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T20:55:27.005Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T20:55:27.609Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T20:56:00.507Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T20:56:01.125Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T20:56:33.137Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T20:56:33.939Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T22:09:36.459Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T22:09:37.236Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T22:12:23.606Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T22:12:24.461Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T22:16:40.716Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T22:16:41.632Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T22:17:21.056Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T22:17:21.641Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T22:17:29.601Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T22:17:30.171Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T22:17:34.964Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T22:17:35.536Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T22:17:43.945Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T22:17:44.662Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T22:28:16.401Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T22:28:17.063Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T22:32:14.990Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T22:32:15.750Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T22:35:26.061Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T22:35:26.775Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T22:36:29.606Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T22:36:30.330Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T22:36:42.690Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T22:36:43.267Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T22:38:20.356Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T22:38:21.040Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T22:43:07.896Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T22:43:08.727Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T22:43:37.405Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T22:43:37.976Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-07-21T22:49:54.617Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-07-21T22:49:55.419Z"}

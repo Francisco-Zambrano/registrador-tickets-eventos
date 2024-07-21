@@ -1,0 +1,23 @@
+{{>navbar}}
+<div class="container">
+    <h2 class="mb-2">Password Restore</h2>
+    <div class="row justify-content-center">
+        <div class="col-md-6 border p-4">
+            <form action="/api/sessions/mail" method="get">
+                <div class="text-center align-middle">
+                    <span class="span">Write your mail and we will send you the instructions to restore a password</span>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" required>
+                </div>
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-warning" value="restore">Send</button>
+                </div>
+                <div class="text-center align-middle">
+                    <span class="span">Please check your spam box</span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

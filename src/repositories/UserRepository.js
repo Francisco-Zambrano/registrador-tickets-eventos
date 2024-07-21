@@ -16,4 +16,8 @@ export class UserRepository {
       return await this.dao.delete(id);
     }
 
+    async findById(id) {
+      return await this.dao.findById(id);
+    }
+
 };

@@ -16,4 +16,8 @@ export class UserDAO {
         return await userModel.findByIdAndDelete(id);
     }
 
+    async findById(id) {
+        return await userModel.findById(id);
+    }
+
 };

@@ -26,6 +26,8 @@ export const config = {
     SECRET: process.env.SECRET,
     CLIENT_ID: process.env.CLIENT_ID,
     CLIENT_SECRET: process.env.CLIENT_SECRET,
-    CALLBACK_URL: process.env.CALLBACK_URL
+    CALLBACK_URL: process.env.CALLBACK_URL,
+    TRANSPORT_PASS: process.env.TRANSPORT_PASS,
+    TRANSPORT_USER: process.env.TRANSPORT_USER
     
 };

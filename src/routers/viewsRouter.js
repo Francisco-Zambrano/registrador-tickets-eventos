@@ -22,3 +22,13 @@ router.get('/profile', auth, (req, res) => {
         user:req.user
     });
 });
+
+router.get('/mail', (req, res) => {
+    let { error } = req.query;
+    res.status(200).render('mail', { error });
+});
+
+router.get('/reset-password', (req, res) => {
+    let { error } = req.query;
+    res.status(200).render('password', { error });
+});

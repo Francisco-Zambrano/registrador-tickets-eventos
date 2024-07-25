@@ -74,8 +74,6 @@ export class viewsController {
             if (!userCart) {
                 return res.status(404).send('Cart not found');
             }
-            // const cartDTO = new CartDTO(userCart);
-            // res.render('cart', { cart: cartDTO });
             res.render('cart', { cart: userCart });
         } catch (error) {
             logger.error(`Error fetching cart: ${error.message}`);

@@ -44,16 +44,55 @@ export class cartsController {
         }
     };
 
+    // static addProductOnCart = async (req, res, next) => {
+    //     try {
+    //         const { cid, pid } = req.params;
+    //         logger.debug(`Adding product to cart - Cart ID: ${cid}, Product ID: ${pid}`);
+    //         const cart = await cartRepository.addProduct(cid, pid);
+    //         res.json({ msg: 'Product added to cart', cart: new CartDTO(cart) });
+    //     } catch (error) {
+    //         next(error);
+    //     }
+    // };
+
+
     static addProductOnCart = async (req, res, next) => {
         try {
             const { cid, pid } = req.params;
             logger.debug(`Adding product to cart - Cart ID: ${cid}, Product ID: ${pid}`);
+            
+            // Buscar el producto
+            const product = await productRepository.getById(pid);
+            if (!product) {
+                throw CustomError.createError(
+                    "NotFoundError",
+                    new Error(`Product with id ${pid} not found`),
+                    'Product not found',
+                    TYPES_OF_ERROR.NOT_FOUND
+                );
+            }
+
+            // Verificar si el usuario premium es el dueño del producto
+            if (req.user.role === 'premium' && product.owner.toString() === req.user._id.toString()) {
+                throw CustomError.createError(
+                    "ForbiddenError",
+                    new Error('Cannot add your own product to the cart'),
+                    'Cannot add your own product to the cart',
+                    TYPES_OF_ERROR.FORBIDDEN
+                );
+            }
+
             const cart = await cartRepository.addProduct(cid, pid);
             res.json({ msg: 'Product added to cart', cart: new CartDTO(cart) });
         } catch (error) {
             next(error);
         }
     };
+
+
+
+
+
 
     static deleteCart = async (req, res, next) => {
         try {

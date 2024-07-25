@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
-import bcrypt from 'bcrypt';
 
 const userSchema = new mongoose.Schema({
+    
     first_name: String,
     last_name: String,
     email: {
@@ -12,7 +12,8 @@ const userSchema = new mongoose.Schema({
     password: String,
     role: {
         type: String,
-        default: "user"
+        default: "user",
+        enum: ["user", "admin", "premium"]
     },
     cart: {
         type: mongoose.Types.ObjectId,
@@ -23,8 +24,5 @@ const userSchema = new mongoose.Schema({
     strict: false
 });
 
-userSchema.methods.comparePassword = async function (candidatePassword) {
-    return await bcrypt.compare(candidatePassword, this.password);
-};
 
 export const userModel = mongoose.model('User', userSchema);

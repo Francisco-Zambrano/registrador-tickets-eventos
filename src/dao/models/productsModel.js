@@ -40,6 +40,11 @@ const productsSchema = new mongoose.Schema(
             required: true,
             index: true
         },
+        owner:{
+            type: mongoose.Types.ObjectId,
+            ref: 'User',
+            default: 'admin'
+        }
     },
     {
         timestamps: true

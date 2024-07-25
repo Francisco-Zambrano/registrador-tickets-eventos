@@ -10,6 +10,7 @@ import { router as viewsRouter } from './routers/viewsRouter.js';
 import { router as sessionsRouter } from './routers/sessionsRouter.js';
 import { router as ticketsRouter } from './routers/ticketsRouter.js';
 import { router as mockingRouter } from "./routers/mockingRouter.js";
+import { router as usersRouter } from "./routers/usersRouter.js";
 import passport from "passport";
 import { initPassport } from "./config/passport.config.js";
 import { config } from "./config/config.js";
@@ -41,6 +42,7 @@ app.use('/api/carts', cartsRouter);
 app.use('/api/sessions', sessionsRouter);
 app.use('/api/tickets', ticketsRouter);
 app.use('/api/mockingproducts', mockingRouter);
+app.use('/api/users', usersRouter);
 
 app.get('/loggerTest', (req, res) => {
     req.logger.fatal('This is a fatal log');

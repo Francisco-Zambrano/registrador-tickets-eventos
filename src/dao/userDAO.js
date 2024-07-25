@@ -15,7 +15,6 @@ export class UserDAO {
     async delete(id) {
         return await userModel.findByIdAndDelete(id);
     }
-
     async findById(id) {
         return await userModel.findById(id);
     }

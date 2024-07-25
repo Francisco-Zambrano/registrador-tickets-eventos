@@ -1,116 +1,48 @@
-# TERCERA ENTREGA DEL PROYECTO FINAL
+# TERCERA PRÁCTICA INTEGRADORA
 
-# Mejorando la arquitectura del servidor
+# Sistema de recuperación de contraseña
 
 Para iniciar el servidor, ejecutar:
 npm run dev
 
-El proyecto esta estructurado por capas:
+Para revisar el proyecto, seguir las siguientes recomendaciones
 
-- DAO: Abstracción de operaciones de acceso a datos (CRUD).
-- DTO: Objeto simple para transferir datos entre capas.
-- Repository: Abstracción más amplia que puede incluir lógica de negocio y trabajar con múltiples entidades.
-
-# Para revisar el proyecto, seguir las siguientes recomendaciones
-
-## 1. Login del Usuario
+## 1. Registro de un usuario
 
 POST: Login de un usuario.
 
 ```http
- http://localhost:8080/api/sessions/login
+http://localhost:8080/register
 ```
 
-Body:
-{
-"email":"juana@test.com",
-"password":"123"
-}
+## 2. Login del Usuario
 
-## 2. Carrito del usuario
-
-GET: Verificar la existencia del carrito asociado al usuario.
+POST: Ingresar a login y hacer click en "Forgot your password? Click Here".
 
 ```http
- http://localhost:8080/api/carts/665e77e65acc9c9959341793
+http://localhost:8080/login
 ```
 
-## 3. Compra
+## 3. Restablecer contraseña
 
-Post: Realizar la compra del carrito.
+Post: ingresar el mail de usuario registrado
 
 ```http
- http://localhost:8080/api/carts/665e77e65acc9c9959341793/purchase
+ http://localhost:8080/mail
 ```
 
-## 4. Verificar ticket (user)
-
-Get: Ingresar como usuario para verificar el ticket. Debe mostrar el siguiente mensaje:
-{
-"error": "Forbidden: Access is allowed only for administrators"
-}
+## 4. Revisar la casilla del mail y hacer click en el botón "Reset Password"
+## 5. se abrirá una nueva venta en el cual deberá ingresar la nueva contraseña
+## 6. Luego se redirige al usuario al Login. Deberá ingresar su mail y su nueva contraseña
 
 ```http
- http://localhost:8080/api/tickets
+ http://localhost:8080/login
 ```
 
-## 5. Logout (user)
+## 4. Establecer un nuevo rol del user.
 
-Get: Realizar logout del usuario. Debe mostrar el siguiente mensaje:
-{
-"payload": "successful logout"
-}
+POST: al ingresar a la siguiente dirección, podrá cambiar el role del usuario de "user" a "premium" y viceversa.
 
 ```http
- http://localhost:8080/api/sessions/logout
+ http://localhost:8080/api/sessions/register
 ```
-
-## 6. Login (admin)
-
-Post: Realizar login con rol Admin.
-
-```http
- http://localhost:8080/api/sessions/login
-```
-
-Body:
-{
-"email":"adminCoder@coder.com",
-"password":"adminCod3r123"
-}
-
-## 7. Verificar ticket (admin)
-
-Get: Ingresar como admin para verificar el ticket. Debe contener lo siguiente:
-
-```http
- http://localhost:8080/api/tickets
-```
-
-Debe mostrar lo siguiente:
-
-{
-"id": "",
-"code": "",
-"purchase_datetime": "",
-"amount": ,
-"purchaser": ""
-}
-
-## 8. Verificar ticket mediante id(admin)
-
-Get: Ingresar como admin para verificar el ticket. Debe contener lo siguiente:
-
-```http
- http://localhost:8080/api/tickets/:id
-```
-
-Debe mostrar lo siguiente:
-
-{
-"id": "",
-"code": "",
-"purchase_datetime": "",
-"amount": ,
-"purchaser": ""
-}

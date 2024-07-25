@@ -3,9 +3,10 @@ import jwt from 'jsonwebtoken';
 import { UserRepository } from '../repositories/UserRepository.js';
 import { CustomError } from '../utils/CustomError.js';
 import { TYPES_OF_ERROR } from '../utils/errorTypes.js';
-import { UserDAO } from '../dao/UserDAO.js';
 import { logger } from '../utils/logger.js';
 import { config } from '../config/config.js';
+import { UserDAO } from '../dao/userDAO.js';
+
 
 const SECRET_KEY = config.SECRET;
 const userDao = new UserDAO();
@@ -51,7 +52,25 @@ class UserController {
                 next(error);
             }
         }
-    }
+    };
+
+    static async changeUserRole(req, res, next) {
+        const { uid } = req.params;
+
+        try {
+            const user = await userRepository.findById(uid);
+            if (!user) {
+                throw new CustomError('User not found', TYPES_OF_ERROR.NOT_FOUND);
+            }
+
+            const newRole = user.role === 'user' ? 'premium' : 'user';
+            await userRepository.update(user._id, { role: newRole });
+
+            res.json({ msg: `User role updated to ${newRole}`, user });
+        } catch (error) {
+            next(error);
+        }
+    };
 
 };
 

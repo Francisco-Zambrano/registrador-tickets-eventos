@@ -42,7 +42,6 @@ export const mailTransporter = async (req, res) => {
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <title>Password Restore</title>
                     <style>
-                        /* Inline CSS for email */
                         .container {
                             width: 100%;
                             margin: 0 auto;

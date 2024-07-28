@@ -1,0 +1,321 @@
+paths:
+  /api/products:
+    get:
+      summary: Get Products
+      description: Obtener productos con paginación y ordenamiento
+      parameters:
+        - name: limit
+          in: query
+          description: Limitar el número de productos
+          required: false
+          schema:
+            type: integer
+        - name: page
+          in: query
+          description: Página de resultados
+          required: false
+          schema:
+            type: integer
+        - name: sort
+          in: query
+          description: Ordenar productos (asc/desc)
+          required: false
+          schema:
+            type: string
+            enum: [asc, desc]
+      responses:
+        '200':
+          description: Productos obtenidos con éxito
+        '400':
+          $ref: '#/components/responses/InvalidArguments'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      summary: Post a product
+      description: Crear un nuevo producto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Producto creado con éxito
+        '400':
+          $ref: '#/components/responses/InvalidArguments'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /api/products/{pid}:
+    put:
+      summary: Edit a product
+      description: Editar un producto existente
+      parameters:
+        - name: pid
+          in: path
+          required: true
+          description: ID del producto
+          schema:
+            type: string
+            example: 6676217872ea2c2e9458758f
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                thumbnails:
+                  type: array
+                  items:
+                    type: string
+                  example: ["https://m.media-amazon.com/images/I/5125bFpYbiL._AC_SL1000_.jpg"]
+                category:
+                  type: string
+                  example: notebooks
+      responses:
+        '200':
+          description: Producto editado con éxito
+        '400':
+          $ref: '#/components/responses/InvalidArguments'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      summary: Delete a product
+      description: Eliminar un producto existente
+      parameters:
+        - name: pid
+          in: path
+          required: true
+          description: ID del producto
+          schema:
+            type: string
+            example: 667620b572ea2c2e9458757f
+      responses:
+        '200':
+          description: Producto eliminado con éxito
+        '400':
+          $ref: '#/components/responses/InvalidArguments'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /api/carts/{cid}:
+    get:
+      summary: Get a Cart
+      description: Obtener un carrito existente
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del carrito
+          schema:
+            type: string
+            example: 665cc99d6fcf0d95f0772e79
+      responses:
+        '200':
+          description: Carrito obtenido con éxito
+        '400':
+          $ref: '#/components/responses/InvalidArguments'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      summary: Add a Cart
+      description: Crear un nuevo carrito
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Carrito creado con éxito
+        '400':
+          $ref: '#/components/responses/InvalidArguments'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      summary: Delete a cart
+      description: Eliminar un carrito existente
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del carrito
+          schema:
+            type: string
+            example: 668d6b83bc0843d28cd62b84
+      responses:
+        '200':
+          description: Carrito eliminado con éxito
+        '400':
+          $ref: '#/components/responses/InvalidArguments'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /api/carts/{cid}/products/{pid}:
+    post:
+      summary: Add a product to a cart
+      description: Agregar un producto a un carrito
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del carrito
+          schema:
+            type: string
+            example: 665cc99d6fcf0d95f0772e79
+        - name: pid
+          in: path
+          required: true
+          description: ID del producto
+          schema:
+            type: string
+            example: 6637a29a72cd4d753e85a631
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Producto agregado al carrito con éxito
+        '400':
+          $ref: '#/components/responses/InvalidArguments'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      summary: Delete a product from a cart
+      description: Eliminar un producto de un carrito
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del carrito
+          schema:
+            type: string
+            example: 665cc99d6fcf0d95f0772e79
+        - name: pid
+          in: path
+          required: true
+          description: ID del producto
+          schema:
+            type: string
+            example: 6637a29a72cd4d753e85a631
+      responses:
+        '200':
+          description: Producto eliminado del carrito con éxito
+        '400':
+          $ref: '#/components/responses/InvalidArguments'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /api/carts/{cid}/products/put:
+    put:
+      summary: Update quantity of a product
+      description: Actualizar la cantidad de un producto en el carrito
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          description: ID del carrito
+          schema:
+            type: string
+            example: 665cc99d6fcf0d95f0772e79
+        - name: pid
+          in: path
+          required: true
+          description: ID del producto
+          schema:
+            type: string
+            example: 6637a29a72cd4d753e85a631
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                quantity:
+                  type: integer
+                  example: 3
+      responses:
+        '200':
+          description: Cantidad del producto actualizada con éxito
+        '400':
+          $ref: '#/components/responses/InvalidArguments'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  responses:
+    DataTypeError:
+      description: Error en el tipo de dato
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: DATA_TYPE
+    InvalidArguments:
+      description: Argumentos inválidos
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: INVALID_ARGUMENTS
+    AuthenticationError:
+      description: Error de autenticación
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: AUTHENTICATION
+    AuthorizationError:
+      description: Error de autorización
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: AUTHORIZATION
+    NotFoundError:
+      description: No encontrado
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: NOT_FOUND
+    InternalServerError:
+      description: Error interno del servidor
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string

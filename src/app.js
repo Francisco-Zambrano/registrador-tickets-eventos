@@ -1,5 +1,5 @@
 import express from "express";
-import mongoose from 'mongoose';
+import mongoose, { version } from 'mongoose';
 import { Server } from "socket.io";
 import { engine } from "express-handlebars";
 import cookieParser from 'cookie-parser';
@@ -17,6 +17,8 @@ import { config } from "./config/config.js";
 import { productsModel } from "./dao/models/productsModel.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 import { logger, addLogger } from "./utils/logger.js";
+import swaggerJSDoc from "swagger-jsdoc";
+import swaggerUI from "swagger-ui-express"
 
 
 const app = express();
@@ -55,6 +57,22 @@ app.get('/loggerTest', (req, res) => {
 });
 
 app.use(errorHandler);
+
+const options = {
+
+    definition:{
+        openapi: "3.0.0",
+        info: {
+            title: "Api Products and Carts",
+            version: "1.0.0",
+            description: "Products and Carts API documentation"
+        },
+    },
+    apis: ["./docs/*.yaml"]
+
+};
+const spec = swaggerJSDoc(options)
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(spec));
 
 const expressServer = app.listen(PORT, () => {
     logger.info(`Running server on port: ${PORT}`)

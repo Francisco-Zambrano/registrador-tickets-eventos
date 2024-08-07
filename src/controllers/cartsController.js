@@ -44,24 +44,11 @@ export class cartsController {
         }
     };
 
-    // static addProductOnCart = async (req, res, next) => {
-    //     try {
-    //         const { cid, pid } = req.params;
-    //         logger.debug(`Adding product to cart - Cart ID: ${cid}, Product ID: ${pid}`);
-    //         const cart = await cartRepository.addProduct(cid, pid);
-    //         res.json({ msg: 'Product added to cart', cart: new CartDTO(cart) });
-    //     } catch (error) {
-    //         next(error);
-    //     }
-    // };
-
-
     static addProductOnCart = async (req, res, next) => {
         try {
             const { cid, pid } = req.params;
             logger.debug(`Adding product to cart - Cart ID: ${cid}, Product ID: ${pid}`);
             
-            // Buscar el producto
             const product = await productRepository.getById(pid);
             if (!product) {
                 throw CustomError.createError(
@@ -72,7 +59,6 @@ export class cartsController {
                 );
             }
 
-            // Verificar si el usuario premium es el dueño del producto
             if (req.user.role === 'premium' && product.owner.toString() === req.user._id.toString()) {
                 throw CustomError.createError(
                     "ForbiddenError",
@@ -88,11 +74,6 @@ export class cartsController {
             next(error);
         }
     };
-
-
-
-
-
 
     static deleteCart = async (req, res, next) => {
         try {

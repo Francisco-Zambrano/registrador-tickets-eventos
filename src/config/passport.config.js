@@ -1,5 +1,6 @@
 import passport from "passport";
 import local from "passport-local";
+import { Strategy as GitHubStrategy } from "passport-github2";
 import { Strategy as JwtStrategy, ExtractJwt } from "passport-jwt";
 import { DaoFactory } from "../dao/DaoFactory.js";
 import { UserRepository } from "../repositories/UserRepository.js";
@@ -16,6 +17,7 @@ const cartRepository = new CartRepository(cartDao);
 const SECRET_KEY = config.SECRET;
 
 export const initPassport = () => {
+
     passport.use(
         "register",
         new local.Strategy(
@@ -25,19 +27,17 @@ export const initPassport = () => {
             },
             async (req, username, password, done) => {
                 try {
-                    console.log("Registering user:", username);
                     const { first_name, last_name, age, role = 'user' } = req.body;
+                    
                     if (!first_name || !last_name || !age) {
-                        console.log("Missing fields");
                         return done(null, false, { message: 'All fields are required' });
                     }
-
+    
                     const exist = await userRepository.getBy({ email: username });
                     if (exist) {
-                        console.log("Email already exists:", username);
                         return done(null, false, { message: 'Email already exists' });
                     }
-
+    
                     const newCart = await cartRepository.create({ products: [] });
                     const hashedPassword = generateHash(password);
                     const user = await userRepository.create({ 
@@ -49,11 +49,9 @@ export const initPassport = () => {
                         cart: newCart.id, 
                         role
                     });
-
-                    console.log("User registered successfully:", user);
+    
                     return done(null, user);
                 } catch (error) {
-                    console.error("Error during registration:", error);
                     return done(error);
                 }
             }
@@ -127,49 +125,41 @@ export const initPassport = () => {
         )
     );
 
-
-
-
-    // --GITHUB STRATEGY--    
-    // passport.use(
-    //     "github",
-    //     new github.Strategy(
-    //         {
-    //             clientID: config.CLIENT_ID,
-    //             clientSecret: config.CLIENT_SECRET,
-    //             callbackURL: config.CALLBACK_URL
-    //         },
-    //         async (tokenAcceso, tokenRefresh, profile, done) => {
-
-    //             try {
-    //                 const email = profile._json.email;
-    //                 const name = profile._json.name;
-    //                 if (!name || !email) {
-    //                     return done(null, false, { message: 'GitHub profile missing email or name' });
-    //                 }
-    //                 let user = await userManager.getBy({ email });
-    //                 if (!user) {
-    //                     const newCart = await cartManager.createCart();
-    //                     user = await userManager.create({
-    //                         name, email, profile,cart: newCart._id
-    //                     });
-    //                 }
-
-    //                 return done(null, user);
-    //             } catch (error) {
-    //                 return done(error);
-    //             }
-    //         }
-    //     )
-    // );
-
-    // passport.serializeUser((user, done) => {
-    //     done(null, user._id);
-    // });
-
-    // passport.deserializeUser(async(id, done)=>{
-    //     let user=await userManager.getBy({_id:id})
-    //     return done(null, user)
-    // })
+    passport.use(
+        "github",
+        new GitHubStrategy(
+            {
+                clientID: config.CLIENT_ID,
+                clientSecret: config.CLIENT_SECRET,
+                callbackURL: config.CALLBACK_URL,
+                passReqToCallback: true
+            },
+            async (accessToken, refreshToken, profile, done) => {
+                try {
+                    const email = profile._json.email;
+                    const name = profile._json.name;
+    
+                    if (!name || !email) {
+                        return done(null, false, { message: 'GitHub profile missing email or name' });
+                    }
+    
+                    let user = await userRepository.getBy({ email });
+    
+                    if (!user) {
+                        const newCart = await cartRepository.create({ products: [] });
+                        user = await userRepository.create({
+                            first_name: name,
+                            email,
+                            cart: newCart.id
+                        });
+                    }
+    
+                    return done(null, user);
+                } catch (error) {
+                    return done(error);
+                }
+            }
+        )
+    );
 
 };

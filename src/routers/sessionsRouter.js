@@ -7,6 +7,7 @@ import { UserDTO } from "../dto/UserDTO.js";
 import { UserRepository } from "../repositories/UserRepository.js";
 import { mailTransporter } from "../middleware/mailTransporter.js";
 import { UserController } from "../controllers/userController.js";
+import { auth } from "../middleware/auth.js";
 
 
 const daoType = process.env.DAO_TYPE || 'mongo';
@@ -17,13 +18,19 @@ const userRepository = new UserRepository(userDao);
 const router = Router();
 const SECRET_KEY = config.SECRET;
 
-router.post('/register', passport.authenticate("register", {
+router.post('/register', (req, res, next) => {
 
-   failureRedirect: "/api/sessions/error",
-   session: false
-}), (req, res) => {
-   res.status(201).json({ payload: `successful registration`, user: req.user });
+   passport.authenticate("register", (err, user, info) => {
+       if (err) {
+           return res.status(500).json({ error: "Internal server error" });
+       }
+       if (!user) {
+           return res.status(400).json({ error: info.message });
+       }
 
+       res.status(201).json({ Message: `successful registration`, payload: user });
+   })(req, res, next);
+   
 });
 
 router.post("/login", passport.authenticate("login", {
@@ -34,7 +41,7 @@ router.post("/login", passport.authenticate("login", {
    const user = req.user;
    const token = jwt.sign({ id: user._id, email: user.email }, SECRET_KEY, { expiresIn: '1h' });
    res.cookie('token', token, { httpOnly: true, maxAge: 3600000 });
-   res.status(200).json({ payload: "successful login" });
+   res.status(200).json({ Message: "successful login", payload: user });
 
 });
 
@@ -43,6 +50,12 @@ router.get('/logout', (req, res) => {
    res.clearCookie('token');
    res.status(200).json({ payload: "successful logout" });
 
+});
+
+router.get('/profile', auth, (req, res) => {
+   res.status(200).json({
+       user: req.user
+   });
 });
 
 router.get('/error', (req, res) => {

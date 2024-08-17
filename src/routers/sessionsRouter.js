@@ -37,18 +37,27 @@ router.post("/login", passport.authenticate("login", {
 
    failureRedirect: "/api/sessions/error",
    session: false
-}), (req, res) => {
+}), async (req, res) => {
    const user = req.user;
+   
+   await userRepository.update(user._id, { last_connection: new Date() });
+   
    const token = jwt.sign({ id: user._id, email: user.email }, SECRET_KEY, { expiresIn: '1h' });
    res.cookie('token', token, { httpOnly: true, maxAge: 3600000 });
-   res.status(200).json({ Message: "successful login", payload: user });
+   res.status(200).json({ message: "successful login", payload: user });
 
 });
 
-router.get('/logout', (req, res) => {
+router.get('/logout', async (req, res) => {
 
+   const userId = req.user?.id;  
+
+   if (userId) {
+      await userRepository.update(userId, { last_connection: new Date() });
+   }
+   
    res.clearCookie('token');
-   res.status(200).json({ payload: "successful logout" });
+   res.status(200).json({ message: "successful logout" });
 
 });
 

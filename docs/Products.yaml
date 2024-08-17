@@ -1,63 +1,90 @@
 paths:
   /api/products:
+
     get:
       summary: Get Products
-      description: Obtener productos con paginación y ordenamiento
+      description: Get products with pagination and sorting
       parameters:
         - name: limit
           in: query
-          description: Limitar el número de productos
+          description: Limit the number of products
           required: false
           schema:
             type: integer
         - name: page
           in: query
-          description: Página de resultados
+          description: Results page
           required: false
           schema:
             type: integer
         - name: sort
           in: query
-          description: Ordenar productos (asc/desc)
+          description: Sort products (asc/desc)
           required: false
           schema:
             type: string
             enum: [asc, desc]
       responses:
         '200':
-          description: Productos obtenidos con éxito
+          description: Successfully obtained products
         '400':
-          description: Error en los parámetros de consulta
+          description: Query parameters error
         '500':
-          description: Error interno del servidor
+          description: Internal Server Error
+
     post:
       summary: Post a product
-      description: Crear un nuevo producto
+      description: Create a new product
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
+              properties:
+                title:
+                  type: string
+                  description: "Product Title"
+                  example: "Example Product"
+                description:
+                  type: string
+                  description: "Description"
+                  example: "Description of the product"
+                price:
+                  type: number
+                  description: "price"
+                  example: 100
+                code:
+                  type: string
+                  description: "unique code"
+                  example: "PROD001"
+                stock:
+                  type: integer
+                  description: "quantity"
+                  example: 100
+                thumbnail:
+                  type: string
+                  description: "image URL"
+                  example: "https://example.com/imagen.jpg"
       responses:
         '201':
-          description: Producto creado con éxito
+          description: Product Successfully created
         '400':
-          description: Error en los datos enviados
+          description: Data Error
         '500':
-          description: Error interno del servidor
-  /api/products/{pid}:
+          description: Server Error
+
     put:
       summary: Edit a product
-      description: Editar un producto existente
+      description: Edit an existing product
       parameters:
         - name: pid
           in: path
           required: true
-          description: ID del producto
+          description: Product ID
           schema:
             type: string
-            example: 6676217872ea2c2e9458758f
+            example: 
       requestBody:
         required: true
         content:
@@ -69,67 +96,16 @@ paths:
                   type: array
                   items:
                     type: string
-                  example: ["https://m.media-amazon.com/images/I/5125bFpYbiL._AC_SL1000_.jpg"]
+                  example: imageURL
                 category:
                   type: string
                   example: notebooks
       responses:
         '200':
-          description: Producto editado con éxito
+          description: Successfully edited product
         '400':
-          description: Error en los datos enviados
+          description: Data Error
         '404':
-          description: Producto no encontrado
+          description: Product not found
         '500':
-          description: Error interno del servidor
-    delete:
-      summary: Delete a product
-      description: Eliminar un producto existente
-      parameters:
-        - name: pid
-          in: path
-          required: true
-          description: ID del producto
-          schema:
-            type: string
-            example: 667620b572ea2c2e9458757f
-      responses:
-        '200':
-          description: Producto eliminado con éxito
-        '400':
-          description: Error en los datos enviados
-        '404':
-          description: Producto no encontrado
-        '500':
-          description: Error interno del servidor
-components:
-  responses:
-    DataTypeError:
-      description: Error en el tipo de dato
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-                example: DATA_TYPE
-    InvalidArguments:
-      description: Argumentos inválidos
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
-                example: INVALID_ARGUMENTS
-    AuthenticationError:
-      description: Error de autenticación
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
+          description: Server Error

@@ -1,5 +1,6 @@
 paths:
   /api/products:
+
     get:
       summary: Get Products
       description: Obtener productos con paginación y ordenamiento
@@ -30,6 +31,7 @@ paths:
           $ref: '#/components/responses/InvalidArguments'
         '500':
           $ref: '#/components/responses/InternalServerError'
+    
     post:
       summary: Post a product
       description: Crear un nuevo producto
@@ -47,6 +49,7 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
   /api/products/{pid}:
+    
     put:
       summary: Edit a product
       description: Editar un producto existente
@@ -82,6 +85,7 @@ paths:
           $ref: '#/components/responses/NotFoundError'
         '500':
           $ref: '#/components/responses/InternalServerError'
+    
     delete:
       summary: Delete a product
       description: Eliminar un producto existente
@@ -103,6 +107,7 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
   /api/carts/{cid}:
+    
     get:
       summary: Get a Cart
       description: Obtener un carrito existente
@@ -123,6 +128,7 @@ paths:
           $ref: '#/components/responses/NotFoundError'
         '500':
           $ref: '#/components/responses/InternalServerError'
+    
     post:
       summary: Add a Cart
       description: Crear un nuevo carrito
@@ -139,6 +145,7 @@ paths:
           $ref: '#/components/responses/InvalidArguments'
         '500':
           $ref: '#/components/responses/InternalServerError'
+    
     delete:
       summary: Delete a cart
       description: Eliminar un carrito existente
@@ -160,6 +167,7 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
   /api/carts/{cid}/products/{pid}:
+    
     post:
       summary: Add a product to a cart
       description: Agregar un producto a un carrito
@@ -193,6 +201,7 @@ paths:
           $ref: '#/components/responses/NotFoundError'
         '500':
           $ref: '#/components/responses/InternalServerError'
+    
     delete:
       summary: Delete a product from a cart
       description: Eliminar un producto de un carrito
@@ -221,6 +230,7 @@ paths:
         '500':
           $ref: '#/components/responses/InternalServerError'
   /api/carts/{cid}/products/put:
+    
     put:
       summary: Update quantity of a product
       description: Actualizar la cantidad de un producto en el carrito

@@ -30,13 +30,11 @@ class UserController {
                 throw new CustomError('User not found', TYPES_OF_ERROR.NOT_FOUND);
             }
 
-            // trato de comparar la contraseña guardada con la nueva
             const isSamePassword = await bcrypt.compare(newPassword, user.password);
             if (isSamePassword) {
                 throw new CustomError('New password cannot be the same as the old password', TYPES_OF_ERROR.INVALID_ARGUMENTS);
             }
 
-            // acá logré hacer hasheo de la password
             const salt = await bcrypt.genSalt(10);
             const hashedPassword = await bcrypt.hash(newPassword, salt);
 
@@ -71,6 +69,39 @@ class UserController {
             next(error);
         }
     };
+
+    static async uploadDocuments(req, res, next) {
+
+        const { uid } = req.params;
+        const files = req.files;
+
+        try {
+
+            const user = await userRepository.findById(uid);
+            if (!user) {
+                throw new CustomError('User not found', TYPES_OF_ERROR.NOT_FOUND)
+            }
+
+            if (!files || files.length === 0) {
+                return res.status(400).json({ error: "No files were uploaded" });
+            }
+
+            const documents = files.map(file => ({
+                name: file.originalname,
+                reference: file.path,
+            }));
+
+            user.documents = [...user.documents, ...documents];
+
+            await userRepository.update(uid, {documents: user.documents})
+
+            res.json({message: 'Documents uploades successfylly', documents})
+
+        } catch(error){
+            next(error);
+        }
+
+    }
 
 };
 

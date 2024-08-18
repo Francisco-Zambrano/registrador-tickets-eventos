@@ -52,23 +52,64 @@ class UserController {
         }
     };
 
+
     static async changeUserRole(req, res, next) {
         const { uid } = req.params;
 
         try {
+
             const user = await userRepository.findById(uid);
             if (!user) {
                 throw new CustomError('User not found', TYPES_OF_ERROR.NOT_FOUND);
             }
 
-            const newRole = user.role === 'user' ? 'premium' : 'user';
-            await userRepository.update(user._id, { role: newRole });
+            if (user.role !== 'user') {
+                return res.json({ msg: 'The user already has the premium role' });
+            }
 
-            res.json({ msg: `User role updated to ${newRole}`, user });
+            const requiredDocuments = ['Identificación', 'Comprobante de domicilio', 'Comprobante de estado de cuenta'];
+            
+            const documentTypes = {
+                Identificación: 0,
+                'Comprobante de domicilio': 0,
+                'Comprobante de estado de cuenta': 0
+            };
+
+            user.documents.forEach(doc => {
+
+                const fileName = doc.name.toLowerCase();
+                
+                if (fileName.includes('identificación') || fileName.includes('id')) {
+                    documentTypes.Identificación++;
+                } else if (fileName.includes('domicilio')) {
+                    documentTypes['Comprobante de domicilio']++;
+                } else if (fileName.includes('cuenta') || fileName.includes('estado de cuenta')) {
+                    documentTypes['Comprobante de estado de cuenta']++;
+                }
+
+            });
+
+            if (Object.values(documentTypes).every(count => count > 0)) {
+
+                const newRole = 'premium';
+                await userRepository.update(user._id, { role: newRole });
+
+                return res.json({ msg: `User role updated to ${newRole}`, user });
+
+            } else {
+
+                return res.status(400).json({
+                    msg: 'Some documents are missing, Please check file names'
+                });
+
+            }
+
         } catch (error) {
+            console.error(error);
             next(error);
         }
-    };
+    }
+
 
     static async uploadDocuments(req, res, next) {
 
@@ -92,7 +133,6 @@ class UserController {
             }));
 
             user.documents = [...user.documents, ...documents];
-
             await userRepository.update(uid, {documents: user.documents})
 
             res.json({message: 'Documents uploades successfylly', documents})

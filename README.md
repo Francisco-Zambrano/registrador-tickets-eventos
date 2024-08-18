@@ -1,48 +1,75 @@
-# TERCERA PRÁCTICA INTEGRADORA
+# Cuarta Práctica Integradora
 
-# Sistema de recuperación de contraseña
+## Configuración Inicial
 
-Para iniciar el servidor, ejecutar:
+1. Clona el repositorio en tu máquina local.
+2. Modifica el archivo `.env` según los parámetros enviados. Este archivo debe contener las configuraciones necesarias para la ejecución del proyecto, como las credenciales de la base de datos, puertos, etc.
+
+## Ejecución del Proyecto
+
+Para iniciar el servidor de desarrollo, ejecuta el siguiente comando:
+
+```
 npm run dev
-
-Para revisar el proyecto, seguir las siguientes recomendaciones
-
-## 1. Registro de un usuario
-
-POST: Login de un usuario.
-
-```http
-http://localhost:8080/register
 ```
 
-## 2. Login del Usuario
+El servidor se iniciará en el puerto especificado en tu archivo .env, por defecto en http://localhost:8080.
 
-POST: Ingresar a login y hacer click en "Forgot your password? Click Here".
+## API Endpoints
 
-```http
-http://localhost:8080/login
-```
+1. Iniciar Sesión
+Para iniciar sesión como un usuario, realiza una petición POST a la siguiente URL:
 
-## 3. Restablecer contraseña
+URL: http://localhost:8080/api/sessions/login
+Método: POST
+Body (raw JSON):
+json
+Copy code
+{
+    "email": "juana@test.com", 
+    "password": "123"
+}
 
-Post: ingresar el mail de usuario registrado
+2. Cambiar Rol de Usuario a Premium
+Para cambiar el rol de un usuario a premium, primero debes intentar realizar la petición para verificar si falta algún documento:
 
-```http
- http://localhost:8080/mail
-```
+URL: http://localhost:8080/api/users/premium/uid
+Método: POST
+Parámetro URL: uid = 665e77e65acc9c9959341795 (ID de usuario para pruebas)
+Si los documentos faltan, se mostrará el siguiente mensaje: 'Some documents are missing, Please check file names'.
 
-## 4. Revisar la casilla del mail y hacer click en el botón "Reset Password"
-## 5. se abrirá una nueva venta en el cual deberá ingresar la nueva contraseña
-## 6. Luego se redirige al usuario al Login. Deberá ingresar su mail y su nueva contraseña
+3. Subir Documentos Requeridos
+Sube los documentos necesarios para cambiar el rol del usuario a premium:
 
-```http
- http://localhost:8080/login
-```
+URL: http://localhost:8080/api/users/uid/documents
+Método: POST
+Body (form-data):
+key: document
+file: archivo local llamado "comprobante de domicilio"
+key: document
+file: archivo local llamado "comprobante de estado de cuenta"
+key: document
+file: archivo local llamado "identificación"
+Al subir correctamente los documentos, se mostrará el mensaje: 'Documents uploaded successfully' y un array con los documentos subidos.
 
-## 4. Establecer un nuevo rol del user.
+4. Cambiar Rol de Usuario a Premium (Nuevamente)
+Después de subir los documentos, realiza nuevamente la petición para cambiar el rol del usuario:
 
-POST: al ingresar a la siguiente dirección, podrá cambiar el role del usuario de "user" a "premium" y viceversa.
+URL: http://localhost:8080/api/users/premium/uid
+Método: POST
+Parámetro URL: uid = 665e77e65acc9c9959341795 (ID de usuario para pruebas)
+Si todo es correcto, se mostrará el mensaje: 'User role updated to premium' y se listarán los documentos subidos.
+Al hacer la petición nuvemante, deberá mostrar el mensaje: 'The user already has the premium role'
 
-```http
- http://localhost:8080/api/sessions/register
-```
+5. Subir Documentos a Carpetas Específicas
+Para subir documentos específicos a las carpetas documents, products, y profiles:
+
+URL: http://localhost:8080/api/users/uid/documents
+Método: POST
+Body (form-data):
+key: profile
+file: archivo local (perfil)
+key: document
+file: archivo local (documento)
+key: product
+file: archivo local (producto)

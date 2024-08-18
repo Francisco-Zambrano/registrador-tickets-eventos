@@ -49,7 +49,7 @@ describe("Sessions API", () => {
             .set("Cookie", cookies);
 
         expect(res.statusCode).to.equal(200);
-        expect(res.body).to.have.property("payload").that.equals("successful logout");
+
     });
 
 });

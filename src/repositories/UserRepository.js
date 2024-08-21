@@ -20,4 +20,8 @@ export class UserRepository {
       return await this.dao.findById(id);
     }
 
+    async getAllUsers() {
+      return await this.dao.getAllUsers();
+    }
+
 };

@@ -18,5 +18,8 @@ export class UserDAO {
     async findById(id) {
         return await userModel.findById(id);
     }
+    async getAllUsers() {
+        return await userModel.find({}).lean();
+    }
 
 };

@@ -6,6 +6,7 @@ import { TYPES_OF_ERROR } from '../utils/errorTypes.js';
 import { logger } from '../utils/logger.js';
 import { config } from '../config/config.js';
 import { UserDAO } from '../dao/userDAO.js';
+import { UserDTO } from '../dto/UserDTO.js';
 
 
 const SECRET_KEY = config.SECRET;
@@ -139,6 +140,27 @@ class UserController {
 
         } catch(error){
             next(error);
+        }
+
+    }
+
+    static async getAllUsers(req, res) {
+
+        try {
+
+            const users = await userRepository.getAllUsers();
+            const usersDTO = users.map(user => {
+                return {
+                    name: `${user.first_name} ${user.last_name}`,
+                    email: user.email,
+                    role: user.role
+                }
+            });
+
+            res.status(200).json(usersDTO)
+
+        } catch (error) {
+            res.status(500).json({error: 'Error getting users'})
         }
 
     }

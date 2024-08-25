@@ -59,15 +59,6 @@ export class cartsController {
                 );
             }
 
-            if (req.user.role === 'premium' && product.owner.toString() === req.user._id.toString()) {
-                throw CustomError.createError(
-                    "ForbiddenError",
-                    new Error('Cannot add your own product to the cart'),
-                    'Cannot add your own product to the cart',
-                    TYPES_OF_ERROR.FORBIDDEN
-                );
-            }
-
             const cart = await cartRepository.addProduct(cid, pid);
             res.json({ msg: 'Product added to cart', cart: new CartDTO(cart) });
         } catch (error) {

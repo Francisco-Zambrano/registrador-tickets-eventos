@@ -969,3 +969,305 @@
 {"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-21T23:01:15.471Z"}
 {"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-21T23:01:25.590Z"}
 {"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-21T23:01:26.207Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T14:49:09.539Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T14:49:10.218Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T15:50:20.291Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T15:50:21.116Z"}
+{"level":"error","message":"error deleting inactive users","timestamp":"2024-08-24T15:50:59.754Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T15:52:13.724Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T15:52:14.693Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T16:00:54.810Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T16:00:55.642Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T16:08:56.478Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T16:08:57.253Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T16:09:07.686Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T16:09:08.302Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T16:12:45.040Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T16:12:45.781Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T16:14:40.292Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T16:14:40.978Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T16:15:49.560Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T16:15:50.662Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T16:30:13.570Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T16:30:14.242Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T16:33:12.240Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T16:33:13.119Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T16:34:36.917Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T16:34:37.826Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T16:41:37.141Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T16:41:38.169Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T16:41:56.300Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T16:41:56.963Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T16:57:56.964Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T16:57:57.718Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T16:58:22.210Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T16:58:22.808Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T17:00:27.852Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T17:00:28.646Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T17:00:57.878Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T17:00:58.465Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T17:01:06.647Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T17:01:07.239Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T17:03:49.141Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T17:03:49.819Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T17:35:59.297Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T17:36:00.171Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T17:44:39.431Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T17:44:40.170Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T17:49:43.500Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T17:49:44.402Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T17:51:37.451Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T17:51:38.305Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T17:58:27.952Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T17:58:28.575Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T18:05:19.851Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T18:05:20.695Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T18:05:32.413Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T18:05:33.022Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T18:08:22.098Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T18:08:23.085Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T18:09:01.846Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T18:09:02.420Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T18:28:47.597Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T18:28:48.203Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T18:31:44.101Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T18:31:44.826Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T18:39:07.176Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T18:39:08.111Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T18:40:02.097Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T18:40:02.684Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T18:40:54.150Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T18:40:54.915Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T18:41:53.786Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T18:41:54.466Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T18:42:10.650Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T18:42:11.254Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T18:42:53.648Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T18:42:54.389Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T18:43:40.031Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T18:43:40.919Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T18:49:13.418Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T18:49:14.059Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T18:52:42.317Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T18:52:43.229Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T18:53:39.327Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T18:53:39.935Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T18:53:54.707Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T18:53:55.452Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T19:54:50.931Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T19:54:51.925Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T19:56:49.147Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T19:56:50.217Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T20:07:35.394Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T20:07:36.136Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T20:07:51.937Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T20:07:52.520Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T20:08:25.602Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T20:08:26.199Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T20:08:40.464Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T20:08:41.376Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T20:14:54.807Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T20:14:55.767Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T20:15:38.301Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T20:15:38.882Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T20:16:30.301Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T20:16:30.992Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T20:19:47.749Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T20:19:48.620Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T20:20:06.602Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T20:20:07.186Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T20:30:21.327Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T20:30:22.277Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T20:30:34.604Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T20:30:35.188Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T20:30:45.054Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T20:30:45.633Z"}
+{"level":"error","message":"error deleting inactive users","timestamp":"2024-08-24T20:30:54.816Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T20:31:52.095Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T20:31:53.057Z"}
+{"level":"error","message":"error deleting inactive users","timestamp":"2024-08-24T20:31:54.780Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T20:39:12.107Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T20:39:12.707Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T20:39:56.829Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T20:39:57.422Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T20:41:13.042Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T20:41:13.701Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T20:42:16.538Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T20:42:17.478Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T20:42:25.595Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T20:42:27.052Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T20:42:27.650Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T20:46:47.372Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T20:46:48.274Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T20:50:59.372Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T20:51:00.090Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T22:11:01.547Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T22:11:02.245Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T22:11:15.202Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T22:11:15.788Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T22:15:33.600Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T22:15:35.281Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T22:15:35.863Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T22:15:44.429Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T22:15:45.038Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T22:33:06.342Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T22:33:07.138Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T22:34:05.629Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T22:34:06.296Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T22:34:49.026Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T22:34:49.874Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T22:36:54.072Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T22:36:54.841Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T22:37:17.550Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T22:37:18.122Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T22:37:32.452Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T22:37:33.120Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T22:38:21.683Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T22:38:22.445Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T22:39:44.355Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T22:39:45.244Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T22:39:51.506Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T22:39:52.101Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T22:39:55.416Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T22:39:56.006Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T22:41:00.921Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T22:41:01.697Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T22:41:33.502Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T22:41:34.123Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T22:45:43.034Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T22:45:43.644Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T22:45:57.557Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T22:45:58.138Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T22:52:47.345Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T22:52:48.302Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T22:54:31.970Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T22:54:32.855Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T22:55:55.053Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T22:55:56.305Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T22:55:57.745Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T22:55:59.570Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T22:56:00.180Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T23:37:34.856Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T23:37:35.639Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T23:38:21.557Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T23:38:22.166Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T23:38:31.150Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T23:38:31.752Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T23:40:46.081Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T23:40:48.677Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T23:40:49.353Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T23:45:54.579Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T23:45:55.413Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T23:46:48.881Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T23:46:49.473Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T23:47:03.796Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T23:47:04.766Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T23:47:12.703Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T23:47:13.301Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T23:47:23.924Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T23:47:24.516Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T23:47:45.151Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T23:47:45.817Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T23:47:48.466Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T23:47:49.834Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T23:47:50.489Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-24T23:48:52.530Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-24T23:48:53.174Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T14:45:29.484Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T14:45:30.420Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T14:54:53.398Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T14:54:54.169Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T14:56:32.094Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T14:56:33.126Z"}
+{"level":"error","message":"error deleting inactive users","timestamp":"2024-08-25T14:56:57.035Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T15:00:23.483Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T15:00:24.366Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T16:00:52.821Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T16:00:53.550Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T16:02:14.355Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T16:02:15.236Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T16:04:57.612Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T16:04:58.405Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T16:13:24.919Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T16:13:25.985Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T16:13:50.141Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T16:13:50.721Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T16:14:38.918Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T16:14:39.925Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T16:19:14.067Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T16:19:15.224Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T16:21:45.216Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T16:21:46.059Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T16:21:57.359Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T16:21:57.956Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T16:22:09.680Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T16:22:10.286Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T16:22:17.165Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T16:22:17.762Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T16:22:21.747Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T16:22:22.329Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T16:22:27.084Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T16:22:27.672Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T16:24:46.643Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T16:24:47.461Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T16:26:33.458Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T16:26:34.074Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T16:45:23.192Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T16:45:24.032Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T16:47:30.399Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T16:47:31.142Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T17:24:10.538Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T17:24:11.485Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T17:24:27.821Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T17:24:28.421Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T18:06:12.282Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T18:06:13.078Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T18:07:59.779Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T18:08:00.718Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T18:09:03.614Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T18:09:04.466Z"}
+{"level":"error","message":"Error fetching users: userRepository is not defined","stack":"ReferenceError: userRepository is not defined\n    at getConfig (file:///C:/Users/Fran/Documents/GitHub/registrador-tickets-eventos/src/controllers/viewsController.js:87:27)\n    at Layer.handle [as handle_request] (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at isAdmin (file:///C:/Users/Fran/Documents/GitHub/registrador-tickets-eventos/src/middleware/roleAuth.js:4:9)\n    at Layer.handle [as handle_request] (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at complete (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\passport\\lib\\middleware\\authenticate.js:280:13)\n    at C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\passport\\lib\\middleware\\authenticate.js:287:15\n    at pass (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\passport\\lib\\authenticator.js:446:14)\n    at Authenticator.transformAuthInfo (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\passport\\lib\\authenticator.js:468:5)","timestamp":"2024-08-25T18:09:34.660Z"}
+{"level":"error","message":"Error fetching users: userRepository is not defined","stack":"ReferenceError: userRepository is not defined\n    at getConfig (file:///C:/Users/Fran/Documents/GitHub/registrador-tickets-eventos/src/controllers/viewsController.js:87:27)\n    at Layer.handle [as handle_request] (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at isAdmin (file:///C:/Users/Fran/Documents/GitHub/registrador-tickets-eventos/src/middleware/roleAuth.js:4:9)\n    at Layer.handle [as handle_request] (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at complete (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\passport\\lib\\middleware\\authenticate.js:280:13)\n    at C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\passport\\lib\\middleware\\authenticate.js:287:15\n    at pass (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\passport\\lib\\authenticator.js:446:14)\n    at Authenticator.transformAuthInfo (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\passport\\lib\\authenticator.js:468:5)","timestamp":"2024-08-25T18:10:55.351Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T18:11:16.422Z"}
+{"level":"error","message":"Error fetching users: userRepository is not defined","stack":"ReferenceError: userRepository is not defined\n    at getConfig (file:///C:/Users/Fran/Documents/GitHub/registrador-tickets-eventos/src/controllers/viewsController.js:87:27)\n    at Layer.handle [as handle_request] (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\index.js:284:15\n    at Function.process_params (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at Function.handle (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\index.js:175:3)\n    at router (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\index.js:47:12)","timestamp":"2024-08-25T18:11:17.179Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T18:11:17.287Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T18:12:03.022Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T18:12:03.613Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T18:12:05.126Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T18:12:05.734Z"}
+{"level":"error","message":"Error fetching users: userRepository is not defined","stack":"ReferenceError: userRepository is not defined\n    at getConfig (file:///C:/Users/Fran/Documents/GitHub/registrador-tickets-eventos/src/controllers/viewsController.js:87:27)\n    at Layer.handle [as handle_request] (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\index.js:284:15\n    at Function.process_params (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at Function.handle (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\index.js:175:3)\n    at router (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\index.js:47:12)","timestamp":"2024-08-25T18:13:24.797Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T18:15:41.898Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T18:15:43.286Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T18:15:43.908Z"}
+{"level":"error","message":"Error fetching users: UserRepository.getAllUsers is not a function","stack":"TypeError: UserRepository.getAllUsers is not a function\n    at getConfig (file:///C:/Users/Fran/Documents/GitHub/registrador-tickets-eventos/src/controllers/viewsController.js:88:48)\n    at Layer.handle [as handle_request] (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\index.js:284:15\n    at Function.process_params (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at Function.handle (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\index.js:175:3)\n    at router (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\index.js:47:12)","timestamp":"2024-08-25T18:15:50.359Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T18:17:01.072Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T18:17:01.742Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T18:17:53.962Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T18:17:54.561Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T18:18:51.611Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T18:18:52.285Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T18:19:57.807Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T18:19:58.552Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T18:20:12.232Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T18:20:12.810Z"}
+{"level":"error","message":"Error fetching users: userRepository is not defined","stack":"ReferenceError: userRepository is not defined\n    at getConfig (file:///C:/Users/Fran/Documents/GitHub/registrador-tickets-eventos/src/controllers/viewsController.js:88:27)\n    at Layer.handle [as handle_request] (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\index.js:284:15\n    at Function.process_params (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at Function.handle (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\index.js:175:3)\n    at router (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\express\\lib\\router\\index.js:47:12)","timestamp":"2024-08-25T18:20:18.192Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T18:23:17.157Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T18:23:17.822Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T18:54:36.629Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T18:54:37.291Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T18:57:30.522Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T18:57:31.470Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T19:25:32.238Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T19:25:32.880Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T19:50:16.896Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T19:50:17.669Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T19:50:20.146Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T19:50:20.783Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T19:51:00.713Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T19:51:01.304Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T19:53:53.798Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T19:53:54.497Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T19:56:10.188Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T19:56:11.268Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T19:56:31.260Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T19:56:31.843Z"}

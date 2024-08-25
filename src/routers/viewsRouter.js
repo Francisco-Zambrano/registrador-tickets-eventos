@@ -32,3 +32,7 @@ router.get('/reset-password', (req, res) => {
     let { error } = req.query;
     res.status(200).render('password', { error });
 });
+
+router.get('/config', auth, isAdmin, viewsController.getConfig);
+router.post('/config/updateRole', auth, isAdmin, viewsController.updateUserRole);
+router.post('/config/deleteUser', auth, isAdmin, viewsController.deleteUser);

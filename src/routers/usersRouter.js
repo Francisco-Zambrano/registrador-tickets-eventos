@@ -10,4 +10,7 @@ router.post('/:uid/documents', upload, UserController.uploadDocuments);
 
 router.get('/', (req, res) => UserController.getAllUsers(req,res));
 
+router.delete('/inactive', UserController.deleteUsers);
+
+
 export { router };

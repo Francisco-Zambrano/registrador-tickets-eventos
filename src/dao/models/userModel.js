@@ -19,6 +19,9 @@ const userSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: "carts"
     },
+    last_connection: {
+        type: Date,
+    },
     documents: [
         {
             name: {
@@ -30,12 +33,10 @@ const userSchema = new mongoose.Schema({
                 required: true,
             }
         }
-    ],
-    last_connection: {
-        type: Date,
-    }
+    ]
 }, {
     timestamps: true,
+    type: Date,
     strict: false
 });
 

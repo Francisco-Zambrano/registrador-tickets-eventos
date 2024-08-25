@@ -15,13 +15,14 @@ export class UserRepository {
     async delete(id) {
       return await this.dao.delete(id);
     }
-
     async findById(id) {
       return await this.dao.findById(id);
     }
-
-    async getAllUsers() {
-      return await this.dao.getAllUsers();
+    async getAllUsers(query) {
+      return await this.dao.getAllUsers(query);
+    }
+    async deleteInactiveUser(date) {
+      return await this.dao.deleteMany({ last_connection: { $lt: date } });
     }
 
 };

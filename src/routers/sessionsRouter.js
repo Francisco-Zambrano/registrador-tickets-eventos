@@ -33,18 +33,28 @@ router.post('/register', (req, res, next) => {
    
 });
 
-router.post("/login", passport.authenticate("login", {
+router.post("/login", (req, res, next) => {
 
-   failureRedirect: "/api/sessions/error",
-   session: false
-}), async (req, res) => {
-   const user = req.user;
-   
-   await userRepository.update(user._id, { last_connection: new Date() });
-   
-   const token = jwt.sign({ id: user._id, email: user.email }, SECRET_KEY, { expiresIn: '1h' });
-   res.cookie('token', token, { httpOnly: true, maxAge: 3600000 });
-   res.status(200).json({ message: "successful login", payload: user });
+   passport.authenticate("login", (err, user, info) => {
+      
+       if (err) {
+           return next(err);
+       }
+       if (!user) {
+           return res.status(400).json({ message: info.message });
+       }
+       req.login(user, { session: false }, async (err) => {
+           if (err) {
+               return next(err);
+           }
+           await userRepository.update(user._id, { last_connection: new Date() });
+
+           const token = jwt.sign({ id: user._id, email: user.email }, SECRET_KEY, { expiresIn: '1h' });
+           res.cookie('token', token, { httpOnly: true, maxAge: 3600000 });
+           return res.status(200).json({ message: "successful login", payload: user });
+       });
+
+   })(req, res, next);
 
 });
 

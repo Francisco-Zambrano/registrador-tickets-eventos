@@ -1,6 +1,5 @@
 import { userModel } from "./models/userModel.js";
 
-
 export class UserDAO {
 
     async create(item) {
@@ -18,8 +17,11 @@ export class UserDAO {
     async findById(id) {
         return await userModel.findById(id);
     }
-    async getAllUsers() {
-        return await userModel.find({}).lean();
+    async getAllUsers(filter) {
+        return await userModel.find(filter).lean();
+    }
+    async deleteMany(query) {
+        return await userModel.deleteMany(query);
     }
 
 };

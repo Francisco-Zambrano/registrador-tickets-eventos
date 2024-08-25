@@ -6,7 +6,7 @@ import { TYPES_OF_ERROR } from '../utils/errorTypes.js';
 import { logger } from '../utils/logger.js';
 import { config } from '../config/config.js';
 import { UserDAO } from '../dao/userDAO.js';
-import { UserDTO } from '../dto/UserDTO.js';
+import { userDeletedMail } from '../middleware/deletedUserMail.js';
 
 
 const SECRET_KEY = config.SECRET;
@@ -52,7 +52,6 @@ class UserController {
             }
         }
     };
-
 
     static async changeUserRole(req, res, next) {
         const { uid } = req.params;
@@ -111,7 +110,6 @@ class UserController {
         }
     }
 
-
     static async uploadDocuments(req, res, next) {
 
         const { uid } = req.params;
@@ -149,15 +147,17 @@ class UserController {
         try {
 
             const users = await userRepository.getAllUsers();
-            const usersDTO = users.map(user => {
+            const allUsers = users.map(user => {
                 return {
+                    id: user._id,
                     name: `${user.first_name} ${user.last_name}`,
                     email: user.email,
-                    role: user.role
+                    role: user.role,
+                    cart: user.cart
                 }
             });
 
-            res.status(200).json(usersDTO)
+            res.status(200).json(allUsers)
 
         } catch (error) {
             res.status(500).json({error: 'Error getting users'})
@@ -165,6 +165,33 @@ class UserController {
 
     }
 
+    static async deleteUsers(req, res, next) {
+        
+        const twoDaysAgo = new Date(Date.now() - 2 * 24 * 60 * 60 * 1000);
+        
+        try {
+            
+            const inactiveUsers = await userRepository.getAllUsers({ last_connection: { $lt: twoDaysAgo } });
+    
+            if (inactiveUsers.length === 0) {
+                return res.status(200).json({ message: 'No inactive users found.' });
+            }
+    
+            for (const user of inactiveUsers) {
+                await userRepository.delete(user._id);
+                await userDeletedMail(user);
+            }
+    
+            res.status(200).json({
+                message: `${inactiveUsers.length} non-active users have been deleted.`,
+            });
+    
+        } catch (error) {
+            logger.error('Error deleting inactive users', error);
+            next(error);
+        }
+    }
+    
 };
 
 export { UserController };

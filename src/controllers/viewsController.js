@@ -2,15 +2,16 @@ import { DaoFactory } from '../dao/DaoFactory.js';
 import { ProductRepository } from '../repositories/ProductRepository.js';
 import { CartRepository } from '../repositories/CartRepository.js';
 import { ProductDTO } from '../dto/ProductDTO.js';
-import { CartDTO } from '../dto/CartDTO.js';
 import { messagesModel } from '../dao/models/messagesModel.js';
 import { logger } from '../utils/logger.js';
+import { UserRepository } from '../repositories/UserRepository.js';
 
 const daoType = process.env.DAO_TYPE || 'mongo';
-const { productDao, cartDao } = DaoFactory.getDao(daoType);
+const { productDao, cartDao, userDao } = DaoFactory.getDao(daoType);
 
 const productRepository = new ProductRepository(productDao);
 const cartRepository = new CartRepository(cartDao);
+const userRepository = new UserRepository(userDao)
 
 export class viewsController {
 
@@ -78,6 +79,40 @@ export class viewsController {
         } catch (error) {
             logger.error(`Error fetching cart: ${error.message}`);
             res.status(500).send(`Server error: ${error.message}`);
+        }
+    };
+
+
+
+    static getConfig = async (req, res) => {
+        try {
+            const users = await userRepository.getAllUsers({});
+            return res.render('config', { user: users });
+        } catch (error) {
+            logger.error('Error fetching users:', error);
+            return res.status(500).send('Server error');
+        }
+    };
+
+    static updateUserRole = async (req, res) => {
+        try {
+            const { userId, role } = req.body;
+            await userRepository.update(userId, { role });
+            return res.status(200).json({ message: 'User role updated successfully' });
+        } catch (error) {
+            logger.error('Error updating user role:', error);
+            return res.status(500).send('Server error');
+        }
+    };
+
+    static deleteUser = async (req, res) => {
+        try {
+            const { userId } = req.body;
+            await userRepository.delete(userId);
+            return res.status(200).json({ message: 'User deleted successfully' });
+        } catch (error) {
+            logger.error('Error deleting user:', error);
+            return res.status(500).send('Server error');
         }
     };
 

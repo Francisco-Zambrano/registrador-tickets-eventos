@@ -10,7 +10,7 @@ export const isAdmin = (req, res, next) => {
 
 export const isUser = (req, res, next) => {
 
-    if (req.user && req.user.role === 'user') {
+    if (req.user && (req.user.role === 'user' || req.user.role === 'premium')) {
         next();
     } else {
         res.status(403).json({ error: 'Forbidden: Access is allowed only for users' });

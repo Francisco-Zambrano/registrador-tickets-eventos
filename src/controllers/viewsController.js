@@ -16,6 +16,7 @@ const userRepository = new UserRepository(userDao)
 export class viewsController {
 
     static getProducts = async (req, res) => {
+        
         try {
             const result = await productRepository.getBy({}, { lean: true });
             if (!result || !Array.isArray(result.docs)) {
@@ -27,9 +28,11 @@ export class viewsController {
             logger.error('Error fetching products:', error);
             return res.status(500).send('Server error');
         }
+
     };
 
     static getAllProducts = async (req, res) => {
+
         try {
             const page = req.query.page ? parseInt(req.query.page) : 1;
             const limit = 8;
@@ -41,6 +44,7 @@ export class viewsController {
                 throw new Error('Invalid data');
             }
             const products = result.docs.map(product => new ProductDTO(product));
+
             return res.render('products', {
                 products,
                 page,
@@ -53,13 +57,16 @@ export class viewsController {
                 nextPage: result.nextPage,
                 user: req.user
             });
+
         } catch (error) {
             logger.error('Error fetching products:', error);
             return res.status(500).send('Server error');
         }
+
     };
 
     static getMessages = async (req, res) => {
+
         try {
             const messages = await messagesModel.find().lean();
             return res.render('chat', { messages });
@@ -67,9 +74,11 @@ export class viewsController {
             logger.error('Error fetching messages:', error);
             return res.status(500).send('Server error');
         }
+
     };
 
     static getCartById = async (req, res) => {
+
         try {
             const userCart = await cartRepository.getById(req.user.cart, { populate: 'products.id' });
             if (!userCart) {
@@ -80,11 +89,11 @@ export class viewsController {
             logger.error(`Error fetching cart: ${error.message}`);
             res.status(500).send(`Server error: ${error.message}`);
         }
+
     };
 
-
-
     static getConfig = async (req, res) => {
+
         try {
             const users = await userRepository.getAllUsers({});
             return res.render('config', { user: users });
@@ -92,9 +101,11 @@ export class viewsController {
             logger.error('Error fetching users:', error);
             return res.status(500).send('Server error');
         }
+
     };
 
     static updateUserRole = async (req, res) => {
+
         try {
             const { userId, role } = req.body;
             await userRepository.update(userId, { role });
@@ -103,9 +114,11 @@ export class viewsController {
             logger.error('Error updating user role:', error);
             return res.status(500).send('Server error');
         }
+
     };
 
     static deleteUser = async (req, res) => {
+
         try {
             const { userId } = req.body;
             await userRepository.delete(userId);
@@ -114,6 +127,7 @@ export class viewsController {
             logger.error('Error deleting user:', error);
             return res.status(500).send('Server error');
         }
+
     };
 
 };

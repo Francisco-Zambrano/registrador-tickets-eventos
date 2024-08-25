@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!cartId || !productId) {
                 console.error('Cart ID or Product ID is missing');
-                alert('Error al eliminar el producto del carrito: faltan datos');
+                alert('Error removing product from cart: missing data');
                 return;
             }
 
@@ -31,11 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                 } else {
                     location.reload();
-                    alert('Producto eliminado del carrito');
+                    alert('Product removed from cart');
                 }
             } catch (error) {
                 console.error('Error deleting product from cart:', error);
-                alert('Error al eliminar el producto del carrito');
+                alert('Error removing product from cart');
             }
         });
 

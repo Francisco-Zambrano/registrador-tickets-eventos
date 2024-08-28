@@ -1295,3 +1295,105 @@
 {"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T21:59:43.918Z"}
 {"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-25T21:59:52.419Z"}
 {"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-25T21:59:53.036Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T00:44:02.445Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T00:44:03.143Z"}
+{"level":"info","message":"A client with id: Z48Mmhhz46OPArKYAAAB has connected ","timestamp":"2024-08-27T00:45:13.677Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T00:46:50.357Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T00:46:51.346Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T00:50:03.273Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T00:50:03.988Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T00:51:21.660Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T00:51:22.774Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T01:02:59.189Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T01:03:00.086Z"}
+{"kind":"ObjectId","level":"error","message":"Error fetching products: Cast to ObjectId failed for value \"{}\" (type Object) at path \"_id\" for model \"products\"","path":"_id","reason":{},"stack":"CastError: Cast to ObjectId failed for value \"{}\" (type Object) at path \"_id\" for model \"products\"\n    at SchemaObjectId.cast (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\mongoose\\lib\\schema\\objectId.js:250:11)\n    at SchemaType.applySetters (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\mongoose\\lib\\schemaType.js:1236:12)\n    at SchemaType.castForQuery (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\mongoose\\lib\\schemaType.js:1653:17)\n    at cast (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\mongoose\\lib\\cast.js:304:34)\n    at Query.cast (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\mongoose\\lib\\query.js:4786:12)\n    at Query._castConditions (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\mongoose\\lib\\query.js:2199:10)\n    at model.Query._findOne (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\mongoose\\lib\\query.js:2513:8)\n    at model.Query.exec (C:\\Users\\Fran\\Documents\\GitHub\\registrador-tickets-eventos\\node_modules\\mongoose\\lib\\query.js:4330:80)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async ProductRepository.getById (file:///C:/Users/Fran/Documents/GitHub/registrador-tickets-eventos/src/repositories/ProductRepository.js:14:16)","stringValue":"\"{}\"","timestamp":"2024-08-27T01:03:04.688Z","value":{},"valueType":"Object"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T01:03:47.574Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T01:03:48.437Z"}
+{"level":"error","message":"Error fetching products: Invalid data","stack":"Error: Invalid data\n    at getProducts (file:///C:/Users/Fran/Documents/GitHub/registrador-tickets-eventos/src/controllers/viewsController.js:23:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2024-08-27T01:03:58.634Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T01:04:08.223Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T01:04:09.122Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T01:05:11.274Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T01:05:11.949Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T01:05:25.927Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T01:05:26.551Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T01:10:24.267Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T01:10:27.026Z"}
+{"level":"error","message":"Error fetching products: Invalid data","stack":"Error: Invalid data\n    at getProducts (file:///C:/Users/Fran/Documents/GitHub/registrador-tickets-eventos/src/controllers/viewsController.js:23:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2024-08-27T01:10:27.674Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T01:10:42.364Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T01:10:43.232Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T01:11:02.322Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T01:11:02.918Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T01:11:09.251Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T01:11:09.842Z"}
+{"level":"error","message":"Error fetching products: Invalid data","stack":"Error: Invalid data\n    at getProducts (file:///C:/Users/Fran/Documents/GitHub/registrador-tickets-eventos/src/controllers/viewsController.js:23:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2024-08-27T01:11:10.834Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T01:13:25.497Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T01:13:26.158Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T01:16:30.679Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T01:16:31.473Z"}
+{"level":"error","message":"Error fetching products: Invalid data","stack":"Error: Invalid data\n    at getProducts (file:///C:/Users/Fran/Documents/GitHub/registrador-tickets-eventos/src/controllers/viewsController.js:28:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","timestamp":"2024-08-27T01:16:32.040Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T01:18:44.167Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T01:18:45.182Z"}
+{"level":"info","message":"A client with id: Lry62jRMlKOUTo2oAAAB has connected ","timestamp":"2024-08-27T01:18:53.442Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T01:19:43.513Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T01:19:44.120Z"}
+{"level":"info","message":"A client with id: VHKPcZPuV3mdoDdtAAAB has connected ","timestamp":"2024-08-27T01:19:51.816Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T01:23:01.426Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T01:23:02.448Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T01:23:23.975Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T01:23:24.589Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T01:27:23.265Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T01:27:23.915Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T01:27:25.755Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T01:27:26.360Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T01:31:00.009Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T01:31:00.959Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T01:41:08.805Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T01:41:09.673Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T01:41:53.482Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T01:41:54.093Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T01:42:15.357Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T01:42:16.039Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T01:42:50.282Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T01:42:50.901Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T01:48:42.608Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T01:48:43.837Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T01:50:05.344Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T01:50:06.313Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T01:50:23.185Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T01:50:23.803Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T01:50:42.194Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T01:50:42.826Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T01:58:39.102Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T01:58:39.998Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T02:01:02.019Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T02:01:02.705Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T02:02:35.461Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T02:02:36.239Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-27T02:12:08.122Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-27T02:12:09.116Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-28T22:16:48.599Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-28T22:16:49.249Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-28T22:40:58.303Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-28T22:40:59.220Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-28T22:46:08.692Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-28T22:46:09.407Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-28T22:47:40.912Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-28T22:47:41.839Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-28T22:49:46.637Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-28T22:49:47.290Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-28T22:53:04.239Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-28T22:53:04.869Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-28T23:06:07.862Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-28T23:06:08.679Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-28T23:06:16.384Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-28T23:06:17.245Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-28T23:10:42.737Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-28T23:10:43.573Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-28T23:10:58.943Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-28T23:10:59.557Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-28T23:11:01.205Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-28T23:11:01.793Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-28T23:11:04.090Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-28T23:11:04.690Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-08-28T23:11:06.760Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-08-28T23:11:07.377Z"}

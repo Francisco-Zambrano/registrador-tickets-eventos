@@ -3,6 +3,8 @@ import { ProductRepository } from '../repositories/ProductRepository.js';
 import { ProductDTO } from '../dto/ProductDTO.js';
 import { CustomError } from '../utils/CustomError.js';
 import { TYPES_OF_ERROR } from '../utils/errorTypes.js';
+import { userModel } from '../dao/models/userModel.js';
+import { sendDeleteProductMail } from '../middleware/deleteProductMail.js';
 
 const daoType = process.env.DAO_TYPE || 'mongo';
 const { productDao } = DaoFactory.getDao(daoType);
@@ -67,6 +69,9 @@ export class productsController {
     static addProducts = async (req, res, next) => {
         try {
             const productData = req.body;
+    
+            productData.owner = req.user._id;
+    
             const product = await productRepository.create(productData);
             return res.status(201).json({ product: new ProductDTO(product) });
         } catch (error) {
@@ -82,7 +87,7 @@ export class productsController {
             }
         }
     };
-
+    
     static updateProduct = async (req, res, next) => {
         try {
             const { pid } = req.params;
@@ -103,21 +108,34 @@ export class productsController {
     };
 
     static deleteProduct = async (req, res, next) => {
+
         try {
+
             const { pid } = req.params;
             const deletedProduct = await productRepository.delete(pid);
+
             if (!deletedProduct) {
                 throw CustomError.createError(
                     "NotFoundError",
                     new Error(`Product with id ${pid} not found`),
-                    'Product not found',
+                    'Product not Found',
                     TYPES_OF_ERROR.NOT_FOUND
-                );
+                )
             }
-            return res.json({ message: 'Product deleted successfully' });
+
+            const ownerId = deletedProduct.owner;
+            const owner = await userModel.findById(ownerId);
+
+            if (owner && owner.role === 'premium') {
+                await sendDeleteProductMail(owner.email, deletedProduct.title);
+            }
+
+            return res.json({message: 'Product Deleted Successfully'})
+            
         } catch (error) {
-            next(error);
+            next(error);            
         }
-    };
+
+    }
 
 };

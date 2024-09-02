@@ -7,6 +7,7 @@ import { TicketDTO } from '../dto/TicketDTO.js';
 import { CustomError } from '../utils/CustomError.js';
 import { TYPES_OF_ERROR } from '../utils/errorTypes.js';
 import { logger } from '../utils/logger.js';
+import { sendPurchaseMail } from '../middleware/purchaseMail.js';
 
 const daoType = process.env.DAO_TYPE || 'mongo';
 const { cartDao, productDao } = DaoFactory.getDao(daoType);
@@ -161,57 +162,64 @@ export class cartsController {
     };
 
     static purchaseCart = async (req, res, next) => {
+
         try {
             const { cid } = req.params;
             const cart = await cartRepository.getById(cid);
-
+    
             if (!cart) {
-                throw CustomError.createError(
-                    "NotFoundError",
-                    new Error(`Cart with id ${cid} not found`),
-                    'Cart not found',
-                    TYPES_OF_ERROR.NOT_FOUND
-                );
+                return res.status(404).json({ error: `Cart with id ${cid} not found` });
             }
-
+    
             const productsToPurchase = [];
             const productsNotPurchased = [];
-
+    
             for (const item of cart.products) {
                 const product = await productRepository.getById(item.id._id);
-
+    
+                if (!product) {
+                    return res.status(404).json({ error: `Product with id ${item.id._id} not found` });
+                }
+    
                 if (product.stock >= item.quantity) {
                     product.stock -= item.quantity;
                     await productRepository.update(product._id, { stock: product.stock });
                     productsToPurchase.push({
                         ...item.id._doc,
-                        quantity: item.quantity
+                        quantity: item.quantity,
+                        price: product.price,
                     });
                 } else {
                     productsNotPurchased.push(item);
                 }
             }
-
+    
             if (productsToPurchase.length > 0) {
+
                 const amount = productsToPurchase.reduce((total, item) => total + item.quantity * item.price, 0);
                 const purchaser = req.user.email;
                 const ticketData = { amount, purchaser };
                 const ticket = await ticketRepository.create(ticketData);
 
-                cart.products = productsNotPurchased;
-                await cartRepository.update(cart.id, { products: cart.products });
+                await cartRepository.delete(cid);
 
+                await sendPurchaseMail(purchaser, productsToPurchase, amount);
+    
                 return res.status(201).json({
-                    msg: 'Purchase completed',
+                    msg: 'Purchase completed, mail sent',
                     ticket: new TicketDTO(ticket),
+                    purchasedProducts: productsToPurchase,
                     notPurchased: productsNotPurchased.map(item => item.id._id)
                 });
+
             } else {
                 return res.status(200).json({ msg: 'No products were purchased', notPurchased: productsNotPurchased.map(item => item.id._id) });
             }
+
         } catch (error) {
             next(error);
         }
-    };
+        
+    }; 
 
 };

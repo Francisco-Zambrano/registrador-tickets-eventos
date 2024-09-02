@@ -19,6 +19,8 @@ import { errorHandler } from "./middleware/errorHandler.js";
 import { logger, addLogger } from "./utils/logger.js";
 import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUI from "swagger-ui-express"
+import Handlebars from 'handlebars';
+import path from 'path';
 
 
 const app = express();
@@ -34,9 +36,19 @@ app.use(addLogger);
 initPassport();
 app.use(passport.initialize());
 
+Handlebars.registerHelper('calculateTotal', (products) => {
+
+    let total = 0;
+    products.forEach(product => {
+        total += product.id.price * product.quantity;
+    });
+    return total.toFixed(2);
+    
+})
+
 app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
-app.set('views', __dirname + '/views');
+app.set('views', path.join(__dirname + '/views'));
 
 app.use('/', viewsRouter);
 app.use('/api/products', productsRouter);
@@ -47,6 +59,7 @@ app.use('/api/mockingproducts', mockingRouter);
 app.use('/api/users', usersRouter);
 
 app.get('/loggerTest', (req, res) => {
+
     req.logger.fatal('This is a fatal log');
     req.logger.error('This is an error log');
     req.logger.warning('This is a warning log');
@@ -54,6 +67,7 @@ app.get('/loggerTest', (req, res) => {
     req.logger.http('This is a http log');
     req.logger.debug('This is a debug log');
     res.send('Logger test complete');
+    
 });
 
 app.use(errorHandler);
@@ -71,6 +85,7 @@ const options = {
     apis: ["./docs/*.yaml"]
 
 };
+
 const spec = swaggerJSDoc(options)
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(spec));
 

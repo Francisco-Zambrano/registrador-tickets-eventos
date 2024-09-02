@@ -5,6 +5,10 @@ import { ProductDTO } from '../dto/ProductDTO.js';
 import { messagesModel } from '../dao/models/messagesModel.js';
 import { logger } from '../utils/logger.js';
 import { UserRepository } from '../repositories/UserRepository.js';
+import passport from 'passport';
+import jwt from "jsonwebtoken";
+import { config } from "../config/config.js";
+
 
 const daoType = process.env.DAO_TYPE || 'mongo';
 const { productDao, cartDao, userDao } = DaoFactory.getDao(daoType);
@@ -12,6 +16,8 @@ const { productDao, cartDao, userDao } = DaoFactory.getDao(daoType);
 const productRepository = new ProductRepository(productDao);
 const cartRepository = new CartRepository(cartDao);
 const userRepository = new UserRepository(userDao)
+
+const SECRET_KEY = config.SECRET;
 
 export class viewsController {
 
@@ -127,6 +133,47 @@ export class viewsController {
             logger.error('Error deleting user:', error);
             return res.status(500).send('Server error');
         }
+
+    };
+
+    static loginUser = (req, res, next) => {
+
+        passport.authenticate("login", (err, user, info) => {
+       
+            if (err) {
+                return next(err);
+            }
+            if (!user) {
+                return res.status(400).json({ message: info.message });
+            }
+            req.login(user, { session: false }, async (err) => {
+                if (err) {
+                    return next(err);
+                }
+                await userRepository.update(user._id, { last_connection: new Date() });
+     
+                const token = jwt.sign({ id: user._id, email: user.email }, SECRET_KEY, { expiresIn: '1h' });
+                res.cookie('token', token, { httpOnly: true, maxAge: 3600000 });
+                return res.redirect('/products')
+            });
+     
+        })(req, res, next);
+
+    };
+
+    static registerUser = (req, res, next) => {
+
+        passport.authenticate("register", (err, user, info) => {
+            
+            if (err) {
+                return res.status(500).json({ error: "Internal server error" });
+            }
+            if (!user) {
+                return res.status(400).json({ error: info.message });
+            }
+    
+           res.redirect('/login');
+        })(req, res, next);
 
     };
 

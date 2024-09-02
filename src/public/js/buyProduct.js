@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!cartId || !productId) {
                 console.error('Cart ID or Product ID is missing');
-                alert('Error al agregar el producto al carrito: faltan datos');
+                alert('Error adding product to cart');
                 return;
             }
 
@@ -24,9 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const result = await response.json();
                 if (result.msg === 'Product added to cart') {
-                    alert('Producto agregado al carrito');
+                    alert('Product added to cart');
                 } else {
-                    alert('Error al agregar el producto al carrito');
+                    alert('Error adding product to cart');
                 }
             } catch (error) {
                 console.error('Error adding product to cart:', error);

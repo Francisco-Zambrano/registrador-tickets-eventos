@@ -35,7 +35,7 @@ describe("Products API", () => {
 
         it("should return a product by ID with status 200", async () => {
     
-            const productId = '662e539294f04b2be1e816fc';
+            const productId = '6664a52e9c8d1c4aad0d1b50';
             const { statusCode, body } = await requester.get(`/api/products/${productId}`);
     
             expect(statusCode).to.equal(200);

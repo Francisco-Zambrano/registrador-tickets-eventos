@@ -9,7 +9,7 @@ describe("Carts API", () => {
     describe("GET /api/carts/:pid", () => {
 
         it("should return a cart by ID with status 200", async () => {
-            const cartId = '665cc99d6fcf0d95f0772e79';
+            const cartId = '66d4fd08868c8b3580a474bf';
             const { statusCode, body } = await requester.get(`/api/carts/${cartId}`);
 
             expect(statusCode).to.equal(200);
@@ -22,10 +22,10 @@ describe("Carts API", () => {
     describe("PUT /api/carts/:cid/products/:pid", () => {
 
         it("should update a cart product quantity", async () => {
-            const productId = '6637a29a72cd4d753e85a631';
-            const cartId = '665cc99d6fcf0d95f0772e79';
+            const productId = '6676217872ea2c2e9458758f';
+            const cartId = '66d4fed74e7c8f1b6198646b';
             const updatedProduct = {
-                quantity: 3
+                quantity: 2
             };
 
             const { statusCode, body } = await requester
@@ -49,8 +49,8 @@ describe("Carts API", () => {
     describe("DELETE /api/carts/:cid/products/:pid", () => {
 
         it("should delete an existing product from a cart and confirm deletion", async () => {
-            const productId = '6637a53aa6b68aabca0a9c7f';
-            const cartId = '665cc99d6fcf0d95f0772e79';
+            const productId = '6664a52e9c8d1c4aad0d1b50';
+            const cartId = '66d4fd08868c8b3580a474bf';
 
             const deleteResponse = await requester
                 .delete(`/api/carts/${cartId}/products/${productId}`);

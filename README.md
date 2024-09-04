@@ -1,4 +1,4 @@
-# Cuarta Práctica Integradora
+# PROYECTO FINAL DE BACKEND DE UN E-COMMERCE
 
 ## Configuración Inicial
 
@@ -17,65 +17,206 @@ El servidor se iniciará en el puerto especificado en tu archivo .env, por defec
 
 ## API Endpoints
 
-1. Iniciar Sesión
-Para iniciar sesión como un usuario, realiza una petición POST a la siguiente URL:
+## Products
+
+GET: Deberá poder recibir por query params un limit, una page y un sort
+
+
+```http
+ http://localhost:8080/api/products?limit=4&page=1&sort=asc
 ```
-URL: http://localhost:8080/api/sessions/login
-Método: POST
-Body (raw JSON):
-json
-Copy code
+
+| Key   | limit    | page     | sort         |
+| :---- | :------- | :------- | :----------- |
+| Value | `number` | `number` | `asc / desc` |
+
+- limit permitirá devolver sólo el número de elementos solicitados al momento de la petición, en caso de no recibir limit, éste será de 10.
+- page permitirá devolver la página que queremos buscar.
+- sort: asc/desc, para realizar ordenamiento ascendente o descendente por precio, en caso de no recibir sort, no realizar ningún ordenamiento.
+- El método GET deberá devolver un objeto con el siguiente formato:
+  {totalPages: Total de páginas
+  prevPage: Página anterior
+  nextPage: Página siguiente
+  page: Página actual
+  hasPrevPage: Indicador para saber si la página previa existe
+  hasNextPage: Indicador para saber si la página siguiente existe.
+  prevLink: Link directo a la página previa (null si hasPrevPage=false)
+  nextLink: Link directo a la página siguiente (null si hasNextPage=false)
+  }
+
+## Carts
+
+DELETE: Deberá eliminar del carrito el producto seleccionado.
+
+```http
+ http://localhost:8080/api/carts/:cid/product/:pid
+```
+
+PUT Deberá poder actualizar SÓLO la cantidad de ejemplares del producto por cualquier cantidad pasada desde req.body
+
+```http
+http://localhost:8080/api/carts/:cid/product/:pid
+```
+
+Body:
+{"quantity":number}
+
+PUT: Deberá actualizar el carrito con un arreglo de productos
+
+```http
+ http://localhost:8080/api/carts/:cid/products/:pid
+```
+
+DELETE: Deberá eliminar todos los productos del carrito
+
+```http
+ http://localhost:8080/api/carts/:cid/product/:pid
+```
+
+## Sessions
+
+POST: Registra un usuario.
+
+```http
+ http://localhost:8080/api/sessions/register
+```
+
+Body:
 {
-    "email": "juana@test.com", 
-    "password": "123"
+"first_name":"string ",
+"last_name":"string",
+"age":"number",
+"email":"string",
+"password":"string"
 }
+
+POST: Login de un usuario.
+
+```http
+ http://localhost:8080/api/sessions/login
 ```
 
-2. Cambiar Rol de Usuario a Premium
-Para cambiar el rol de un usuario a premium, primero debes intentar realizar la petición para verificar si falta algún documento:
-```
-URL: http://localhost:8080/api/users/premium/uid
-Método: POST
-```
-Parámetro URL: uid = 665e77e65acc9c9959341795 (ID de usuario para pruebas)
-Si los documentos faltan, se mostrará el siguiente mensaje: 'Some documents are missing, Please check file names'.
+Body:
+{
+"email":"string",
+"password":"string"
+}
 
-3. Subir Documentos Requeridos
-Sube los documentos necesarios para cambiar el rol del usuario a premium:
+GET: Perfil del usuario logueado
 
+```http
+ http://localhost:8080/profile
 ```
-URL: http://localhost:8080/api/users/uid/documents
-Método: POST
-Body (form-data):
-key: document
-file: archivo local llamado "comprobante de domicilio"
-key: document
-file: archivo local llamado "comprobante de estado de cuenta"
-key: document
-file: archivo local llamado "identificación"
-```
-Al subir correctamente los documentos, se mostrará el mensaje: 'Documents uploaded successfully' y un array con los documentos subidos.
 
-4. Cambiar Rol de Usuario a Premium (Nuevamente)
-Después de subir los documentos, realiza nuevamente la petición para cambiar el rol del usuario:
-```
-URL: http://localhost:8080/api/users/premium/uid
-Método: POST
-```
-Parámetro URL: uid = 665e77e65acc9c9959341795 (ID de usuario para pruebas)
-Si todo es correcto, se mostrará el mensaje: 'User role updated to premium' y se listarán los documentos subidos.
-Al hacer la petición nuvemante, deberá mostrar el mensaje: 'The user already has the premium role'
+GET: logout
 
-5. Subir Documentos a Carpetas Específicas
-Para subir documentos específicos a las carpetas documents, products, y profiles:
+```http
+ http://localhost:8080/api/sessions/logout
 ```
-URL: http://localhost:8080/api/users/uid/documents
-Método: POST
-Body (form-data):
-key: profile
-file: archivo local (perfil)
-key: document
-file: archivo local (documento)
-key: product
-file: archivo local (producto)
+
+GET: Current
+Extrae la cookie que contiene el token para obtener al usuario asociado
+
+```http
+ http://localhost:8080/api/sessions/current
+```
+
+GET: Password Restore
+Permite al usuario generar una nueva contraseña ingresando su mail.
+
+```http
+ http://localhost:8080/api/sessions/mail
+```
+
+## Purchase
+
+POST: Purchase
+Permite comprar un carrito.
+
+```http
+ http://localhost:8080/api/carts/:cid/purchase
+```
+
+## Tickets
+
+GET: A Ticket
+Permite obtener un ticket específico.
+
+```http
+ http://localhost:8080/api/tickets/:id
+```
+
+GET: A Ticket
+Permite obtener todos los tickets.
+
+```http
+ http://localhost:8080/api/tickets/
+```
+
+## Mocking
+
+GET: Mocking
+Permite obtener un mocking de productos para pruebas.
+
+```http
+ http://localhost:8080/api/mockingproducts
+```
+
+## Logger
+
+GET: Logger Test
+Permite hacer pruebas mediante Logger, Chai y supertest.
+
+```http
+ http://localhost:8080/loggerTest
+```
+
+## User
+
+POST: User Role
+Permite cambiar el rol de un usuario de "user" a "premium".
+
+```http
+ http://localhost:8080/api/users/premium/:uid
+```
+
+POST: Documents
+Permite al usuario subir documentos, imagen para el perfil e imágenes para productos.
+
+```http
+ http://localhost:8080/api/users/:uid/documents
+```
+Deberá adjuntar archivo desde el body
+| Key   | type  | value     |
+| :---- | :------- | :------- |
+| profile | `file` | `document` |
+| document | `file` | `document` |
+| product | `file` | `document` |
+
+POST: User Role
+Permite al usurio subir documentos necesario para cambiar el rol de "user" a "premium".
+
+```http
+ http://localhost:8080/api/users/:uid/documents
+```
+Deberá adjuntar archivo desde el body
+| Key   | type  | value     |
+| :---- | :------- | :------- |
+| document | `file` | `comprobante de domicilio` |
+| document | `file` | `comprobante de estado de cuenta` |
+| document | `file` | `identificacion` |
+
+
+GET: Users
+Permite obtener el listado e información de los usuarios existentes.
+
+```http
+ http://localhost:8080/api/users/
+```
+
+DELETE: Users
+Permite eliminar a los usuarios que no hayan tenido conexión en los últimos 2 días.
+
+```http
+ http://localhost:8080/api/users/inactive
 ```

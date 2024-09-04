@@ -15,7 +15,9 @@ export class ProductRepository {
     }
 
     async getAll(query = {}, options = {}) {
-        return await productsModel.find(query, null, options);
+        const sortOption = options.sort === 'asc' ? { price: 1 } : { price: -1 };
+        const updatedOptions = { ...options, sort: sortOption };
+        return await productsModel.find(query, null, updatedOptions);
     }
 
     async update(id, productData) {

@@ -13,15 +13,16 @@ const productRepository = new ProductRepository(productDao);
 export class productsController {
 
     static getProducts = async (req, res, next) => {
+
         try {
             const page = req.query.page ? parseInt(req.query.page) : 1;
             const limit = req.query.limit ? parseInt(req.query.limit) : 10;
-            const sort = req.query.sort || 'asc';
-
-            const options = { page, limit, lean: true };
+            const sort = req.query.sort === 'desc' ? 'desc' : 'asc';
+    
+            const options = { page, limit, sort };
             const result = await productRepository.getAll({}, options);
             const products = result.docs || result;
-
+    
             if (!Array.isArray(products)) {
                 throw CustomError.createError(
                     "InvalidDataError",
@@ -30,7 +31,7 @@ export class productsController {
                     TYPES_OF_ERROR.INTERNAL_SERVER_ERROR
                 );
             }
-
+    
             const productDTOs = products.map(product => new ProductDTO(product));
             return res.json({
                 products: productDTOs,
@@ -46,8 +47,9 @@ export class productsController {
         } catch (error) {
             next(error);
         }
-    };
 
+    };
+    
     static getProductById = async (req, res, next) => {
         try {
             const { pid } = req.params;

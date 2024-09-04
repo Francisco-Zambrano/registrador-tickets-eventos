@@ -1638,3 +1638,22 @@
 {"level":"info","message":"connected to ecommerce database","timestamp":"2024-09-01T23:57:48.445Z"}
 {"level":"info","message":"Running server on port: 8080","timestamp":"2024-09-01T23:59:56.934Z"}
 {"level":"info","message":"connected to ecommerce database","timestamp":"2024-09-01T23:59:58.059Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-09-03T22:23:42.123Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-09-03T22:23:42.932Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-09-03T22:28:06.508Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-09-03T22:28:07.189Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-09-03T22:34:19.660Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-09-03T22:34:20.294Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-09-03T22:34:39.283Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-09-03T22:34:39.880Z"}
+{"level":"fatal","message":"This is a fatal log","timestamp":"2024-09-04T00:05:08.592Z"}
+{"level":"error","message":"This is an error log","timestamp":"2024-09-04T00:05:08.592Z"}
+{"level":"warning","message":"This is a warning log","timestamp":"2024-09-04T00:05:08.593Z"}
+{"level":"info","message":"This is an info log","timestamp":"2024-09-04T00:05:08.593Z"}
+{"level":"info","message":"A client with id: yDDllvHhfRRBYKN8AAAB has connected ","timestamp":"2024-09-04T00:05:46.485Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-09-04T00:07:27.886Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-09-04T00:07:28.686Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-09-04T00:07:44.682Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-09-04T00:07:45.266Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-09-04T00:07:50.353Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-09-04T00:07:50.915Z"}

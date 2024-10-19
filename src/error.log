@@ -1699,3 +1699,6 @@
 {"level":"info","message":"connected to ecommerce database","timestamp":"2024-10-19T15:50:35.228Z"}
 {"level":"info","message":"Running server on port: 8080","timestamp":"2024-10-19T15:50:40.885Z"}
 {"level":"info","message":"connected to ecommerce database","timestamp":"2024-10-19T15:50:41.502Z"}
+{"level":"info","message":"Running server on port: 8080","timestamp":"2024-10-19T16:02:43.627Z"}
+{"level":"info","message":"connected to ecommerce database","timestamp":"2024-10-19T16:02:44.407Z"}
+{"level":"info","message":"A client with id: tEvuYL5ztP2l8VObAAAB has connected ","timestamp":"2024-10-19T16:06:17.446Z"}

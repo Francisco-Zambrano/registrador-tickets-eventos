@@ -15,6 +15,26 @@ npm run dev
 
 El servidor se iniciará en el puerto especificado en tu archivo .env, por defecto en http://localhost:8080.
 
+
+## PREVIEW
+
+El proyecto es desde el backend, sin embargo se usó handlebars para hacer vistas a modo de ejemplo.
+
+Login
+![Login](assets/Login.png)
+
+Register
+![Register](assets/Register.png)
+
+Products
+![Products](assets/Products.png)
+
+Cart
+![Cart](assets/Cart.png)
+
+Add a Product
+![Add a Product](assets/Addproduct.png)
+
 ## API Endpoints
 
 ## Products

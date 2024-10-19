@@ -67,15 +67,30 @@ export class productsController {
             next(error);
         }
     };
+    
 
     static addProducts = async (req, res, next) => {
         try {
             const productData = req.body;
     
+            const existingProduct = await productRepository.getBy({ code: productData.code });
+    
+            if (existingProduct && existingProduct.totalDocs > 0) { 
+
+                return res.status(400).json({
+                    message: 'Product already exists',
+                    error: {
+                        code: 'DUPLICATE_PRODUCT',
+                        details: `A product with code ${productData.code} already exists.`
+                    }
+                });
+            }
+    
             productData.owner = req.user._id;
     
             const product = await productRepository.create(productData);
             return res.status(201).json({ product: new ProductDTO(product) });
+        
         } catch (error) {
             if (error.code === 11000) {
                 next(CustomError.createError(
@@ -89,7 +104,7 @@ export class productsController {
             }
         }
     };
-    
+  
     static updateProduct = async (req, res, next) => {
         try {
             const { pid } = req.params;
